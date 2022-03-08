@@ -18,18 +18,7 @@
         app:layout_constraintStart_toStartOf="@id/guide_start_transaction"
         app:layout_constraintEnd_toEndOf="@id/guide_end_transaction"/>-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_maps"
-        android:layout_width="350dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@id/guide_start_transaction"
-        app:layout_constraintEnd_toStartOf="@id/guide_end_transaction"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
-        tools:itemCount="3"
-        tools:listitem="@layout/maps" />
+
 
 
     <androidx.appcompat.widget.Toolbar
@@ -63,7 +52,18 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_maps"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@id/guide_start_transaction"
+        app:layout_constraintEnd_toStartOf="@id/guide_end_transaction"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
+        tools:itemCount="3"
+        tools:listitem="@layout/maps" />
 
 
 
