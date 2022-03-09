@@ -10,7 +10,23 @@
         android:id="@+id/homeFragment"
         android:name="com.example.clima.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_screenshotsFragment"
+            app:destination="@id/screenshotsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mySearchFragment"
+            app:destination="@id/mySearchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.clima.LoginFragment"
@@ -19,5 +35,48 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.clima.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.clima.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.clima.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mySearchFragment"
+        android:name="com.example.clima.MySearchFragment"
+        android:label="fragment_my_search"
+        tools:layout="@layout/fragment_my_search" />
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="com.example.clima.PreferencesFragment"
+        android:label="fragment_preferences"
+        tools:layout="@layout/fragment_preferences" />
+    <fragment
+        android:id="@+id/screenshotsFragment"
+        android:name="com.example.clima.ScreenshotsFragment"
+        android:label="fragment_screenshots"
+        tools:layout="@layout/fragment_screenshots" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.clima.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

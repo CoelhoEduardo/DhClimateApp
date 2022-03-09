@@ -26,7 +26,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
         app:titleTextColor="@color/white">
 
 
@@ -34,7 +33,7 @@
             android:id="@+id/home"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:scaleType="centerCrop"
             android:src="@drawable/logo"
             tools:ignore="ContentDescription" />
