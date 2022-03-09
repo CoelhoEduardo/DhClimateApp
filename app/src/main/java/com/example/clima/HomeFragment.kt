@@ -44,6 +44,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun sendToPreferences() {
+
         findNavController().navigate(R.id.action_homeFragment_to_preferencesFragment)
     }
 

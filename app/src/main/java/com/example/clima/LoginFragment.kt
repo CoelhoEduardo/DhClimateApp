@@ -16,7 +16,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val login = view.findViewById<Button>(R.id.login_button)
         val newAccount = view.findViewById<Button>(R.id.newaccount_button)
         val forgotPassword = view.findViewById<Button>(R.id.forgotpass_button)
-        val google = view.findViewById<Button>(R.id.google_button)
+        val google = view.findViewById<ImageView>(R.id.google_button)
         val facebook = view.findViewById<ImageView>(R.id.facebook_button)
 
 

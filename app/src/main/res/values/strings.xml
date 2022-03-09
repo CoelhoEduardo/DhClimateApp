@@ -6,4 +6,11 @@
     <string name="password">Password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome">Nome</string>
+    <string name="cidade">Cidade</string>
+    <string name="pais">Pais</string>
+    <string name="senha">Senha</string>
+    <string name="confirmarSenha">Confirme sua Senha</string>
+    <string name="criar_conta">CRIAR CONTA</string>
+    <string name="tem_conta">TEM UMA CONTA? FACA SEU LOGIN</string>
 </resources>
