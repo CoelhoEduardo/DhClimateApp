@@ -13,4 +13,5 @@
     <string name="confirmarSenha">Confirme sua Senha</string>
     <string name="criar_conta">CRIAR CONTA</string>
     <string name="tem_conta">TEM UMA CONTA? FACA SEU LOGIN</string>
+    <string name="favorite_title">FAVORITOS</string>
 </resources>

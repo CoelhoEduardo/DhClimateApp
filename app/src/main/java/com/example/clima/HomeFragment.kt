@@ -1,16 +1,15 @@
 package com.example.clima
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toolbar
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.example.clima.Model.Maps.Maps
+import com.example.clima.Model.Maps.MapsImage
+import com.example.clima.adapter.HomeAdapter
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
@@ -22,6 +21,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val favorites = view.findViewById<Button>(R.id.btn_favorites)
         val profile = view.findViewById<ImageView>(R.id.profile)
 
+        val listMap = mutableListOf<Maps>(
+            MapsImage(
+                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
+            ),
+            MapsImage(
+                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
+            ),
+            MapsImage(
+                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
+            )
+        )
+
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler_maps)
+        recycler.adapter = HomeAdapter(listMap)
 
 
         openMap.setOnClickListener{

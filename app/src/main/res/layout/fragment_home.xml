@@ -1,175 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/primary_light"
-    tools:context=".HomeFragment"
-    >
+    tools:context=".HomeFragment">
 
-    <!--<View
-        android:id="@+id/background_header_transaction"
-        android:layout_width="350dp"
-        android:layout_height="0dp"
-        android:background="@drawable/background_card_top"
-        app:layout_constraintBottom_toBottomOf="@+id/guide_header_transaction"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
-        app:layout_constraintStart_toStartOf="@id/guide_start_transaction"
-        app:layout_constraintEnd_toEndOf="@id/guide_end_transaction"/>-->
-
-
-
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_transaction"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/white">
+        android:layout_height="match_parent">
+        <!--<View
+            android:id="@+id/background_header_transaction"
+            android:layout_width="350dp"
+            android:layout_height="0dp"
+            android:background="@drawable/background_card_top"
+            app:layout_constraintBottom_toBottomOf="@+id/guide_header_transaction"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
+            app:layout_constraintStart_toStartOf="@id/guide_start_transaction"
+            app:layout_constraintEnd_toEndOf="@id/guide_end_transaction"/>-->
 
 
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="left"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo"
-            tools:ignore="ContentDescription" />
-
-        <ImageView
-            android:id="@+id/profile"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo"
-            tools:ignore="ContentDescription" />
-
-    </androidx.appcompat.widget.Toolbar>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_transaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/white">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_maps"
-        android:layout_width="350dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@id/guide_start_transaction"
-        app:layout_constraintEnd_toStartOf="@id/guide_end_transaction"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
-        tools:itemCount="3"
-        tools:listitem="@layout/maps" />
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="left"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_sair"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo"
+                tools:ignore="ContentDescription" />
+
+        </androidx.appcompat.widget.Toolbar>
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_maps"
+            android:layout_width="350dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toStartOf="@id/guide_end_transaction"
+            app:layout_constraintStart_toEndOf="@id/guide_start_transaction"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
+            tools:itemCount="3"
+            tools:listitem="@layout/maps" />
 
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_header_transaction"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="50dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_mid_transaction"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="290dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_start_transaction"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_end_transaction"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_open_map"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="70dp"
+            android:background="@color/secondary_dark"
+            android:elevation="22dp"
+            android:gravity="center"
+            android:text="Abrir Mapa"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guide_mid_transaction"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_buscas"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="45dp"
+            android:background="@color/secondary_dark"
+            android:elevation="22dp"
+            android:gravity="center"
+            android:text="Minhas Buscas"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_open_map"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_screenshots"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="45dp"
+            android:background="@color/secondary_dark"
+            android:elevation="22dp"
+            android:gravity="center"
+            android:text="Capturas de Tela"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_buscas"
+
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_favorites"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="45dp"
+            android:background="@color/secondary_dark"
+            android:elevation="22dp"
+            android:gravity="center"
+            android:text="Favoritos"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_screenshots"
+
+            />
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_header_transaction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="50dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_mid_transaction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="290dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_start_transaction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="16dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_end_transaction"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_open_map"
-        android:layout_width="240dp"
-        android:layout_height="40dp"
-
-        android:layout_marginTop="70dp"
-        android:elevation="22dp"
-        android:gravity="center"
-        android:text="Abrir Mapa"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@color/secondary_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guide_mid_transaction"
-
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_buscas"
-        android:layout_width="240dp"
-        android:layout_height="40dp"
-
-        android:layout_marginTop="45dp"
-        android:elevation="22dp"
-        android:gravity="center"
-        android:text="Minhas Buscas"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@color/secondary_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_open_map"
-
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_screenshots"
-        android:layout_width="240dp"
-        android:layout_height="40dp"
-
-        android:layout_marginTop="45dp"
-        android:elevation="22dp"
-        android:gravity="center"
-        android:text="Capturas de Tela"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@color/secondary_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_buscas"
-
-        />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_favorites"
-        android:layout_width="240dp"
-        android:layout_height="40dp"
-
-        android:layout_marginTop="45dp"
-        android:elevation="22dp"
-        android:gravity="center"
-        android:text="Favoritos"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@color/secondary_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_screenshots"
-
-        />
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
