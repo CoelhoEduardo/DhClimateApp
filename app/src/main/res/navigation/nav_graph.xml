@@ -48,7 +48,14 @@
         android:id="@+id/favoriteFragment"
         android:name="com.example.clima.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_preferencesFragment"
+            app:destination="@id/preferencesFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.example.clima.MapFragment"
@@ -72,7 +79,11 @@
         android:id="@+id/screenshotsFragment"
         android:name="com.example.clima.ScreenshotsFragment"
         android:label="fragment_screenshots"
-        tools:layout="@layout/fragment_screenshots" />
+        tools:layout="@layout/fragment_screenshots" >
+        <action
+            android:id="@+id/action_screenshotsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.clima.SearchFragment"

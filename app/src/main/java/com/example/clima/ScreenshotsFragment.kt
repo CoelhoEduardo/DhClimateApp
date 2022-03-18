@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.Model.Maps.Maps
@@ -53,10 +55,22 @@ class ScreenshotsFragment : Fragment(R.layout.fragment_screenshots) {
 
         )
 
+        val home = view.findViewById<ImageView>(R.id.home)
+
         val recycler = view.findViewById<RecyclerView>(R.id.screenshot_recycler)
         recycler.layoutManager = GridLayoutManager(context, 3)
         recycler.adapter = ScreenshotAdapter(listMap)
 
+
+        home.setOnClickListener{
+            sendToHome()
+        }
+
+    }
+
+    private fun sendToHome() {
+
+        findNavController().navigate(R.id.action_screenshotsFragment_to_homeFragment)
     }
 
 }
