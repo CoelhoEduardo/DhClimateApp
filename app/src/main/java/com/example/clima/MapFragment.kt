@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import com.example.clima.util.extension.load
 
 class MapFragment : Fragment(R.layout.fragment_map) {
@@ -47,6 +48,17 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         vulconButton.load(vulconUrl)
 
 
+        val home = view.findViewById<ImageView>(R.id.home_button)
+
+        home.setOnClickListener{
+            sendToHome()
+        }
+
+    }
+
+    private fun sendToHome() {
+
+        findNavController().navigate(R.id.action_mapFragment_to_homeFragment)
     }
 
 }

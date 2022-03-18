@@ -64,12 +64,19 @@
         <action
             android:id="@+id/action_mapFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_mapFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/mySearchFragment"
         android:name="com.example.clima.MySearchFragment"
         android:label="fragment_my_search"
-        tools:layout="@layout/fragment_my_search" />
+        tools:layout="@layout/fragment_my_search" >
+        <action
+            android:id="@+id/action_mySearchFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/preferencesFragment"
         android:name="com.example.clima.PreferencesFragment"
