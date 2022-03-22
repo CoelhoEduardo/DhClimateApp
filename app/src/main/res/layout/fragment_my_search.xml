@@ -47,7 +47,8 @@
         android:layout_height="100dp"
         android:background="@color/primary_light"
         app:circularflow_radiusInDP="100dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <ImageButton
         android:id="@+id/queimada_button"
