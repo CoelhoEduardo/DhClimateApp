@@ -17,13 +17,78 @@
         android:id="@+id/queimada_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="21dp"
         android:layout_marginBottom="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:src="@drawable/ic_queimada"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/tempestade_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:src="@drawable/ic_queimada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/queimada_button"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/geada_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:src="@drawable/ic_queimada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tempestade_button"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/radiation_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:src="@drawable/ic_queimada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/geada_button"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/ice_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:src="@drawable/ic_queimada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/radiation_button"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/vulcon_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="30dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:src="@drawable/ic_queimada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ice_button"
         tools:ignore="ContentDescription" />
 
 
