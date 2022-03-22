@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.clima.Model.Maps.Search
+import com.example.clima.adapter.SearchAdapter
 import com.example.clima.util.extension.load
 
 class MySearchFragment : Fragment(R.layout.fragment_my_search) {
@@ -51,6 +55,21 @@ class MySearchFragment : Fragment(R.layout.fragment_my_search) {
         home.setOnClickListener{
             sendToHome()
         }
+
+        val listSearch = MutableList(10){
+            Search(
+
+
+                image = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg",
+                local = "Acailandia,MA - Brasil",
+                data = "16 MAI 2022"
+            )
+        }
+
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler)
+        recycler.layoutManager =
+            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+        recycler.adapter = SearchAdapter(listSearch)
 
     }
 
