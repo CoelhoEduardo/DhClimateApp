@@ -14,4 +14,7 @@
     <string name="criar_conta">CRIAR CONTA</string>
     <string name="tem_conta">TEM UMA CONTA? FACA SEU LOGIN</string>
     <string name="favorite_title">FAVORITOS</string>
+    <string name="localizacao">Busque por Localizacao</string>
+    <string name="data_inicial">Data Inicial</string>
+    <string name="data_final">Data Final</string>
 </resources>
