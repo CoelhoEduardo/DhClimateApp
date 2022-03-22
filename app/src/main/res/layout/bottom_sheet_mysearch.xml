@@ -17,7 +17,7 @@
         android:id="@+id/queimada_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="21dp"
         android:layout_marginBottom="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
