@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flowOn
 
 class EventsRepository(private val  api: API = API.instance) {
     fun fetchProfile() = flow {
-        emit(api.getEvents())
+        emit(api.getEvents(""))
     }.flowOn(Dispatchers.IO)
 
     companion object {

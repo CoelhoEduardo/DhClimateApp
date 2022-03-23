@@ -9,6 +9,10 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.clima.Model.Maps.Search
+import com.example.clima.adapter.SearchAdapter
 import com.example.clima.util.extension.load
 
 class MapFragment : Fragment(R.layout.fragment_map) {
@@ -54,11 +58,27 @@ class MapFragment : Fragment(R.layout.fragment_map) {
             sendToHome()
         }
 
+        val listSearch = MutableList(10){
+            Search(
+
+
+                image = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg",
+                local = "Acailandia,MA - Brasil",
+                data = "16 MAI 2022"
+            )
+        }
+
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler)
+        recycler.layoutManager =
+            LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
+        recycler.adapter = SearchAdapter(listSearch)
+
     }
 
     private fun sendToHome() {
 
         findNavController().navigate(R.id.action_mapFragment_to_homeFragment)
+
     }
 
 }
