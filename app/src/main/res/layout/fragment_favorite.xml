@@ -23,17 +23,17 @@
             android:layout_height="28dp"
             android:layout_gravity="left"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_sair"
+            android:src="@drawable/ic_arrow_back_white"
             tools:ignore="ContentDescription" />
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/logo"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription" />-->
 
         <ImageView
             android:id="@+id/profile"
@@ -42,7 +42,7 @@
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_sair"
+            android:src="@drawable/logo"
             tools:ignore="ContentDescription" />
 
     </androidx.appcompat.widget.Toolbar>

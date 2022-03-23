@@ -14,12 +14,12 @@
         android:layout_height="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:src="@drawable/ic_red_ball"
+        android:src="@drawable/ic_arrow_back_black"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="16dp"
         tools:ignore="ContentDescription"
-        android:elevation="1dp"/>
+        android:elevation="1dp" />
 
     <ImageButton
         android:id="@+id/camera_button"
@@ -28,7 +28,7 @@
         android:layout_height="50dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:src="@drawable/ic_red_ball"
+        android:src="@drawable/ic_camera"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
