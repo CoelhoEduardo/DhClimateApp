@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="#E7E7E7"
     android:layout_height="match_parent"
-    tools:context=".MySearchFragment">
+    tools:context=".MySearchFrAltagment">
 
 
     <ImageButton
