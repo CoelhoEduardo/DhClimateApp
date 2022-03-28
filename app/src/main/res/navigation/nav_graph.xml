@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_loginFragment_to_cadastroFragment"
             app:destination="@id/cadastroFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -103,4 +106,8 @@
             android:id="@+id/action_cadastroFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/forgotFragment"
+        android:name="com.example.clima.viewmodel.ForgotFragment"
+        android:label="ForgotFragment" />
 </navigation>

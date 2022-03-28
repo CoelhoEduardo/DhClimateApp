@@ -17,4 +17,7 @@
     <string name="localizacao">Busque por Localizacao</string>
     <string name="data_inicial">Data Inicial</string>
     <string name="data_final">Data Final</string>
+    <string name="email">Digite seu email</string>
+    <string name="enviar">Enviar</string>
+    <string name="fechar">Fechar</string>
 </resources>
