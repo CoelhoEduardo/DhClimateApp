@@ -56,7 +56,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         forgotPassword.setOnClickListener {
             dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
-            Toast.makeText(context, "Apertou", Toast.LENGTH_SHORT).show()
 
         }
 
