@@ -1,5 +1,6 @@
 package com.example.clima.viewmodel
 
+import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +22,19 @@ import java.lang.Exception
 
 class NewAccountFragment : BottomSheetDialogFragment() {
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+
+        val dialog = super.onCreateDialog(savedInstanceState)
+        val view = LayoutInflater.from(context).inflate(R.layout.forgot_password_background, null)
+        dialog.setContentView(view)
+        return dialog
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.BottomSheetDialog)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
