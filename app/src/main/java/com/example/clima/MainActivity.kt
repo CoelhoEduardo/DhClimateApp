@@ -2,10 +2,13 @@ package com.example.clima
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.widget.Button
+import androidx.fragment.app.FragmentContainerView
+import com.example.clima.viewmodel.ForgotPasswordFragment
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
-}
+class MainActivity : AppCompatActivity(R.layout.activity_main)
+
+
+
+
