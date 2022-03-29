@@ -14,7 +14,15 @@ import java.util.regex.Pattern
                 ")+"
     )
 
+val SENHA_PATTERN: Pattern = Pattern.compile(
+    "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%^&+=.])(?=\\S+\$).{8,20}\$"
+)
+
 public fun checkEmail(email: String): Boolean {
     return EMAIL_ADDRESS_PATTERN.matcher(email).matches()
+}
+
+public fun checkSenha(senha: String): Boolean {
+    return SENHA_PATTERN.matcher(senha).matches()
 }
 

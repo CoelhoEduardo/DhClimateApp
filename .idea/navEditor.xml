@@ -72,18 +72,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="forgotFragment">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-440" />
-                            <option name="y" value="261" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="homeFragment">
                     <value>
                       <LayoutPositions>
@@ -194,6 +182,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="newAccountFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-348" />
+                            <option name="y" value="244" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>
