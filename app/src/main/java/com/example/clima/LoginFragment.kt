@@ -1,7 +1,9 @@
 package com.example.clima
 
 
+import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
@@ -10,11 +12,13 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.clima.Utils.checkEmail
 import com.example.clima.viewmodel.ForgotPasswordFragment
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
 import java.lang.Exception
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

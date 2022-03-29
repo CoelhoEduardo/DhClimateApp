@@ -26,7 +26,7 @@ class NewAccountFragment : BottomSheetDialogFragment() {
 
 
         val dialog = super.onCreateDialog(savedInstanceState)
-        val view = LayoutInflater.from(context).inflate(R.layout.forgot_password_background, null)
+        val view = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_cadastro, null)
         dialog.setContentView(view)
         return dialog
     }
