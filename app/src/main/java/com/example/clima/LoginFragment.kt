@@ -1,24 +1,29 @@
 package com.example.clima
 
 
-import android.app.Dialog
+import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.fragment.app.Fragment
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.clima.Utils.GoogleLogInActivityContract
 import com.example.clima.Utils.checkEmail
 import com.example.clima.viewmodel.ForgotPasswordFragment
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
-import java.lang.Exception
+import java.security.MessageDigest
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -35,6 +40,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             .build()
 
 
+    private val loginManager = LoginManager.getInstance()
+    private val callbackManager = CallbackManager.Factory.create()
+
+
     //lateinit var googleSignInClient : GoogleSignInClient
 
 
@@ -43,9 +52,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 */
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
         val login = view.findViewById<Button>(R.id.login_button)
         val newAccount = view.findViewById<Button>(R.id.newaccount_button)
         val facebook = view.findViewById<ImageView>(R.id.facebook_button)
@@ -84,7 +96,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
         facebook.setOnClickListener {
-            sendToFacebook()
+            //sendToFacebook()
+            loginFacebook()
         }
 
         forgotPassword.setOnClickListener {
@@ -94,6 +107,27 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     }
 
+    private fun loginFacebook() {
+        loginManager.logInWithReadPermissions(this, arrayListOf("public profile"))
+        loginManager.registerCallback(callbackManager,object : FacebookCallback<LoginResult> {
+
+            override fun onSuccess(result: LoginResult) {
+                Toast.makeText(requireContext(),"Esse e o nosso token -> ${result.accessToken.token}", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onCancel() {
+                Toast.makeText(requireContext(),"Cancelou", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onError(error: FacebookException?) {
+                Toast.makeText(requireContext(),"Erro!", Toast.LENGTH_LONG).show()
+                println(error)
+            }
+
+
+        })
+    }
+
     private fun validarLogin(email: String, senha: String) {
 
     }
@@ -101,6 +135,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
 
     }
 
@@ -121,6 +158,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
 
+
     private fun sendToHome() {
 
         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
@@ -129,8 +167,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun onGoogleSignInResult(result: GoogleLogInActivityContract.Result?) {
         if(result is GoogleLogInActivityContract.Result.Success){
             val token = result.googleSignInAccount.idToken
+            //token?.let{ socialLogin}
             Toast.makeText(requireContext(), "Meu token do google e -> $token", Toast.LENGTH_LONG).show()
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
 
