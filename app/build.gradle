@@ -6,6 +6,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Lucas Sales\\Documents\\PROJETO-CLIMA\\DhClimateApp\\debug.jks')
+            storePassword '123456'
+            keyAlias 'debug'
+            keyPassword '123456'
+        }
+    }
     compileSdk 31
 
     defaultConfig {

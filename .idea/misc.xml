@@ -3,14 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19375" />
-      </map>
-    </option>
-  </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16_PREVIEW" project-jdk-name="corretto-16" project-jdk-type="JavaSDK" />
-=======
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable-anydpi/ic_arrow_back_new.xml" value="0.132" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/background_forgot_password.xml" value="0.132" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/background_map.xml" value="0.132" />
@@ -72,11 +64,11 @@
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
->>>>>>> develop
 </project>
