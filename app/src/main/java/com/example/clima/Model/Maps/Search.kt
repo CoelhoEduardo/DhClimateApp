@@ -16,8 +16,6 @@ class Search(
         TODO("Not yet implemented")
     }
 
-    override fun writeToParcel(p0: Parcel?, p1: Int) {
-        TODO("Not yet implemented")
-    }
+
 }
 
