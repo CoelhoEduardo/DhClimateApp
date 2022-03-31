@@ -126,7 +126,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             override fun onSuccess(result: LoginResult) {
                 val token = result.accessToken.token
-                Toast.makeText(requireContext(),"Esse e o nosso token -> $token", Toast.LENGTH_LONG).show()
+                sendToHome()
+                //Toast.makeText(requireContext(),"Esse e o nosso token -> $token", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(),"Sucesso no login", Toast.LENGTH_LONG).show()
             }
 
 
