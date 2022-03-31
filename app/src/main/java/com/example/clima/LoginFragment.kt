@@ -2,11 +2,7 @@ package com.example.clima
 
 
 import android.content.Intent
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -23,7 +19,6 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.textfield.TextInputEditText
-import java.security.MessageDigest
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -68,7 +63,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val loginEdit = view.findViewById<TextInputEditText>(R.id.login_edit_text)
         val passwordText = view.findViewById<TextInputEditText>(R.id.password_edit_text)
         val forgotPassword = view.findViewById<Button>(R.id.forgotpass_button)
-         val google = view.findViewById<ImageView>(R.id.google_button)
+        val google = view.findViewById<ImageView>(R.id.google_button)
 
 
 
@@ -139,21 +134,16 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun loginFacebook() {
         loginManager.logInWithReadPermissions(this, arrayListOf("public profile"))
         loginManager.registerCallback(callbackManager,object : FacebookCallback<LoginResult> {
-
             override fun onSuccess(result: LoginResult) {
                 Toast.makeText(requireContext(),"Esse e o nosso token -> ${result.accessToken.token}", Toast.LENGTH_LONG).show()
             }
-
             override fun onCancel() {
                 Toast.makeText(requireContext(),"Cancelou", Toast.LENGTH_LONG).show()
             }
-
             override fun onError(error: FacebookException?) {
                 Toast.makeText(requireContext(),"Erro!", Toast.LENGTH_LONG).show()
                 println(error)
             }
-
-
         }
         )
     }*/
