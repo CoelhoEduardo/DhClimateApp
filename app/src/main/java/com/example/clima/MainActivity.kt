@@ -2,22 +2,20 @@ package com.example.clima
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Base64
 import android.util.Log
-import android.widget.Button
-import androidx.fragment.app.FragmentContainerView
-import com.example.clima.viewmodel.ForgotPasswordFragment
+import androidx.appcompat.app.AppCompatActivity
 import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
-class MainActivity : AppCompatActivity(R.layout.activity_main){
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
-        /*val info: PackageInfo = getPackageManager().getPackageInfo(
+        val info: PackageInfo = getPackageManager().getPackageInfo(
             "com.example.clima",
             PackageManager.GET_SIGNATURES
         )
@@ -26,8 +24,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main){
             md.update(signature.toByteArray())
             Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT))
         }
-    */
+
     }
+
+
 
 }
 

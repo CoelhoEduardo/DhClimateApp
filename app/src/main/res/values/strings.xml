@@ -25,8 +25,11 @@
     <!--endregion-->
     <!--region  Facebook Id -->
     <string name="facebook_app_id">4964352723680057</string>
-    <string name="fb_login_protocol_scheme">fb1234</string>
+    <!--<string name="fb_login_protocol_scheme">fb1234</string>-->
     <string name="facebook_client_token">6497ceaf7307e1161f4252c975e3a5cb</string>
+    <!--<string name="facebook_client_token">gpWU9KFWQsNGxbv69VBMQD2sRsM=</string>-->
+
+
     <!--endregion-->
 
 

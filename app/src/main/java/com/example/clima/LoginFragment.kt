@@ -51,6 +51,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         get() = view?.findViewById(R.id.google_button)
 */
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,6 +104,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             loginFacebook()
         }
 
+        registerFacebookCallback()
+
         forgotPassword.setOnClickListener {
             dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
 
@@ -107,6 +113,27 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     }
 
+    private fun registerFacebookCallback() {
+        loginManager.registerCallback(callbackManager, object: FacebookCallback<LoginResult>{
+            override fun onCancel() {
+                Toast.makeText(requireContext(),"Cancelou", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onError(error: FacebookException) {
+                Toast.makeText(requireContext(),"Erro!", Toast.LENGTH_LONG).show()
+                println(error)
+            }
+
+            override fun onSuccess(result: LoginResult) {
+                val token = result.accessToken.token
+                Toast.makeText(requireContext(),"Esse e o nosso token -> $token", Toast.LENGTH_LONG).show()
+            }
+
+
+        }
+        )
+    }
+/*
     private fun loginFacebook() {
         loginManager.logInWithReadPermissions(this, arrayListOf("public profile"))
         loginManager.registerCallback(callbackManager,object : FacebookCallback<LoginResult> {
@@ -125,38 +152,22 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
 
 
-        })
-    }
+        }
+        )
+    }*/
 
-    private fun validarLogin(email: String, senha: String) {
+    private fun loginFacebook() {
+        loginManager.logInWithReadPermissions(
+            this,
+            callbackManager,
+            arrayListOf("public_profile", "email"))
 
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-
-
-    }
-
-    private fun sendToFacebook() {
-        TODO("Not yet implemented")
-    }
-
-    private fun sendToGoogle() {
-        TODO("Not yet implemented")
-    }
-
-    private fun sendToForgotPassword() {
 
     }
 
     private fun sendToNewAccount() {
         findNavController().navigate(R.id.action_loginFragment_to_cadastroFragment)
     }
-
 
 
     private fun sendToHome() {
@@ -175,6 +186,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun validarLogin(email: String, senha: String) {
+
     }
 
 
