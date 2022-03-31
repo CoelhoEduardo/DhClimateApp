@@ -19,12 +19,14 @@
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
         android:hint="@string/login"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_check"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

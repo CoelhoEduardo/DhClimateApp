@@ -9,17 +9,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.clima.Model.Maps.Search
 import com.example.clima.R
+import okhttp3.internal.notify
 
 private const val HEADER = 0
 private const val CONTENT = 1
 private const val FOOTER = 2
 
 
-class SearchAdapter(private val search: List<Search>) :
+
+
+class SearchAdapter() :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val search: MutableList<Search> = mutableListOf()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
+
+
 
         return ContactViewHolder(inflater.inflate(R.layout.item_mysearch, parent, false))
 
@@ -30,6 +38,12 @@ class SearchAdapter(private val search: List<Search>) :
             is ContactViewHolder -> holder.bind(search[position])
         }
 
+    }
+
+    fun updateList(lista : List<Search>){
+        search.clear()
+        search.addAll(lista)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = search.size
@@ -48,4 +62,7 @@ class ContactViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
     }
+
+
+
 }

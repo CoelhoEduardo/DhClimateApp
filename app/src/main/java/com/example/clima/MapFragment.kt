@@ -19,11 +19,12 @@ import com.example.clima.util.extension.loadRectangle
 
 class MapFragment : Fragment(R.layout.fragment_map) {
 
+    private val adapter = SearchAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val image = view.findViewById<ImageView>(R.id.map_image)
-       // val imageUrl: String = "https://maplink.global/wp-content/uploads/2021/06/passo-1-fazer-rotas-google-maps.jpg"
+        // val imageUrl: String = "https://maplink.global/wp-content/uploads/2021/06/passo-1-fazer-rotas-google-maps.jpg"
 
         val imageUrl: String = "https://www.researchgate.net/profile/Tiago-Tamagusko/publication/343628852/figure/fig11/AS:924018139987968@1597314500101/Figura-21-Mapa-America-do-Sul-Fonte-Google-Maps-https-mapsgooglecombr.jpg"
         image.loadRectangle(imageUrl)
@@ -75,7 +76,22 @@ class MapFragment : Fragment(R.layout.fragment_map) {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         recycler.layoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
-        recycler.adapter = SearchAdapter(listSearch)
+
+        recycler.adapter = adapter
+        buscarEndereco()
+    }
+
+    private fun buscarEndereco(){
+        val listSearch = MutableList(10){
+            Search(
+
+
+                image = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg",
+                local = "Acailandia,MA - Brasil",
+                data = "16 MAI 2022"
+            )
+        }
+        adapter.updateList(listSearch)
 
     }
 
