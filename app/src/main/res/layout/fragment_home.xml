@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
         <!--<View
             android:id="@+id/background_header_transaction"
             android:layout_width="350dp"
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:titleTextColor="@color/white">
+            >
 
 
             <ImageView
@@ -42,7 +43,7 @@
                 android:id="@+id/profile"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_gravity="end"
+                android:layout_gravity="right"
                 android:layout_marginEnd="16dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/logo"
@@ -53,16 +54,18 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_maps"
-            android:layout_width="350dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toStartOf="@id/guide_end_transaction"
             app:layout_constraintStart_toEndOf="@id/guide_start_transaction"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
+            android:layout_margin="12dp"
+            android:paddingStart="3dp"
+            app:layout_constraintTop_toTopOf="@id/guide_header_transaction"
+            app:layout_constraintBottom_toTopOf="@id/guide_mid_transaction"
             tools:itemCount="3"
-            tools:listitem="@layout/maps" />
+            tools:listitem="@layout/maps"/>
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -70,7 +73,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="50dp" />
+            app:layout_constraintGuide_begin="16dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_mid_transaction"
@@ -95,73 +98,73 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_open_map"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-
-            android:layout_marginTop="70dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/secondary_dark"
-            android:elevation="22dp"
-            android:gravity="center"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginTop="35dp"
             android:text="Abrir Mapa"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guide_mid_transaction"
+            app:layout_constraintBottom_toTopOf="@id/btn_buscas"
 
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_buscas"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-
-            android:layout_marginTop="45dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/secondary_dark"
-            android:elevation="22dp"
-            android:gravity="center"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginTop="30dp"
             android:text="Minhas Buscas"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_open_map"
+            app:layout_constraintBottom_toTopOf="@id/btn_screenshots"
 
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_screenshots"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-
-            android:layout_marginTop="45dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/secondary_dark"
-            android:elevation="22dp"
-            android:gravity="center"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginTop="30dp"
             android:text="Capturas de Tela"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_buscas"
+            app:layout_constraintBottom_toTopOf="@id/btn_favorites"
 
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_favorites"
-            android:layout_width="240dp"
-            android:layout_height="40dp"
-
-            android:layout_marginTop="45dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/secondary_dark"
-            android:elevation="22dp"
-            android:gravity="center"
+            android:layout_marginLeft="55dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginTop="20dp"
             android:text="Favoritos"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_screenshots"
+            app:layout_constraintBottom_toBottomOf="parent"
 
             />
 
