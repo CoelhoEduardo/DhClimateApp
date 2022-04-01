@@ -2,24 +2,31 @@ package com.example.clima
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clima.Model.Maps.Search
+import com.example.clima.Model.Search
+import com.example.clima.adapter.MySearchAdapter
 import com.example.clima.adapter.SearchAdapter
 import com.example.clima.util.extension.load
 import com.example.clima.util.extension.loadRectangle
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 
 
 class MapFragment : Fragment(R.layout.fragment_map) {
 
     private val adapter = SearchAdapter()
+
+    val busca = Search(
+        image = "https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg",
+        local = "Sao Paulo,SP - Brasil",
+        data = "22 MAI 2022"
+    )
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,9 +65,17 @@ class MapFragment : Fragment(R.layout.fragment_map) {
 
 
         val home = view.findViewById<ImageView>(R.id.home_button)
+        val buscar = view.findViewById<MaterialButton>(R.id.buscar_button)
+        val localizacao = view.findViewById<TextInputEditText>(R.id.input_localizacao)
+        val data = view.findViewById<TextInputEditText>(R.id.input_data)
 
         home.setOnClickListener{
             sendToHome()
+        }
+
+        buscar.setOnClickListener{
+            //adicionarBusca()
+            buscarEndereco()
         }
 
         val listSearch = MutableList(10){
@@ -79,6 +94,7 @@ class MapFragment : Fragment(R.layout.fragment_map) {
 
         recycler.adapter = adapter
         buscarEndereco()
+
     }
 
     private fun buscarEndereco(){
@@ -92,8 +108,16 @@ class MapFragment : Fragment(R.layout.fragment_map) {
             )
         }
         adapter.updateList(listSearch)
+        //adicionarBusca()
 
     }
+
+
+
+    /*private fun adicionarBusca() {
+        adapter.addMySearch(busca)
+    }*/
+
 
     private fun sendToHome() {
 

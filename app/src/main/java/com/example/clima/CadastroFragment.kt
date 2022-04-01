@@ -1,22 +1,17 @@
 package com.example.clima
 
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.clima.Model.Maps.Usuario
+import com.example.clima.Model.Usuario
 import com.example.clima.Utils.checkEmail
 import com.example.clima.Utils.checkSenha
 import com.example.clima.viewmodel.ForgotPasswordFragment
 import com.example.clima.viewmodel.NewAccountFragment
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.delay
 import java.lang.Exception
 
 class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
@@ -68,7 +63,7 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
     }
 
     private fun criarConta(nome: String, pais: String, email: String, senha: String) {
-        var user = Usuario(nome,pais,email,senha)
+        var user = Usuario(nome,email,pais,senha)
         // criar conta do usuario
 
     }

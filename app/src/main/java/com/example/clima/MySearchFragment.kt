@@ -5,17 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clima.Model.Maps.Search
+import com.example.clima.Model.Search
+import com.example.clima.adapter.MySearchAdapter
 import com.example.clima.adapter.SearchAdapter
 import com.example.clima.util.extension.load
 import com.example.clima.util.extension.loadRectangle
 
 class MySearchFragment : Fragment(R.layout.fragment_my_search) {
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,7 +75,7 @@ class MySearchFragment : Fragment(R.layout.fragment_my_search) {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         recycler.layoutManager =
             LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
-        recycler.adapter = SearchAdapter(listSearch)
+        recycler.adapter = MySearchAdapter(listSearch)
 
     }
 

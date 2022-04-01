@@ -1,4 +1,4 @@
-package com.example.clima.Model.Maps
+package com.example.clima.Model
 
 import android.os.Parcel
 import android.os.Parcelable

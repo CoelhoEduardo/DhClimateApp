@@ -8,8 +8,9 @@ class MapsImage(
     val imageUrl: String
 ): Maps()
 
-sealed class Favorite {
-}
+sealed class Favorite (
+)
+
 
 class FavoriteImage(
     val favoriteImage: String,

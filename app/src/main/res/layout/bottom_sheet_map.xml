@@ -13,91 +13,107 @@
     app:behavior_peekHeight="85dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_events"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <ImageButton
         android:id="@+id/queimada_button"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="21dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:src="@drawable/ic_queimada"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tempestade_button"
         tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/tempestade_button"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:src="@drawable/ic_queimada"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/queimada_button"
+        app:layout_constraintStart_toEndOf="@id/queimada_button"
+        app:layout_constraintEnd_toStartOf="@id/geada_button"
         tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/geada_button"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:src="@drawable/ic_queimada"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/tempestade_button"
+        app:layout_constraintStart_toEndOf="@id/tempestade_button"
+        app:layout_constraintEnd_toStartOf="@id/radiation_button"
+
         tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/radiation_button"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:src="@drawable/ic_queimada"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/geada_button"
+        app:layout_constraintStart_toEndOf="@id/geada_button"
+        app:layout_constraintEnd_toStartOf="@id/ice_button"
+
         tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/ice_button"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:src="@drawable/ic_queimada"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/radiation_button"
+        app:layout_constraintStart_toEndOf="@id/radiation_button"
+        app:layout_constraintEnd_toStartOf="@id/vulcon_button"
         tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/vulcon_button"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
         android:layout_marginBottom="30dp"
+        android:layout_marginEnd="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:src="@drawable/ic_queimada"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/ice_button"
+        app:layout_constraintStart_toEndOf="@id/ice_button"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription" />
+
+
 
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_localizacao"
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:hint="@string/localizacao"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_check"
@@ -105,53 +121,58 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/queimada_button">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_localizacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/data_inicial"
-        android:layout_width="150dp"
+        android:id="@+id/data"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="@string/data_inicial"
+        android:layout_marginLeft="16dp"
+        android:hint="@string/data"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_check"
-        app:layout_constraintStart_toStartOf="@id/text_localizacao"
-        app:layout_constraintTop_toBottomOf="@id/text_localizacao">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_localizacao"
+        app:layout_constraintEnd_toStartOf="@id/buscar_button">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/data_final"
-        android:layout_width="150dp"
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buscar_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/data_final"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_check"
-        app:layout_constraintEnd_toEndOf="@id/text_localizacao"
-        app:layout_constraintTop_toBottomOf="@id/text_localizacao">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:backgroundTint="@color/secondary_dark"
+        android:text="@string/Buscar"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toEndOf="@id/data"
+        app:layout_constraintTop_toBottomOf="@id/text_localizacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recycler"
+         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/data_inicial"
+        app:layout_constraintTop_toBottomOf="@+id/data"
         tools:itemCount="20"
         tools:listitem="@layout/item_mysearch" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

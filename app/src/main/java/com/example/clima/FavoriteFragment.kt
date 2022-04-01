@@ -19,6 +19,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
             FavoriteImage(
                 "https://tm.ibxk.com.br/2021/12/20/20095730932072.jpg?ims=1200x675",
                 "QUEIMADAS"
+
             ),
             FavoriteImage(
                 "https://tm.ibxk.com.br/2021/12/20/20095730932072.jpg?ims=1200x675",
