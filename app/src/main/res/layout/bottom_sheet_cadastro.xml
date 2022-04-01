@@ -1,54 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:paddingTop="20dp"
-    android:id="@+id/bottomSheet"
     android:layout_gravity="bottom"
+    android:background="@drawable/background_forgot_password"
+    android:paddingTop="20dp"
     app:behavior_hideable="false"
     app:behavior_peekHeight="85dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    android:background="@drawable/background_forgot_password"
     tools:context=".viewmodel.NewAccountFragment">
-
-
-
 
 
     <TextView
         android:id="@+id/cadastro_usuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="60"
         android:text="Usuario Cadastrado com sucesso"
-        android:paddingBottom="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:textColor="@color/white"
         android:textSize="20dp"
-        />
+        app:layout_constraintBottom_toTopOf="@id/close_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
 
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/close_button"
-        android:layout_width="295dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
         android:backgroundTint="@color/secondary_dark"
         android:text="@string/fechar"
-        app:layout_constraintTop_toBottomOf="@id/cadastro_usuario"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="visible"/>
-
+        app:layout_constraintTop_toBottomOf="@id/cadastro_usuario" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

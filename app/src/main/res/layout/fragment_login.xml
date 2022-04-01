@@ -14,10 +14,10 @@
         android:layout_height="210dp"
 
         android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@id/login_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/login_input"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.textfield.TextInputLayout
