@@ -11,7 +11,7 @@ import com.example.clima.local.entity.EventsEntity
     exportSchema = false
 )
 
-abstract class AppDataBase: RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
 
     abstract fun acessEvents(): AcessEvents
 

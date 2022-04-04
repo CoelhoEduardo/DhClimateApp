@@ -4,7 +4,7 @@ import androidx.room.*
 import com.example.clima.local.entity.EventsEntity
 
 @Dao
-interface AcessEvents{
+interface AcessEvents {
 
     @Query("SELECT * FROM events")
     fun listAll(): MutableList<EventsEntity>

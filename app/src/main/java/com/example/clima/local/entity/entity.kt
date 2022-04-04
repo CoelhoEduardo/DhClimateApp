@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "events")
+@Entity(tableName = "events")
 data class EventsEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
@@ -19,4 +19,4 @@ data class EventsEntity(
     @ColumnInfo()
     val location: String,
 
-)
+    )
