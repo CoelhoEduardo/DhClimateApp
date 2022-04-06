@@ -63,7 +63,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun sendToMap(){
 
-        findNavController().navigate(R.id.action_homeFragment_to_mapFragment)
+        findNavController().navigate(R.id.action_homeFragment_to_mapActivity)
     }
 
     private fun sendToMySearch(){

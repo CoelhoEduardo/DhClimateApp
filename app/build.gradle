@@ -14,7 +14,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        buildConfigField("String", "BASE_URL", "\"https://eonet.gsfc.nasa.gov/\"")
+        buildConfigField("String", "BASE_URL", "\"https://eonet.gsfc.nasa.gov/api/v3/\"")
         applicationId "com.example.clima"
         minSdk 27
         targetSdk 31
@@ -45,6 +45,7 @@ android {
 dependencies {
 
     implementation "androidx.room:room-runtime:2.4.2"
+    implementation 'androidx.room:room-ktx:2.3.0'
     kapt("androidx.room:room-compiler:2.4.2")
     implementation('androidx.core:core-ktx:1.7.0')
     implementation('androidx.appcompat:appcompat:1.4.1')

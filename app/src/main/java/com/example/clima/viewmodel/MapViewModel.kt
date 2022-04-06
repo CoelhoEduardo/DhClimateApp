@@ -30,15 +30,17 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
 
 
     fun loadEvents() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.fetchProfile()
-                .onStart { _loading.postValue(true) }
-                .catch { _error.postValue(true) }
-                .onCompletion { _loading.postValue(true) }
+                .onStart { _loading.value = true }
+                .catch { _error.value = true }
+                .onCompletion { _loading.value = false }
                 .collect {
                     _events.value = it.events.first()
                 }
         }
     }
+
+
 
 }

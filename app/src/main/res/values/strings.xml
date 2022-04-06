@@ -26,6 +26,7 @@
     <!--region  Facebook Id -->
     <string name="facebook_app_id">4964352723680057</string>
     <!--<string name="fb_login_protocol_scheme">fb1234</string>-->
+
     <string name="facebook_client_token">6497ceaf7307e1161f4252c975e3a5cb</string>
     <string name="Buscar">Buscar</string>
     <string name="data">Data</string>
@@ -33,6 +34,8 @@
 
 
     <!--endregion-->
+
+    <string name="api_id">2Xtwkhkp8GGB5O4Vnf2ayCGnRbb3w3cRDZwTo6cU</string>
 
 
 </resources>

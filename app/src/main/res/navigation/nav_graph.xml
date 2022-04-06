@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_homeFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapActivity"
+            app:destination="@id/mapActivity" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -103,4 +106,8 @@
             android:id="@+id/action_cadastroFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <activity
+        android:id="@+id/mapActivity"
+        android:name="com.example.clima.MapActivity"
+        android:label="MapActivity" />
 </navigation>
