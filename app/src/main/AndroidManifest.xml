@@ -17,9 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Clima">
-        <activity
-            android:name=".MapActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".screen.MapActivity"-->
+<!--            android:exported="false" />-->
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -27,6 +27,7 @@
         <meta-data
             android:name="com.facebook.sdk.ClientToken"
             android:value="@string/facebook_client_token" />
+
 
         <activity
             android:name=".MainActivity"
