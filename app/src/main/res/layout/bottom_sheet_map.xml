@@ -13,6 +13,7 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
 
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_events"
         android:layout_width="match_parent"
@@ -151,13 +152,13 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/secondary_dark"
         android:text="@string/Buscar"
-        app:layout_constraintBottom_toTopOf="@id/recycler"
+        app:layout_constraintBottom_toTopOf="@id/recycler_maps"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/data"
         app:layout_constraintTop_toBottomOf="@id/text_localizacao" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/recycler_maps"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -167,7 +168,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/data"
         tools:itemCount="20"
-        tools:listitem="@layout/item_mysearch" />
+        tools:listitem="@layout/item_search" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@
     app:behavior_hideable="false"
     app:behavior_peekHeight="85dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    tools:context=".viewmodel.NewAccountFragment">
+    tools:context=".bottomSheets.NewAccountFragment">
 
 
     <TextView
