@@ -10,7 +10,6 @@ import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.adapters.SearchAdapter
@@ -73,13 +72,10 @@ class MapFragment() : Fragment(R.layout.fragment_map) {
         }
 
         recycler?.adapter = adapter
-        setScrollView()
-
-        viewModel.loadEvents()
-
-        observeData()
-
-
+        buscar.setOnClickListener{
+            viewModel.loadEvents()
+            observeData()
+        }
 
     }
 
@@ -92,28 +88,9 @@ class MapFragment() : Fragment(R.layout.fragment_map) {
                 adapter.updateList(it.events)
             }
         }
-    private fun setScrollView() {
-        recycler?.run {
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-
-                    val target = recyclerView.layoutManager as LinearLayoutManager
-                    val totalCountItems = target.itemCount
-                    val lastItemVisible = target.findLastVisibleItemPosition()
-
-                    val lastItem = lastItemVisible + 5 >= totalCountItems
-
-                    if ((totalCountItems > 0 && lastItem)) {
-                        viewModel.loadEvents()
-                    }
-                }
-
-            })
-        }
-    }
 
     private fun sendToHome(){
+
         findNavController().navigate(R.id.action_mapFragment_to_homeFragment)
 
     }

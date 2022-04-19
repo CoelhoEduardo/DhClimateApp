@@ -5,16 +5,16 @@ data class EventsResponse(
     val title: String,
     val link: String,
     val description: String,
-    val events: EventsItem,
+    val events: List<EventsItem>,
 )
 
 data class EventsItem(
     val id: String,
     val title: String,
     val link: String,
-    val categories: CategoriesItem,
-    val sources: SourcesItem,
-    val geometry: GeometryItem? = null
+    val categories: List<CategoriesItem>,
+    val sources: List<SourcesItem>,
+    val geometry: List<GeometryItem>
 )
 
 data class GeometryItem(

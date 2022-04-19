@@ -2,21 +2,16 @@ package com.example.clima.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.arquitetura.response.EventsItem
-import com.example.clima.arquitetura.response.EventsResponse
 import com.example.clima.views.viewHolder.SearchViewHolder
 
-private const val HEADER = 0
-private const val CONTENT = 1
-private const val FOOTER = 2
 
-
-//val mysearch: MutableList<Search> = mutableListOf()
-
-class SearchAdapter: RecyclerView.Adapter<SearchViewHolder>() {
-    private val search: MutableList<EventsItem> = mutableListOf()
+class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
+    private val diffUtil = AsyncListDiffer(this, DIFF_UTIL)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -25,19 +20,27 @@ class SearchAdapter: RecyclerView.Adapter<SearchViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
-             holder.bind(search[position])
-        }
+        holder.bind(diffUtil.currentList[position])
+    }
 
 
-    override fun getItemCount() = search.size
+    override fun getItemCount() = diffUtil.currentList.size
 
-    fun updateList(eventList: EventsItem){
-        search.add(eventList)
-        notifyDataSetChanged()
+    fun updateList(eventList: List<EventsItem>) {
+        diffUtil.submitList(eventList)
 
     }
 
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<EventsItem>() {
+            override fun areItemsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
+                return oldItem.categories.first().title == newItem.categories.first().title
+            }
+
+            override fun areContentsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
+
 }
-
-
-

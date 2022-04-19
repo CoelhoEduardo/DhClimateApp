@@ -5,45 +5,72 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="1dp"
+    android:background="@color/primary_mid"
     android:padding="16dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/primary_mid"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/ic_queimada"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_events_title"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
+            android:layout_marginBottom="20dp"
             android:textColor="@color/white"
-            tools:text="Acailandia,MA - Brasil" />
+            tools:text="Acailandia, MA - Brasil"
+            app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_constraintBottom_toBottomOf="@id/date_events"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/date_events"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:layout_marginTop="50dp"
+            style="@style/TextAppearance.Compat.Notification.Time"
             android:layout_marginStart="80dp"
-            tools:text="16 MAI 2022" />
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            tools:text="16 MAI 2022"
+            app:layout_constraintTop_toTopOf="@id/item_events_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/image"/>
 
-    </androidx.cardview.widget.CardView>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/link_events"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+            tools:text="16 MAI 2022"
+            app:layout_constraintTop_toTopOf="@id/date_events"
+            app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/data_events"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="80dp"
+            tools:text="16 MAI 2022"
+            app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_constraintTop_toTopOf="@id/link_events"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

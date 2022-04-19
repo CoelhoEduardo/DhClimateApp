@@ -36,6 +36,7 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
                 .onCompletion { _loading.value = false }
                 .collect {
                     _events.value = it
+
                 }
         }
     }
