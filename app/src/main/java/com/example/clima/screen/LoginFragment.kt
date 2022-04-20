@@ -2,6 +2,7 @@ package com.example.clima.screen
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -9,9 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.clima.R
-import com.example.clima.utils.GoogleLogInActivityContract
+import com.example.clima.arquitetura.network.GoogleLogInActivityContract
 import com.example.clima.utils.checkEmail
 import com.example.clima.bottomSheets.ForgotPasswordFragment
+import com.example.clima.bottomSheets.ForgotPasswordFragment.Companion.TAG
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -19,6 +21,9 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -28,12 +33,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         ::onGoogleSignInResult
     )
 
-    private val googleSignInOptions : GoogleSignInOptions
+    private val googleSignInOptions: GoogleSignInOptions
         get() = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.google_client_id))
             .requestEmail()
             .requestProfile()
             .build()
+
+    private lateinit var auth: FirebaseAuth
+// ...
 
 
     private val loginManager = LoginManager.getInstance()
@@ -50,6 +58,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Initialize Firebase Auth
+        //auth = Firebase.auth
+
+        auth = FirebaseAuth.getInstance()
+
         val login = view.findViewById<Button>(R.id.login_button)
         val newAccount = view.findViewById<Button>(R.id.newaccount_button)
         val facebook = view.findViewById<ImageView>(R.id.facebook_button)
@@ -60,24 +73,19 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         val dialog = ForgotPasswordFragment()
 
+        registerFacebookCallback()
+
+        //Login via firebase
         login.setOnClickListener {
-            if (checkEmail(loginEdit.text.toString())) {
-                try {
-                    validarLogin(loginEdit.text.toString(), passwordText.text.toString())
-                    sendToHome()
-                } catch (e: Exception) {
-                }
-            } else {
-                Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
-            }
+            //loginManual(loginEdit.text.toString(),passwordText.text.toString())
+            loginFirebase(loginEdit.text.toString(), passwordText.text.toString())
 
         }
+
 
         newAccount.setOnClickListener {
             sendToNewAccount()
         }
-
-        //googleSignInClient = GoogleSignIn.getClient(view.context, googleSignInOptions)
 
         google?.setOnClickListener {
             //sendToGoogle()
@@ -89,23 +97,42 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             loginFacebook()
         }
 
-        registerFacebookCallback()
-
         forgotPassword.setOnClickListener {
             dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
+        }
 
+    }
+
+    private fun loginFirebase(login: String, password: String) {
+        if (checkEmail(login)) {
+            try {
+                auth.signInWithEmailAndPassword(login, password)
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG)
+                                .show()
+                            sendToHome()
+                        } else {
+                            Toast.makeText(requireContext(), "Erro!", Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+            } catch (e: Exception) {
+            }
+        } else {
+            Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
         }
 
     }
 
     private fun registerFacebookCallback() {
-        loginManager.registerCallback(callbackManager, object: FacebookCallback<LoginResult>{
+        loginManager.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onCancel() {
-                Toast.makeText(requireContext(),"Cancelou", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Cancelou", Toast.LENGTH_LONG).show()
             }
 
             override fun onError(error: FacebookException) {
-                Toast.makeText(requireContext(),"Erro!", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Erro!", Toast.LENGTH_LONG).show()
                 println(error)
             }
 
@@ -113,7 +140,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 val token = result.accessToken.token
                 sendToHome()
                 //Toast.makeText(requireContext(),"Esse e o nosso token -> $token", Toast.LENGTH_LONG).show()
-                Toast.makeText(requireContext(),"Sucesso no login", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG).show()
             }
 
 
@@ -125,9 +152,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         loginManager.logInWithReadPermissions(
             this,
             callbackManager,
-            arrayListOf("public_profile", "email"))
+            arrayListOf("public_profile", "email")
+        )
 
 
+    }
+
+    private fun onGoogleSignInResult(result: GoogleLogInActivityContract.Result?) {
+        if (result is GoogleLogInActivityContract.Result.Success) {
+            val token = result.googleSignInAccount.idToken
+            sendToHome()
+            Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG).show()
+            //retorna token
+            //Toast.makeText(requireContext(), "Meu token do google e -> $token", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun sendToNewAccount() {
@@ -139,20 +177,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
     }
 
-    private fun onGoogleSignInResult(result: GoogleLogInActivityContract.Result?) {
-        if(result is GoogleLogInActivityContract.Result.Success){
-            val token = result.googleSignInAccount.idToken
-            sendToHome()
-            Toast.makeText(requireContext(),"Sucesso no login", Toast.LENGTH_LONG).show()
-            //retorna token
-            //Toast.makeText(requireContext(), "Meu token do google e -> $token", Toast.LENGTH_LONG).show()
+    private fun loginManual(login: String, password: String) {
+        if (checkEmail(login)) {
+            try {
+                validarLogin(login, password)
+                sendToHome()
+            } catch (e: Exception) {
+            }
+        } else {
+            Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
         }
     }
 
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        callbackManager.onActivityResult(requestCode, resultCode, data)
-    }*/
 
     private fun validarLogin(email: String, senha: String) {
 

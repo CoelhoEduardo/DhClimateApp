@@ -1,4 +1,4 @@
-package com.example.clima.utils
+package com.example.clima.arquitetura.network
 
 import android.content.Context
 import android.content.Intent
@@ -24,7 +24,7 @@ class GoogleLogInActivityContract : ActivityResultContract<
     }
     private fun handleSignInResult (completedTask: Task<GoogleSignInAccount>): Result {
         return try {
-            Result.Success(completedTask. result)
+            Result.Success(completedTask.result)
         } catch (exception: Exception) {
             (exception as? ApiException)?. let {
                 Log.w( "GOOGLE" , "signInResult:failed code= ${it.statusCode}")

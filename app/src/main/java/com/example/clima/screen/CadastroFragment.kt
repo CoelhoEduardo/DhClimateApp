@@ -13,9 +13,12 @@ import com.example.clima.utils.checkSenha
 import com.example.clima.bottomSheets.ForgotPasswordFragment
 import com.example.clima.bottomSheets.NewAccountFragment
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 import java.lang.Exception
 
 class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -28,8 +31,59 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
         val senha2 = view.findViewById<TextInputEditText>(R.id.senha2_edit_text)
 
         val dialog = NewAccountFragment()
+        auth = FirebaseAuth.getInstance()
 
-        criarConta.setOnClickListener{
+        criarConta.setOnClickListener {
+            if (criarConta(
+                    nome.text.toString(),
+                    pais.text.toString(),
+                    email.text.toString(),
+                    senha1.text.toString(),
+                    senha2.text.toString()
+                )
+            ) {
+                sendToLogin()
+                dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
+            }
+            /* if (checkEmail(email.text.toString())) {
+                 if (validarSenha(senha1.text.toString(), senha2.text.toString())) {
+                     try {
+                         auth.createUserWithEmailAndPassword(
+                             email.text.toString(),
+                             senha1.text.toString()
+                         ).addOnCompleteListener {
+                             if (it.isSuccessful) {
+                                 Toast.makeText(
+                                     requireContext(),
+                                     "Cadastrado com sucesso",
+                                     Toast.LENGTH_LONG
+                                 ).show()
+                                 dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
+                                 sendToLogin()
+                             } else {
+                                 Toast.makeText(
+                                     requireContext(),
+                                     "Erro no cadastro!",
+                                     Toast.LENGTH_LONG
+                                 ).show()
+                             }
+                         }
+                     } catch (e: Exception) {
+                         Toast.makeText(
+                             context,
+                             "Nao foi possivel criar sua conta",
+                             Toast.LENGTH_SHORT
+                         ).show()
+                     }
+                 } else {
+                     Toast.makeText(context, "Senha Invalida", Toast.LENGTH_SHORT).show()
+                 }
+
+             } else {
+                 Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
+             }*/
+
+            /*
             if (checkEmail(email.text.toString())) {
                 if(validarSenha(senha1.text.toString(),senha2.text.toString())){
                     try {
@@ -45,9 +99,9 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
 
             } else {
                 Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
-            }
+            }*/
         }
-        temConta.setOnClickListener{
+        temConta.setOnClickListener {
             sendToLogin()
         }
 
@@ -55,27 +109,73 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
     }
 
     private fun validarSenha(senha1: String, senha2: String): Boolean {
-        return if(senha1 == senha2){
+        return if (senha1 == senha2) {
             checkSenha(senha1)
-        }else{
+        } else {
             false
         }
 
     }
 
-    private fun criarConta(nome: String, pais: String, email: String, senha: String) {
-        var user = Usuario(nome,email,pais,senha)
-        // criar conta do usuario
+    private fun criarConta(
+        nome: String,
+        pais: String,
+        email: String,
+        senha: String,
+        senha2: String
+    ): Boolean {
+        var user = Usuario(nome, email, pais, senha)
 
+        if (checkEmail(email)) {
+            if (validarSenha(senha, senha2)) {
+                try {
+                    auth.createUserWithEmailAndPassword(
+                        email,
+                        senha
+                    ).addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(
+                                requireContext(),
+                                "Cadastrado com sucesso",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                requireContext(),
+                                "Erro no cadastro!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        context,
+                        "Nao foi possivel criar sua conta",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } else {
+                Toast.makeText(context, "Senha Invalida", Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+        } else {
+            Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+
+
+        // criar conta do usuario
     }
 
 
-    private fun sendToHome(){
+    private fun sendToHome() {
 
         findNavController().navigate(R.id.action_cadastroFragment_to_homeFragment)
     }
 
-    private fun sendToLogin(){
+    private fun sendToLogin() {
 
         findNavController().navigate(R.id.action_cadastroFragment_to_loginFragment)
     }
