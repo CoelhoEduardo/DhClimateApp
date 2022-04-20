@@ -165,6 +165,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG).show()
             //retorna token
             //Toast.makeText(requireContext(), "Meu token do google e -> $token", Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(requireContext(), "Erro", Toast.LENGTH_LONG).show()
         }
     }
 
