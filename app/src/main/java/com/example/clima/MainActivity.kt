@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT))
         }
 
-    }
 
+    }
 
 
 }

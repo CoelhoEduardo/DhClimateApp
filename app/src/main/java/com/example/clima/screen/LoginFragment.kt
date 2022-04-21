@@ -20,10 +20,12 @@ import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -101,6 +103,26 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
         }
 
+        //getToken()
+
+    }
+
+    private fun getToken() {
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("TOKEN_FIREBASE", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and toast
+            Log.d("TOKEN_FIREBASE", token)
+            Toast.makeText(requireContext(), "Meu token -> $token", Toast.LENGTH_SHORT).show()
+        })
+
     }
 
     private fun loginFirebase(login: String, password: String) {
@@ -165,7 +187,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG).show()
             //retorna token
             //Toast.makeText(requireContext(), "Meu token do google e -> $token", Toast.LENGTH_LONG).show()
-        }else{
+        } else {
             Toast.makeText(requireContext(), "Erro", Toast.LENGTH_LONG).show()
         }
     }

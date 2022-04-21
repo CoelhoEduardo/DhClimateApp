@@ -17,9 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Clima">
-<!--        <activity-->
-<!--            android:name=".screen.MapActivity"-->
-<!--            android:exported="false" />-->
+        <!--        <activity-->
+        <!--            android:name=".screen.MapActivity"-->
+        <!--            android:exported="false" />-->
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -28,6 +28,13 @@
             android:name="com.facebook.sdk.ClientToken"
             android:value="@string/facebook_client_token" />
 
+        <service
+            android:name=".utils.FirebaseMessageService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name=".MainActivity"
