@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "213353444762-lasdholt6crsae9l8ng4gmqqm3prt5ph.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.clima",
+            "certificate_hash": "880de74822615e588882f05d2b088b4ac40e5692"
+          }
+        },
+        {
           "client_id": "213353444762-9ksehc2r4suv0lud73chi9sa04ud8emr.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "213353444762-9ksehc2r4suv0lud73chi9sa04ud8emr.apps.googleusercontent.com",
+              "client_id": "213353444762-82m81li1gu6sfepccu8accmj9beqrb4b.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
