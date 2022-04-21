@@ -11,7 +11,7 @@ plugins {
 android {
     signingConfigs {
         debug {
-        storeFile file('C:\\Users\\Lucas Sales\\Documents\\PROJETO-CLIMA\\DhClimateApp\\debug-key.keystore')
+            storeFile file('C:\\Users\\Lucas Sales\\Documents\\PROJETO-CLIMA\\DhClimateApp\\debug-key.keystore')
             storePassword '123456'
             keyAlias 'debug'
             keyPassword '123456'
@@ -31,7 +31,7 @@ android {
     }
 
     buildTypes {
-        debug{
+        debug {
             signingConfig signingConfigs.debug
         }
         release {
@@ -51,11 +51,6 @@ android {
 
 dependencies {
 
-    implementation "androidx.room:room-runtime:2.4.2"
-    implementation 'androidx.room:room-ktx:2.4.2'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.9'
-    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
-    kapt("androidx.room:room-compiler:2.4.2")
     implementation('androidx.core:core-ktx:1.7.0')
     implementation('androidx.appcompat:appcompat:1.4.1')
     implementation('com.google.android.material:material:1.5.0')
@@ -63,33 +58,39 @@ dependencies {
     implementation('androidx.legacy:legacy-support-v4:1.0.0')
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-
-    //region Firebase
-    implementation platform('com.google.firebase:firebase-bom:29.3.1')
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.3'
-//endregion
-
-
     implementation 'com.google.android.material:material:1.6.0-beta01'
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    //region Play Services
-    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+    //region Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.1")
     //endregion
+
+    //region Room
+    implementation "androidx.room:room-runtime:2.4.2"
+    implementation 'androidx.room:room-ktx:2.4.2'
+    kapt("androidx.room:room-compiler:2.4.2")
+    //endregion
+
+    //region Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.3'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.9'
+    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
+//endregion
 
     //region Facebook
     implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
     implementation 'com.facebook.android:facebook-login:12.0.0'
     //endregion
 
-
+    //region Play Services
+    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+    //endregion
 
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

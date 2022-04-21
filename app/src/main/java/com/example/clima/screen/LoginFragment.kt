@@ -22,6 +22,9 @@ import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -43,6 +46,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             .build()
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var analytics: FirebaseAnalytics
 // ...
 
 
@@ -64,6 +68,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         //auth = Firebase.auth
 
         auth = FirebaseAuth.getInstance()
+        analytics = Firebase.analytics
 
         val login = view.findViewById<Button>(R.id.login_button)
         val newAccount = view.findViewById<Button>(R.id.newaccount_button)
@@ -133,6 +138,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         if (it.isSuccessful) {
                             Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG)
                                 .show()
+                            analytics.logEvent(FirebaseAnalytics.Event.LOGIN){
+                                param(FirebaseAnalytics.Param.METHOD, "login_email")
+                            }
                             sendToHome()
                         } else {
                             Toast.makeText(requireContext(), "Erro!", Toast.LENGTH_LONG).show()
@@ -160,6 +168,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             override fun onSuccess(result: LoginResult) {
                 val token = result.accessToken.token
+                analytics.logEvent(FirebaseAnalytics.Event.LOGIN){
+                    param(FirebaseAnalytics.Param.METHOD, "login_facebook")
+                }
                 sendToHome()
                 //Toast.makeText(requireContext(),"Esse e o nosso token -> $token", Toast.LENGTH_LONG).show()
                 Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG).show()
@@ -183,6 +194,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun onGoogleSignInResult(result: GoogleLogInActivityContract.Result?) {
         if (result is GoogleLogInActivityContract.Result.Success) {
             val token = result.googleSignInAccount.idToken
+            analytics.logEvent(FirebaseAnalytics.Event.LOGIN){
+                param(FirebaseAnalytics.Param.METHOD, "login_google")
+            }
             sendToHome()
             Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG).show()
             //retorna token
@@ -197,7 +211,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun sendToHome() {
-
         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
     }
 
