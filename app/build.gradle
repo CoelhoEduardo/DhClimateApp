@@ -3,9 +3,10 @@ plugins {
     id 'kotlin-android'
     id("kotlin-parcelize")
     id 'kotlin-kapt'
-    id 'com.google.secrets_gradle_plugin' version '0.4'
+    //id 'com.google.secrets_gradle_plugin' version '0.4'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -91,6 +92,11 @@ dependencies {
     //region Play Services
     implementation 'com.google.android.gms:play-services-auth:20.1.0'
     //endregion
+
+    //region Maps
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.libraries.places:places:2.6.0'
+//endregion
 
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
