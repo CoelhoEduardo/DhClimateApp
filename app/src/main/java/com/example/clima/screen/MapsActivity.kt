@@ -36,70 +36,52 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_map)
+            setContentView(R.layout.activity_map)
 
-        //Instanciando botoes
-        val queimadaButton: ImageView? = findViewById<ImageView>(R.id.queimada_button)
+        val queimadaButton : ImageView? = findViewById<ImageView>(R.id.queimada_button)
         val vulconButton: ImageView? = findViewById<ImageView>(R.id.vulcon_button)
         val earthquakeButton: ImageView? = findViewById<ImageView>(R.id.earthquake_button)
         val landslideButton: ImageView? = findViewById<ImageView>(R.id.landslide_button)
         val iceButton: ImageView? = findViewById<ImageView>(R.id.ice_button)
         val stormButton: ImageView? = findViewById<ImageView>(R.id.storm_button)
-        val home: ImageView? = findViewById<ImageView>(R.id.home_button)
-        val radioButton: RadioGroup? = findViewById<RadioGroup>(R.id.radio_group)
-        val camera: ImageButton? = findViewById<ImageButton>(R.id.camera_button)
-
-        //Setando imagem nos botoes
-        queimadaButton?.setImageResource(R.drawable.ic_queimada_black_fundo)
-        vulconButton?.setImageResource(R.drawable.ic_volcano_black_fundo)
-        earthquakeButton?.setImageResource(R.drawable.ic_earthquake_black_fundo)
-        landslideButton?.setImageResource(R.drawable.ic_landslide_black_fundo)
-        iceButton?.setImageResource(R.drawable.ic_ice_black_fundo)
-        stormButton?.setImageResource(R.drawable.ic_storm_black_fundo)
+        val home : ImageView? = findViewById<ImageView>(R.id.home_button)
+        val radioButton : RadioGroup? = findViewById<RadioGroup>(R.id.radio_group)
 
         //Iniciando Maps
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //OnClick dos botoes
         radioButton?.setOnClickListener {
             onRadioButtonClicked(it)
         }
-        home?.setOnClickListener {
-            finish()
-        }
-        queimadaButton?.setOnClickListener {
-        }
-        vulconButton?.setOnClickListener {
-        }
-        earthquakeButton?.setOnClickListener {
-        }
-        landslideButton?.setOnClickListener {
-        }
-        iceButton?.setOnClickListener {
-        }
-        stormButton?.setOnClickListener {
+
+        queimadaButton?.setOnClickListener{
         }
 
-        //Recicler On
+        home?.setOnClickListener {
+            sendToHome()
+        }
+
         recycler?.adapter = adapter
         viewModel.loadEvents()
         observeData()
 
-        //Inicializa Maps
         initMap()
     }
 
-    private fun initMap() {
+
+
+    private fun initMap(){
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
-
     override fun onMapReady(googleMap: GoogleMap) {
+
         map = googleMap
 
         // Add a marker in Sydney and move the camera
@@ -110,23 +92,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun observeData() {
-        var local: LatLng = LatLng(-34.0, 148.0)
+        var local: LatLng = LatLng(-34.0,148.0)
         var title: String = "new"
         viewModel.loading.observe(this) { loading?.isVisible = it }
         viewModel.error.observe(this) {
+
         }
         viewModel.events.observe(this) {
             adapter.updateList(it.events)
-            //adiciona os pins no maps conforme for poupulando recicler
-            for (item in it.events) {
-                local = LatLng(
-                    item.geometry.last().coordinates.last(),
-                    item.geometry.last().coordinates.first()
-                )
+            for(item in it.events){
+                local = LatLng(item.geometry.last().coordinates.last(), item.geometry.last().coordinates.first())
                 title = item.title
                 map.addMarker(MarkerOptions().position(local).title(title))
             }
         }
+    }
+
+    private fun sendToHome(){
+        /*val navController = findNavController(R.id.mapsActivity)
+        navController.navigate()*/
+        finish()
+
+
     }
 
     fun onRadioButtonClicked(view: View) {
@@ -147,6 +134,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+
+
 
 
 }
