@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Lucas Sales/.gradle/caches/transforms-3/5eb8d5940ce613e4478f70ae965a421a/transformed/jetified-facebook-share-4.42.0/res/drawable/com_facebook_button_send_background.xml" value="0.1855" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable-anydpi/ic_arrow_back_new.xml" value="0.132" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable-anydpi/ic_favorite_checked.xml" value="0.1855" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/background_forgot_password.xml" value="0.132" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/background_map.xml" value="0.132" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_arrow_back.xml" value="0.132" />
@@ -15,14 +16,21 @@
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_camera_white.xml" value="0.144" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_check.xml" value="0.132" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_facebook.xml" value="0.132" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_favorite_checked.xml" value="0.1855" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_favorite_empty.xml" value="0.1855" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_favorite_empty_white.xml" value="0.1855" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1855" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_queimada.xml" value="0.1855" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_queimada_black.xml" value="0.1855" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_red_ball.xml" value="0.132" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/queimada.xml" value="0.1855" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_home.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_main.xml" value="0.2572463768115942" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_map.xml" value="0.221875" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_maps.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_cadastro.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_forgot_password.xml" value="0.25833333333333336" />
-        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_map.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_map.xml" value="0.33" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_mysearch.xml" value="0.1921875" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_persistent.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_search.xml" value="0.2572463768115942" />

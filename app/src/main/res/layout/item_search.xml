@@ -13,74 +13,87 @@
             android:id="@+id/image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            app:srcCompat="@drawable/ic_queimada"
+            android:layout_marginStart="16dp"
+            app:srcCompat="@drawable/ic_queimada_fundo"
             tools:ignore="ContentDescription"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_events_title"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/data_events"
+            />
+
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_events_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/white"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:gravity="center"
             tools:text="Acailandia, MA - Brasil"
-            app:layout_constraintStart_toStartOf="@id/image"
-            app:layout_constraintBottom_toBottomOf="@id/date_events"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/data_events"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/favorite"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/date_events"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            style="@style/TextAppearance.Compat.Notification.Time"
-            android:layout_marginStart="80dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
-            tools:text="16 MAI 2022"
-            app:layout_constraintTop_toTopOf="@id/item_events_title"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/image"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/link_events"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="10dp"
-            tools:text="16 MAI 2022"
-            app:layout_constraintTop_toTopOf="@id/date_events"
-            app:layout_constraintStart_toStartOf="@id/image"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageView
+            android:id="@+id/favorite"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/ic_favorite_empty_white"
+            tools:ignore="ContentDescription"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/item_events_title"
+            app:layout_constraintStart_toEndOf="@id/item_events_title"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/data_events"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="80dp"
+            android:layout_height="25dp"
+            android:textColor="@color/off_white"
+            style="@style/Subtitle"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
             tools:text="16 MAI 2022"
-            app:layout_constraintStart_toStartOf="@id/image"
-            app:layout_constraintTop_toTopOf="@id/link_events"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-        <!--<androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/localData_events"
+            app:layout_constraintTop_toBottomOf="@id/item_events_title"
+            app:layout_constraintBottom_toTopOf="@id/date_events"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/date_events"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="80dp"
+            android:layout_height="25dp"
+            android:textColor="@color/off_white"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
             tools:text="16 MAI 2022"
-            app:layout_constraintStart_toStartOf="@id/image"
-            app:layout_constraintTop_toTopOf="@id/data_events"
-            app:layout_constraintBottom_toBottomOf="parent"/>-->
+            style="@style/Subtitle"
+            app:layout_constraintTop_toBottomOf="@id/data_events"
+            app:layout_constraintBottom_toTopOf="@id/link_events"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/link_events"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:textColor="@color/off_white"
+            android:layout_marginStart="16dp"
+            tools:text="16 MAI 2022"
+            style="@style/Subtitle"
+            app:layout_constraintTop_toBottomOf="@id/date_events"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 
 
 

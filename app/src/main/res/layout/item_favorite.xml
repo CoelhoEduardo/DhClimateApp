@@ -49,7 +49,7 @@
                 android:id="@+id/imagem"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_queimada"
+                android:src="@drawable/ic_queimada_fundo"
                 tools:ignore="ContentDescription" />
 
             <!--<com.google.android.material.textfield.TextInputLayout

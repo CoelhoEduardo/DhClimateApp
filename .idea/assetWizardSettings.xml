@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\LUCASS~1\AppData\Local\Temp\baseline_arrow_back_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\LUCASS~1\AppData\Local\Temp\baseline_favorite_border_24.xml" />
                                                 <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
@@ -36,7 +36,20 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="file:/$PROJECT_DIR$/../../../../Lucas%20Sales/AppData/Local/Android/Sdk/icons/material/materialicons/arrow_back/baseline_arrow_back_24.xml" />
+                                                <entry key="url" value="file:/$PROJECT_DIR$/../../../../Lucas%20Sales/AppData/Local/Android/Sdk/icons/material/materialicons/favorite_border/baseline_favorite_border_24.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\Lucas Sales\Downloads\logo.png" />
+                                                <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -68,7 +81,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_arrow_back_new" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\Lucas Sales\Downloads\logo.png" />
+                                      <entry key="outputName" value="ic_logo_background" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="ffffff" />
                                     </map>
@@ -141,7 +156,31 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\LUCASS~1\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="C:\Users\LUCASS~1\AppData\Local\Temp\baseline_local_fire_department_24.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="file:/$PROJECT_DIR$/../../../../Lucas%20Sales/AppData/Local/Android/Sdk/icons/material/materialicons/local_fire_department/baseline_local_fire_department_24.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\Lucas Sales\Downloads\snowflake.png" />
+                                                <entry key="paddingPercent" value="20" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -169,6 +208,14 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="iconShape" value="CIRCLE" />
+                                      <entry key="imageAsset" value="C:\Users\Lucas Sales\Downloads\snowflake.png" />
+                                      <entry key="outputName" value="ic_snow_black_fundo" />
                                     </map>
                                   </option>
                                 </PersistentState>

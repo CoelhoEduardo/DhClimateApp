@@ -71,19 +71,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         vulconButton?.load(vulconUrl)
 
         val home : ImageView? = findViewById<ImageView>(R.id.home_button)
-        val buscar : MaterialButton?  = findViewById<MaterialButton>(R.id.buscar_button)
-        val localizacao = findViewById<TextInputEditText>(R.id.input_localizacao)
-        val data = findViewById<TextInputEditText>(R.id.input_data)
 
         home?.setOnClickListener {
             sendToHome()
         }
 
         recycler?.adapter = adapter
-        buscar?.setOnClickListener{
-            viewModel.loadEvents()
-            observeData()
-        }
+        viewModel.loadEvents()
+        observeData()
+
         initMap()
     }
 
