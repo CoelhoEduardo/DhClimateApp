@@ -1,4 +1,4 @@
-package com.example.clima
+package com.example.clima.screen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,14 +7,10 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
-import androidx.fragment.app.viewModels
-import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clima.R
 import com.example.clima.adapters.SearchAdapter
 
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -22,7 +18,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.clima.databinding.ActivityMapsBinding
 import com.example.clima.utils.extension.load
-import com.example.clima.utils.extension.loadRectangle
 import com.example.clima.views.viewModel.MapViewModel
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -39,6 +34,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,8 +84,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             viewModel.loadEvents()
             observeData()
         }
-
-
         initMap()
     }
 
@@ -101,22 +96,30 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
     override fun onMapReady(googleMap: GoogleMap) {
+
         map = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        //val sydney = LatLng(-34.0, 151.0)
+        //map.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         //map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f))
+        //map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f))
     }
 
     private fun observeData() {
+        var local: LatLng = LatLng(-34.0,148.0)
+        var title: String = "new"
         viewModel.loading.observe(this) { loading?.isVisible = it }
         viewModel.error.observe(this) {
 
         }
         viewModel.events.observe(this) {
             adapter.updateList(it.events)
+            for(item in it.events){
+                local = LatLng(item.geometry.last().coordinates.last(), item.geometry.last().coordinates.first())
+                title = item.title
+                map.addMarker(MarkerOptions().position(local).title(title))
+            }
         }
     }
 
@@ -127,4 +130,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     }
+
+
+
 }

@@ -1,5 +1,7 @@
 package com.example.clima.arquitetura.response
 
+import java.security.Key
+
 
 data class EventsResponse(
     val title: String,
@@ -23,6 +25,7 @@ data class GeometryItem(
     val date: String,
     val type: String,
     val coordinates: List<Double>
+
 )
 
 data class CategoriesItem(val id: String, val title: String)

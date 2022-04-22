@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.arquitetura.response.EventsItem
+import com.example.clima.mock.Pins
 import com.example.clima.views.viewHolder.SearchViewHolder
 
 
 class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
     private val diffUtil = AsyncListDiffer(this, DIFF_UTIL)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -28,7 +30,6 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
 
     fun updateList(eventList: List<EventsItem>) {
         diffUtil.submitList(eventList)
-
     }
 
     companion object {

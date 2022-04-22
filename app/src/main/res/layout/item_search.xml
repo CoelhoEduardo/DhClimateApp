@@ -70,6 +70,17 @@
             app:layout_constraintStart_toStartOf="@id/image"
             app:layout_constraintTop_toTopOf="@id/link_events"
             app:layout_constraintBottom_toBottomOf="parent"/>
+        <!--<androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/localData_events"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="80dp"
+            tools:text="16 MAI 2022"
+            app:layout_constraintStart_toStartOf="@id/image"
+            app:layout_constraintTop_toTopOf="@id/data_events"
+            app:layout_constraintBottom_toBottomOf="parent"/>-->
 
 
 

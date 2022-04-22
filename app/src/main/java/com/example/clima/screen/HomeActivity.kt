@@ -6,7 +6,6 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clima.MapsActivity
 import com.example.clima.R
 import com.example.clima.adapters.HomeAdapter
 import com.example.clima.mock.Maps.Maps
