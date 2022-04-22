@@ -2,7 +2,7 @@ package com.example.clima.arquitetura.factory
 
 import androidx.room.Room
 import com.example.clima.arquitetura.local.AppDataBase
-import com.example.clima.screen.MapFragment
+//import com.example.clima.screen.MapFragment
 import kotlin.coroutines.coroutineContext
 
 //object DatabaseFactory {

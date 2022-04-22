@@ -77,18 +77,13 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-35" />
-                            <option name="y" value="15" />
+                            <option name="x" value="-261" />
+                            <option name="y" value="18" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
                             <entry key="action_homeFragment_to_favoriteFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_homeFragment_to_mapActivity">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -144,18 +139,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="mapActivity">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="-461" />
-                            <option name="y" value="290" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                   <entry key="mapFragment">
                     <value>
                       <LayoutPositions>
@@ -178,6 +161,18 @@
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="mapsActivity">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-644" />
+                            <option name="y" value="662" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

@@ -1,26 +1,28 @@
 package com.example.clima.screen
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import androidx.navigation.fragment.findNavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clima.MapsActivity
 import com.example.clima.R
+import com.example.clima.adapters.HomeAdapter
 import com.example.clima.mock.Maps.Maps
 import com.example.clima.mock.Maps.MapsImage
-import com.example.clima.adapters.HomeAdapter
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val openMap = view.findViewById<Button>(R.id.btn_open_map)
-        val buscas = view.findViewById<Button>(R.id.btn_buscas)
-        val screenshots = view.findViewById<Button>(R.id.btn_screenshots)
-        val favorites = view.findViewById<Button>(R.id.btn_favorites)
-        val profile = view.findViewById<ImageView>(R.id.profile)
+class HomeActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+
+        val openMap = findViewById<Button>(R.id.btn_open_map)
+        val buscas = findViewById<Button>(R.id.btn_buscas)
+        val screenshots = findViewById<Button>(R.id.btn_screenshots)
+        val favorites = findViewById<Button>(R.id.btn_favorites)
+        val profile = findViewById<ImageView>(R.id.profile)
 
         val listMap = mutableListOf<Maps>(
             MapsImage(
@@ -34,12 +36,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             )
         )
 
-        val recycler = view.findViewById<RecyclerView>(R.id.recycler_maps)
+        val recycler = findViewById<RecyclerView>(R.id.recycler_maps)
         recycler.adapter = HomeAdapter(listMap)
 
 
         openMap.setOnClickListener{
-           sendToMap()
+            sendToMap()
         }
         buscas.setOnClickListener{
             sendToMySearch()
@@ -59,28 +61,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun sendToPreferences() {
 
-        findNavController().navigate(R.id.action_homeFragment_to_preferencesFragment)
+        //findNavController().navigate(R.id.action_homeFragment_to_preferencesFragment)
     }
 
     private fun sendToMap(){
-        findNavController().navigate(R.id.action_homeFragment_to_mapsActivity)
+        val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
+        //findNavController().navigate(R.id.action_homeFragment_to_mapsActivity)
         //findNavController().navigate(R.id.action_homeFragment_to_mapFragment)
     }
 
     private fun sendToMySearch(){
 
-        findNavController().navigate(R.id.action_homeFragment_to_mySearchFragment)
+        //findNavController().navigate(R.id.action_homeFragment_to_mySearchFragment)
     }
 
     private fun sendToScreenshots(){
 
-        findNavController().navigate(R.id.action_homeFragment_to_screenshotsFragment)
+        //findNavController().navigate(R.id.action_homeFragment_to_screenshotsFragment)
     }
 
     private fun sendToFavorites(){
 
-        findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+        //findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
     }
 
 
-}
+    }
