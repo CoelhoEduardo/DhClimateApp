@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class EventsRepository(private val  api: API = API.instance) {
-    fun fetchProfile() :Flow<EventsResponse> = flow {
+class EventsRepository(private val api: API = API.instance) {
+    fun fetchProfile(): Flow<EventsResponse> = flow {
         emit(api.getEvents())
     }.flowOn(Dispatchers.IO)
 
-    fun fetchEventsFiltered(cat:String,status:String) :Flow<EventsResponse> = flow {
-        emit(api.getEventsFiltered(cat,status))
+    fun fetchEventsFiltered(cat: String, status: String): Flow<EventsResponse> = flow {
+        emit(api.getEventsFiltered(cat, status))
     }.flowOn(Dispatchers.IO)
 
     companion object {

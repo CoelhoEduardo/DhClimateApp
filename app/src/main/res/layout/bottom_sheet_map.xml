@@ -13,7 +13,6 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_events"
         android:layout_width="match_parent"
@@ -118,22 +117,22 @@
         tools:ignore="ContentDescription" />
 
 
-<!--<Switch
-    android:id="@+id/switch_btn"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:textOn="Aberto"
-    android:textColor="@color/white"
-    android:thumb="@drawable/ic_logo_background"
-    android:thumbTint="@color/secondary_dark"
-    android:switchMinWidth="100dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginEnd="16dp"
-    app:layout_constraintTop_toBottomOf="@id/queimada_button"
-    app:layout_constraintBottom_toTopOf="@id/recycler_maps"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    tools:ignore="UseSwitchCompatOrMaterialXml" />-->
+    <!--<Switch
+        android:id="@+id/switch_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textOn="Aberto"
+        android:textColor="@color/white"
+        android:thumb="@drawable/ic_logo_background"
+        android:thumbTint="@color/secondary_dark"
+        android:switchMinWidth="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/queimada_button"
+        app:layout_constraintBottom_toTopOf="@id/recycler_maps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />-->
 
 
     <!--<RadioGroup
@@ -177,36 +176,32 @@
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/queimada_button"
-        app:layout_constraintBottom_toTopOf="@id/recycler_maps"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
-        >
-        <RadioButton android:id="@+id/open_btn"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/recycler_maps"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/queimada_button">
+
+        <RadioButton
+            android:id="@+id/open_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acontecendo"
-            android:textColor="@color/off_white"
             android:buttonTint="@color/secondary_dark"
             android:checked="true"
-            android:onClick="onRadioButtonClicked"/>
-        <RadioButton android:id="@+id/close_btn"
+            android:onClick="onRadioButtonClicked"
+            android:text="Acontecendo"
+            android:textColor="@color/off_white" />
+
+        <RadioButton
+            android:id="@+id/close_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Finalizado"
             android:buttonTint="@color/secondary_dark"
-            android:textColor="@color/off_white"
-            android:onClick="onRadioButtonClicked"/>
+            android:onClick="onRadioButtonClicked"
+            android:text="Finalizado"
+            android:textColor="@color/off_white" />
     </RadioGroup>
-
-
-
-
-
-
-
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -221,9 +216,6 @@
         app:layout_constraintTop_toBottomOf="@+id/radio_group"
         tools:itemCount="20"
         tools:listitem="@layout/item_search" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

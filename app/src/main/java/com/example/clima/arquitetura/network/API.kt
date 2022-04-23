@@ -31,7 +31,6 @@ interface API {
     ) : EventsResponse
 
 
-
     companion object {
         val instance: API by lazy {
             RetrofitFactory.build(

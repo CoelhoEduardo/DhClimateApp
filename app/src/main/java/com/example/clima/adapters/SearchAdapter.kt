@@ -14,17 +14,14 @@ import com.example.clima.views.viewHolder.SearchViewHolder
 class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
     private val diffUtil = AsyncListDiffer(this, DIFF_UTIL)
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return SearchViewHolder(inflater.inflate(R.layout.item_search, parent, false))
-
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.bind(diffUtil.currentList[position])
     }
-
 
     override fun getItemCount() = diffUtil.currentList.size
 
@@ -37,7 +34,6 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
             override fun areItemsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem.categories.first().title == newItem.categories.first().title
             }
-
             override fun areContentsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem == newItem
             }

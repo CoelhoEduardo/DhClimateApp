@@ -11,7 +11,6 @@ import com.example.clima.arquitetura.response.EventsItem
 
 class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-
     private val title: TextView = view.findViewById(R.id.item_events_title)
     private val date: TextView = view.findViewById(R.id.date_events)
     private val link: TextView = view.findViewById(R.id.link_events)
@@ -27,7 +26,6 @@ class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
 }
-
 
 fun getImage(text: String) : Int {
     if(text == "Volcanoes"){

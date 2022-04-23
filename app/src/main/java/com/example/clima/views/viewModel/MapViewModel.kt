@@ -27,7 +27,6 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
      val error: LiveData<Boolean>
         get() = _error
 
-
     fun loadEvents() {
         viewModelScope.launch {
             repository.fetchProfile()
@@ -53,7 +52,5 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
                 }
         }
     }
-
-
 
 }
