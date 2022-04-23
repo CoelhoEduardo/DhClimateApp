@@ -32,6 +32,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private val loading: FrameLayout?
         get() = findViewById(R.id.loading)
 
+    val radioButton : RadioGroup?
+    get() = findViewById<RadioGroup>(R.id.radio_group)
+    private val home : ImageView
+    get() = findViewById<ImageView>(R.id.home_button)
+    private val queimadaButton : ImageView?
+    get() = findViewById<ImageView>(R.id.queimada_button)
+    val vulconButton: ImageView?
+    get() = findViewById<ImageView>(R.id.vulcon_button)
+    val earthquakeButton: ImageView?
+    get() = findViewById<ImageView>(R.id.earthquake_button)
+    val landslideButton: ImageView?
+    get() = findViewById<ImageView>(R.id.landslide_button)
+    val iceButton: ImageView?
+    get() = findViewById<ImageView>(R.id.ice_button)
+    val stormButton: ImageView?
+    get() = findViewById<ImageView>(R.id.storm_button)
+    val radioOpen: RadioButton
+    get() = findViewById<RadioButton>(R.id.open_btn)
+    val radioClosed: RadioButton
+    get() = findViewById<RadioButton>(R.id.close_button)
+
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
@@ -41,32 +62,41 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_map)
 
-        val queimadaButton : ImageView? = findViewById<ImageView>(R.id.queimada_button)
-        val vulconButton: ImageView? = findViewById<ImageView>(R.id.vulcon_button)
-        val earthquakeButton: ImageView? = findViewById<ImageView>(R.id.earthquake_button)
-        val landslideButton: ImageView? = findViewById<ImageView>(R.id.landslide_button)
-        val iceButton: ImageView? = findViewById<ImageView>(R.id.ice_button)
-        val stormButton: ImageView? = findViewById<ImageView>(R.id.storm_button)
-        val home : ImageView? = findViewById<ImageView>(R.id.home_button)
-        val radioButton : RadioGroup? = findViewById<RadioGroup>(R.id.radio_group)
-
         //Iniciando Maps
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        radioButton?.setOnClickListener {
-            onRadioButtonClicked(it)
-        }
-
         queimadaButton?.setOnClickListener{
+            novaRequisicao("wildfires")
+        }
+        landslideButton?.setOnClickListener{
+            novaRequisicao("landslides")
+
+        }
+        iceButton?.setOnClickListener{
+            novaRequisicao("SeaLakeIce")
+
+        }
+        earthquakeButton?.setOnClickListener{
+            novaRequisicao("earthquakes")
+
+        }
+        stormButton?.setOnClickListener{
+            novaRequisicao("severeStorms")
+
+        }
+        vulconButton?.setOnClickListener{
+            novaRequisicao("volcanoes")
+
         }
 
-        home?.setOnClickListener {
-            sendToHome()
+        home.setOnClickListener {
+            finish()
         }
 
         recycler?.adapter = adapter
         viewModel.loadEvents()
+
         observeData()
 
         initMap()
@@ -91,6 +121,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //map.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15f))
     }
 
+
     private fun observeData() {
         var local: LatLng = LatLng(-34.0,148.0)
         var title: String = "new"
@@ -112,6 +143,35 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         /*val navController = findNavController(R.id.mapsActivity)
         navController.navigate()*/
         finish()
+    }
+
+    private fun novaRequisicao(string: String){
+        viewModel.loadEventsFiltered(string,radioCheck())
+        map.clear()
+    }
+
+    private fun filtrarEvento(button: ImageView): String {
+        if (queimadaButton == button)
+            return "wildfires"
+        if (earthquakeButton == button)
+            return "earthquakes"
+        if (iceButton == button)
+            return "SeaLakeIce"
+        if (stormButton == button)
+            return "severeStorms"
+        if (landslideButton == button)
+            return "landslide"
+        if (vulconButton == button)
+            return "volcanoes"
+        return ""
+    }
+
+
+    private fun radioCheck(): String{
+        if(radioOpen.isChecked)
+            return "open"
+        else
+            return "closed"
 
 
     }
@@ -126,10 +186,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 R.id.open_btn ->
                     if (checked) {
                         // Pirates are the best
+
                     }
                 R.id.close_button ->
                     if (checked) {
                         // Ninjas rule
+
                     }
             }
         }

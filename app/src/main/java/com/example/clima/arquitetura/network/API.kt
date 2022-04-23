@@ -15,8 +15,18 @@ interface API {
     @GET("events")
     @Headers("Accept: application/json")
     suspend fun getEvents(
-        @Query("limit") limit: Int = 50,
-        @Query("days") days: Int = 20,
+        @Query("limit") limit: Int = 100,
+        @Query("days") days: Int = 365,
+        @Header("Content-Type") content: String = "application/json"
+    ) : EventsResponse
+
+    @GET("events")
+    @Headers("Accept: application/json")
+    suspend fun getEventsFiltered(
+        @Query("category") category:String,
+        @Query("status") status:String,
+        @Query("limit") limit: Int = 100,
+        @Query("days") days: Int = 365,
         @Header("Content-Type") content: String = "application/json"
     ) : EventsResponse
 

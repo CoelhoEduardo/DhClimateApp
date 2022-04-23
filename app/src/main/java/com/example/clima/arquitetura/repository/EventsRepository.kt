@@ -12,6 +12,10 @@ class EventsRepository(private val  api: API = API.instance) {
         emit(api.getEvents())
     }.flowOn(Dispatchers.IO)
 
+    fun fetchEventsFiltered(cat:String,status:String) :Flow<EventsResponse> = flow {
+        emit(api.getEventsFiltered(cat,status))
+    }.flowOn(Dispatchers.IO)
+
     companion object {
         val instance by lazy { EventsRepository() }
     }

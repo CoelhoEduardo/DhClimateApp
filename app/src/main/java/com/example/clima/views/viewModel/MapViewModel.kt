@@ -41,6 +41,19 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
         }
     }
 
+    fun loadEventsFiltered(cat:String, status: String) {
+        viewModelScope.launch {
+            repository.fetchEventsFiltered(cat, status)
+                .onStart { _loading.value = true }
+                .catch { _error.value = true }
+                .onCompletion { _loading.value = false }
+                .collect {
+                    _events.value= it
+
+                }
+        }
+    }
+
 
 
 }

@@ -51,7 +51,7 @@ fun getImage(text: String) : Int {
     if(text == "Earthquakes"){
         return R.drawable.ic_earthquake_black_fundo
     }
-    if(text == "Severe Storm"){
+    if(text == "Severe Storms"){
         return R.drawable.ic_storm_black_fundo
     }
     return 0
