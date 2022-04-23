@@ -2,6 +2,8 @@ package com.example.clima.screen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
@@ -9,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.adapters.SearchAdapter
+import com.example.clima.arquitetura.response.EventsResponse
 
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -19,16 +22,22 @@ import com.example.clima.databinding.ActivityMapsBinding
 import com.example.clima.utils.extension.load
 import com.example.clima.views.viewHolder.getImage
 import com.example.clima.views.viewModel.MapViewModel
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
-    private val adapter = SearchAdapter()
+    private val adapter = SearchAdapter(){
+        var local = LatLng(it.geometry.last().coordinates.last(), it.geometry.last().coordinates.first())
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(local,10f))
+    }
+
     private val viewModel: MapViewModel by viewModels()
     private val recycler: RecyclerView?
         get() = findViewById(R.id.recycler_maps)
+
     private val loading: FrameLayout?
         get() = findViewById(R.id.loading)
 
@@ -55,6 +64,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
 
 
 
