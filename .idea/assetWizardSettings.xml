@@ -316,26 +316,12 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
-                        <option name="children">
-                          <map>
-                            <entry key="clipartAsset">
-                              <value>
-                                <PersistentState>
-                                  <option name="values">
-                                    <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../../Lucas%20Sales/AppData/Local/Android/Sdk/icons/material/materialicons/share/baseline_share_24.xml" />
-                                    </map>
-                                  </option>
-                                </PersistentState>
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_share_whjite" />
-                            <entry key="sourceFile" value="C:\Users\Lucas Sales\Downloads\Sair (1).svg" />
+                            <entry key="outputName" value="ic_baseappimage" />
+                            <entry key="sourceFile" value="C:\Users\Henrique\Desktop\Aplicativos\baseappimage.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:autoTransition="animateToEnd"
+        motion:duration="3000">
+       <KeyFrameSet>
+           <KeyAttribute
+               motion:motionTarget="@+id/logoImagemView"
+               motion:framePosition="40"
+               android:alpha="0.0"
+               android:scaleX="1.0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/logoImagemView"
+               motion:framePosition="40"
+               android:alpha="0.5" />
+           <KeyAttribute
+               motion:motionTarget="@+id/logoImagemView"
+               motion:framePosition="55"
+               android:alpha="1.0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/copyrightTextView"
+               motion:framePosition="19"
+               android:alpha="0.5" />
+           <KeyAttribute
+               motion:motionTarget="@+id/copyrightTextView"
+               motion:framePosition="39"
+               android:scaleX="1.2" />
+           <KeyAttribute
+               motion:motionTarget="@+id/title"
+               motion:framePosition="30"
+               android:alpha="0.5" />
+       </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/copyrightTextView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:alpha="1.0"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/title"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:alpha="1.0"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/logoImagemView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:translationY="-70dp"
+            android:scaleX="0.5"
+            android:scaleY="0.5" />
+    </ConstraintSet>
+</MotionScene>
