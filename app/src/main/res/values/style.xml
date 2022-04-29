@@ -47,6 +47,11 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="custom_floating_buttons">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/custom_floating_button</item>
+    </style>
+
 
     <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>

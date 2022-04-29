@@ -4,7 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7E7E7">
+    android:background="#E7E7E7"
+    tools:context=".screen.MapsActivity">
+
+    <FrameLayout
+        android:id="@+id/frame_total"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        android:visibility="invisible">
+
+        <!--<com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:fab_addButtonColorNormal="@color/black"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="80dp"
+            app:fab_labelStyle="@style/custom_floating_buttons"
+            app:fab_expandDirection="up"
+            android:elevation="5dp">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_camera"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_title="Buscas"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_ice_black"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_title="Screenshots"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+        -->
+    </FrameLayout>
 
     <ImageButton
         android:id="@+id/home_button"
@@ -33,12 +73,61 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".screen.MapsActivity" />
+        android:layout_height="match_parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".screen.MapsActivity" />
+
+        <!--<androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:background="@color/primary_mid"
+            tools:ignore="ContentDescription">
+
+        </androidx.fragment.app.FragmentContainerView>-->
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            app:fab_addButtonColorNormal="@color/black"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="80dp"
+            app:fab_labelStyle="@style/custom_floating_buttons"
+            app:fab_expandDirection="up"
+            android:elevation="5dp">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_camera"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_title="Buscas"/>
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/ic_ice_black"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_title="Screenshots"/>
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    </FrameLayout>
 
 
     <!--<ImageView

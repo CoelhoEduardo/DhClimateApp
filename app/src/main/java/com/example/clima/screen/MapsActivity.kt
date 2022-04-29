@@ -1,25 +1,25 @@
 package com.example.clima.screen
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.adapters.SearchAdapter
+import com.example.clima.databinding.ActivityMapsBinding
+import com.example.clima.views.viewModel.MapViewModel
+import com.getbase.floatingactionbutton.FloatingActionButton
+import com.getbase.floatingactionbutton.FloatingActionsMenu
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.example.clima.databinding.ActivityMapsBinding
-import com.example.clima.views.viewModel.MapViewModel
-import com.google.android.gms.maps.CameraUpdateFactory
-
 
 
 class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
@@ -57,6 +57,20 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     val radioClosed: RadioButton
         get() = findViewById<RadioButton>(R.id.close_button)
 
+    val fab: FloatingActionsMenu?
+    get() = findViewById<FloatingActionsMenu>(R.id.fab)
+    val fab1: FloatingActionButton?
+        get() = findViewById<FloatingActionButton>(R.id.fab1)
+    val fab2: FloatingActionButton?
+        get() = findViewById<FloatingActionButton>(R.id.fab2)
+   /* val fab3: FloatingActionButton?
+        get() = findViewById<FloatingActionButton>(R.id.fab3)*/
+   /* val fab1 = findViewById<View>(R.id.fab1) as FloatingActionButton
+    val fab2 = findViewById<View>(R.id.fab2) as FloatingActionButton
+    val fab3 = findViewById<View>(R.id.fab3) as FloatingActionButton*/
+
+
+
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
@@ -65,11 +79,19 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_map)
+        //setContentView(R.layout.activity_map)
 
         //Iniciando Maps
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        fab1?.setOnClickListener {
+            sendToScreenshots()
+        }
+        fab2?.setOnClickListener {
+            sendToSearch()
+        }
 
         queimadaButton?.setOnClickListener{
             novaRequisicao("wildfires")
@@ -248,6 +270,45 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
                     }
             }
         }
+    }
+
+    private fun sendToScreenshots(){
+
+        val frame: FrameLayout = findViewById(R.id.frame_total)
+        // Pega o FragmentManager
+        // Pega o FragmentManager
+        val fm = supportFragmentManager
+// Substitui um Fragment
+        val ft = fm.beginTransaction()
+        frame.visibility = View.VISIBLE
+        ft.replace(R.id.frame_total, ScreenshotsFragment())
+        ft.commit()
+        fab?.collapse()
+
+
+    }
+    private fun sendToSearch(){
+
+        val frame: FrameLayout = findViewById(R.id.frame_total)
+        // Pega o FragmentManager
+        // Pega o FragmentManager
+        val fm = supportFragmentManager
+// Substitui um Fragment
+        val ft = fm.beginTransaction()
+        frame.visibility = View.VISIBLE
+//        ft.replace(R.id.frame_total, FavoriteFragment())
+        ft.commit()
+        fab?.collapse()
+
+
+    }
+
+
+    private fun sendToMaps(){
+        val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
+
+
     }
 
 

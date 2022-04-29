@@ -17,6 +17,8 @@
         app:titleTextColor="@color/white">
 
 
+
+
         <ImageView
             android:id="@+id/home"
             android:layout_width="28dp"
@@ -57,12 +59,48 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/screenshot_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:itemCount="10" />
+        tools:itemCount="10"
+        tools:listitem="@layout/item_screenshot">
+    </androidx.recyclerview.widget.RecyclerView>
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:fab_addButtonColorNormal="@color/black"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="20dp"
+        app:fab_labelStyle="@style/custom_floating_buttons"
+        app:fab_expandDirection="up"
+        android:elevation="5dp">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_camera"
+            app:fab_colorNormal="@color/secondary_dark"
+            app:fab_title="Buscas"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_icon="@drawable/ic_ice_black"
+            app:fab_colorNormal="@color/secondary_dark"
+            app:fab_title="Maps"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+</FrameLayout>
 
 </LinearLayout>

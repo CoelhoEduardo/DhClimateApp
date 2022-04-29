@@ -36,16 +36,17 @@
         android:elevation="1dp"/>
 
 
-
-
-    <ImageView
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerInside"
         android:background="@color/primary_mid"
-        tools:ignore="ContentDescription"
-        />
+        tools:ignore="ContentDescription">
+
+    </androidx.fragment.app.FragmentContainerView>
+
+
 
 
 
