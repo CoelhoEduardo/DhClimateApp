@@ -3,7 +3,6 @@ plugins {
     id 'kotlin-android'
     id("kotlin-parcelize")
     id 'kotlin-kapt'
-    //id 'com.google.secrets_gradle_plugin' version '0.4'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'

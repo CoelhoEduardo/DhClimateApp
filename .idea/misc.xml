@@ -24,14 +24,20 @@
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_queimada.xml" value="0.1855" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_queimada_black.xml" value="0.1855" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_red_ball.xml" value="0.132" />
+<<<<<<< HEAD
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/queimada.xml" value="0.1855" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_home.xml" value="0.21979166666666666" />
+=======
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_screenshots_black.xml" value="0.1855" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/drawable/ic_search_black.xml" value="0.1855" />
+>>>>>>> Adicionado floating button, e screenshot, porem screenshot esta preto
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_main.xml" value="0.2572463768115942" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_map.xml" value="0.221875" />
 <<<<<<< HEAD
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_maps.xml" value="0.21979166666666666" />
 =======
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_maps.xml" value="0.14719202898550723" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/activity_screenshot.xml" value="0.1921875" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/app_bar_menu.xml" value="0.30120481927710846" />
 >>>>>>> Iniciado floatingbutton
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/bottom_sheet_cadastro.xml" value="0.25833333333333336" />
@@ -55,6 +61,7 @@
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/fragment_screenshots.xml" value="0.1921875" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/fragment_search.xml" value="0.2572463768115942" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/item_favorite.xml" value="0.2572463768115942" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/item_gallery_image.xml" value="0.1921875" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/item_map.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/item_mysearch.xml" value="0.2572463768115942" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/item_search.xml" value="0.1921875" />
@@ -62,6 +69,7 @@
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/layout/nav_header_main.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/menu/activity_main_drawer.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/menu/main.xml" value="0.1921875" />
+        <entry key="..\:/Users/Lucas Sales/Documents/PROJETO-CLIMA/DhClimateApp/app/src/main/res/xml/file_paths.xml" value="0.21979166666666666" />
         <entry key="..\:/Users/Lucas Sales/Documents/Projeto Final DH/DhClimateApp/app/src/main/res/drawable/background_map.xml" value="0.225" />
         <entry key="..\:/Users/Lucas Sales/Documents/Projeto Final DH/DhClimateApp/app/src/main/res/drawable/ic_arrow_back.xml" value="0.225" />
         <entry key="..\:/Users/Lucas Sales/Documents/Projeto Final DH/DhClimateApp/app/src/main/res/drawable/ic_eye_pass.xml" value="0.225" />

@@ -101,9 +101,10 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:fab_addButtonSize="mini"
             android:layout_gravity="bottom|end"
             app:fab_addButtonColorNormal="@color/black"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="2dp"
             android:layout_marginBottom="80dp"
             app:fab_labelStyle="@style/custom_floating_buttons"
             app:fab_expandDirection="up"
@@ -113,7 +114,8 @@
                 android:id="@+id/fab1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fab_icon="@drawable/ic_camera"
+                app:fab_size="mini"
+                app:fab_icon="@drawable/ic_search_black"
                 app:fab_colorNormal="@color/secondary_dark"
                 app:fab_title="Buscas"/>
 
@@ -121,7 +123,8 @@
                 android:id="@+id/fab2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fab_icon="@drawable/ic_ice_black"
+                app:fab_icon="@drawable/ic_screenshots_black"
+                app:fab_size="mini"
                 app:fab_colorNormal="@color/secondary_dark"
                 app:fab_title="Screenshots"/>
 

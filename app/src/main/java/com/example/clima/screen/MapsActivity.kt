@@ -1,12 +1,21 @@
 package com.example.clima.screen
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.media.MediaActionSound
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.text.format.DateFormat
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentContainerView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.adapters.SearchAdapter
@@ -16,10 +25,13 @@ import com.getbase.floatingactionbutton.FloatingActionButton
 import com.getbase.floatingactionbutton.FloatingActionsMenu
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.SnapshotReadyCallback
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.io.*
+import java.util.*
 
 
 class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
@@ -35,6 +47,12 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     private val loading: FrameLayout?
         get() = findViewById(R.id.loading)
+
+    /*val layout_map: FrameLayout
+    get() = findViewById(R.id.frame_layout)*/
+
+    val layout_map: FragmentContainerView
+        get() = findViewById(R.id.map)
 
     val radioButton : RadioGroup?
         get() = findViewById<RadioGroup>(R.id.radio_group)
@@ -68,16 +86,22 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
    /* val fab1 = findViewById<View>(R.id.fab1) as FloatingActionButton
     val fab2 = findViewById<View>(R.id.fab2) as FloatingActionButton
     val fab3 = findViewById<View>(R.id.fab3) as FloatingActionButton*/
-
+    val screenshot: ImageButton?
+    get() = findViewById<ImageButton>(R.id.camera_button)
 
 
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
 
+    private lateinit var view: View
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
+            override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_map)
 
@@ -121,6 +145,23 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
             finish()
         }
 
+        screenshot?.setOnClickListener {
+
+
+
+            //val callback = SnapshotReadyCallback()
+            takeScreenShot()
+            //map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
+            //map.snapshot(callback)
+
+            //captureScreen()
+            //takeScreenshot2()
+
+
+        }
+
+
+
         recycler?.adapter = adapter
         viewModel.loadEvents()
 
@@ -136,10 +177,15 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        //view = mapFragment.requireView()
+
     }
     override fun onMapReady(googleMap: GoogleMap) {
 
         map = googleMap
+        /*map.isMyLocationEnabled = true
+        map.setOnMyLocationButtonClickListener(this)
+        map.setOnMyLocationClickListener(this)*/
 
         // Add a marker in Sydney and move the camera
         //val sydney = LatLng(-34.0, 151.0)
@@ -311,6 +357,99 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     }
 
+
+    private fun takeScreenShot() {
+        val now = Date()
+        DateFormat.format("yyyy-mm-dd_hh:mm::ss",now)
+
+        //val callback = GoogleMap.SnapshotReadyCallback()
+
+        val path = getExternalFilesDir(null)?.absolutePath+"/"+now+".jpg"
+        var bitmap = Bitmap.createBitmap(layout_map?.width,layout_map?.height,Bitmap.Config.RGB_565)
+        val sound = MediaActionSound()
+        sound.play(MediaActionSound.SHUTTER_CLICK)
+        //map.snapshot { bitmap -> bitmap }
+        var canvas = Canvas(bitmap)
+        //var canvas = Canvas(map.snapshot(callback))
+        layout_map.draw(canvas)
+        val imagefile = File(path)
+        val outputStream= FileOutputStream(imagefile)
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream)
+        outputStream.flush()
+        outputStream.close()
+        openScreenshot(imagefile)
+
+        val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imagefile)
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.putExtra(Intent.EXTRA_TEXT,"This is yout title"+"\n"+ "")
+        intent.putExtra(Intent.EXTRA_STREAM,URI)
+        intent.type = "text/plain"
+        startActivity(intent)
+
+    }
+
+
+
+
+    fun openShareImageDialog(filePath: String) {
+            val imagefile = File(filePath)
+            val outputStream= FileOutputStream(imagefile)
+            val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imagefile)
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+            intent.putExtra(Intent.EXTRA_TEXT,"This is yout title"+"\n"+ "")
+            intent.putExtra(Intent.EXTRA_STREAM,URI)
+            intent.type = "text/plain"
+            startActivity(intent)
+
+    }
+
+
+    private fun takeScreenshot2() {
+        val now = Date()
+        DateFormat.format("yyyy-MM-dd_hh:mm:ss", now)
+        try {
+            // image naming and path  to include sd card  appending name you choose for file
+            val mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg"
+
+            // create bitmap screen capture
+
+            val v1 = window.decorView.rootView
+            v1.isDrawingCacheEnabled = true
+            val bitmap = Bitmap.createBitmap(v1.getDrawingCache())
+            v1.isDrawingCacheEnabled = false
+            val imageFile = File(mPath)
+            val outputStream = FileOutputStream(imageFile)
+            val quality = 100
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
+            outputStream.flush()
+            outputStream.close()
+            openScreenshot(imageFile)
+        } catch (e: Throwable) {
+            // Several error may come out with file handling or DOM
+            e.printStackTrace()
+            println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        }
+    }
+
+    private fun openScreenshot(imageFile: File) {
+        val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imageFile)
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.putExtra(Intent.EXTRA_TEXT,"This is yout title"+"\n"+ "")
+        intent.putExtra(Intent.EXTRA_STREAM,URI)
+        intent.type = "text/plain"
+        startActivity(intent)
+    }
+
+    fun getBitmapFromView(view: View): Bitmap? {
+        var bitmap =
+            Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+        return bitmap
+    }
 
 
 
