@@ -6,10 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clima.arquitetura.repository.EventsRepository
 import com.example.clima.arquitetura.response.EventsResponse
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-abstract class MapViewModel(private val repository: EventsRepository = EventsRepository.instance) : ViewModel() {
+class MapViewModel(private val repository: EventsRepository = EventsRepository.instance) : ViewModel() {
 
     private val _events = MutableLiveData<EventsResponse>()
      val events: LiveData<EventsResponse>
@@ -49,24 +52,5 @@ abstract class MapViewModel(private val repository: EventsRepository = EventsRep
                 }
         }
     }
-//
-//    fun loadData() {
-//        viewModelScope.launch {
-//            repository.getData()
-//                .onStart { _loading.value = true }
-//                .catch { _error.value = true }
-//                .onCompletion { _loading.value = false }
-//                .collect {
-//                    _events.value = it
-//                }
-//        }
-//    }
-
-
 
 }
-
-
-
-
-

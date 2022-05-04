@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="DADOS SALVADOS"
+        android:text="@string/favorite_title"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -63,9 +63,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="5"
-        tools:listitem="@layout/item_favorite"/>
+        tools:itemCount="3" />
 
 </LinearLayout>

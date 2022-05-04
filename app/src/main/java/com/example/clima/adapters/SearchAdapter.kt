@@ -25,16 +25,16 @@ class SearchAdapter : RecyclerView.Adapter<SearchViewHolder>() {
 
     override fun getItemCount() = diffUtil.currentList.size
 
-    fun updateList(eventList: List<EventsItem<Any?>>) {
+    fun updateList(eventList: List<EventsItem>) {
         diffUtil.submitList(eventList)
     }
 
     companion object {
-        val DIFF_UTIL = object : DiffUtil.ItemCallback<EventsItem<Any?>>() {
-            override fun areItemsTheSame(oldItem: EventsItem<Any?>, newItem: EventsItem<Any?>): Boolean {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<EventsItem>() {
+            override fun areItemsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem.categories.first().title == newItem.categories.first().title
             }
-            override fun areContentsTheSame(oldItem: EventsItem<Any?>, newItem: EventsItem<Any?>): Boolean {
+            override fun areContentsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem == newItem
             }
         }

@@ -1,6 +1,6 @@
 package com.example.clima.arquitetura.response
 
-import com.example.clima.arquitetura.local.entity.EventsEntity
+import java.security.Key
 
 
 data class EventsResponse(
@@ -17,24 +17,6 @@ data class EventsItem(
     val categories: List<CategoriesItem>,
     val sources: List<SourcesItem>,
     val geometry: List<GeometryItem>
-) {
-    constructor(entity: EventsEntity): this(
-        entity.id,
-        entity.title,
-        entity.link,
-        entity.categoriesItem,
-        entity.sourcesItem,
-        entity.geometryItem
-    )
-}
-
-fun EventsItem.toEventsEntity() = EventsEntity(
-    id = id,
-    title = title,
-    link = link,
-    categoriesItem = categories,
-    sourcesItem = sources,
-    geometryItem = geometry,
 )
 
 data class GeometryItem(
