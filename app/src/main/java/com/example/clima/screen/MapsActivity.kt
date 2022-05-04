@@ -16,11 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.clima.databinding.ActivityMapsBinding
-import com.example.clima.utils.extension.load
-import com.example.clima.views.viewHolder.getImage
 import com.example.clima.views.viewModel.MapViewModel
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -126,9 +122,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         var local: LatLng = LatLng(-34.0,148.0)
         var title: String = "new"
         viewModel.loading.observe(this) { loading?.isVisible = it }
-        viewModel.error.observe(this) {
-
-        }
+        viewModel.error.observe(this) {}
         viewModel.events.observe(this) {
             adapter.updateList(it.events)
             for(item in it.events){

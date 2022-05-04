@@ -17,7 +17,7 @@ class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val eventsData: TextView = view.findViewById(R.id.data_events)
     private var eventPic: ImageView = view.findViewById(R.id.image)
 
-    fun bind(search: EventsItem) {
+    fun bind(search: EventsItem<Any?>) {
         title.text = search.title
         date.text = search.geometry.first().date
         link.text = search.sources.first().url

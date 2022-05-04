@@ -15,8 +15,11 @@ interface AcessEvents {
     @Query("SELECT COUNT(*) from events")
     fun countAll(): Int
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg eventsEntity: EventsEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(eventsEntity: List<EventsEntity>)
 
     @Delete
     fun delete(eventsEntity: EventsEntity)
