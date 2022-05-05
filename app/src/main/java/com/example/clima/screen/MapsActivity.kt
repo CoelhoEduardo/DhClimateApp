@@ -151,7 +151,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
             //val callback = SnapshotReadyCallback()
             takeScreenShot()
-            //map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
+            map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
             //map.snapshot(callback)
 
             //captureScreen()

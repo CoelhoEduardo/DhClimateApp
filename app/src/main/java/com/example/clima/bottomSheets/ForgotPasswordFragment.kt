@@ -12,13 +12,20 @@ import com.example.clima.R
 import com.example.clima.utils.checkEmail
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.auth.FirebaseAuth
 
 
 class ForgotPasswordFragment : BottomSheetDialogFragment() {
 
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var analytics: FirebaseAnalytics
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
+        auth = FirebaseAuth.getInstance()
 
         val dialog = super.onCreateDialog(savedInstanceState)
         val view = LayoutInflater.from(context).inflate(R.layout.bottom_sheet_forgot_password, null)
@@ -74,10 +81,20 @@ class ForgotPasswordFragment : BottomSheetDialogFragment() {
 
     }
 
-    private fun recuperarSenha(text: String?) {
-
+    private fun recuperarSenha(text: String) {
+        auth.sendPasswordResetEmail(text).addOnSuccessListener {
+            if (checkEmail(text)) {
+                Toast.makeText(requireContext(), "Email enviado", Toast.LENGTH_LONG)
+                    .show()
+                //analytics.logEvent(FirebaseAnalytics.Event.SIGN_UP) {
+                    //param(FirebaseAnalytics.Param.METHOD, "forgot_password")
+                //}
+            } else {
+            Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
+        }
+        }
         //enviar email de recuperacao
-        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 
 
