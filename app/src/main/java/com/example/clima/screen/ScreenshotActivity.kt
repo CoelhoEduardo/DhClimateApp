@@ -110,20 +110,19 @@ class ScreenshotActivity : AppCompatActivity() {
         }
 
         fab1?.setOnClickListener {
-            //sendToHome()
+            sendToSearch()
         }
         fab2?.setOnClickListener {
+
             sendToMaps()
         }
 
     }
 
-    private fun sendToHome() {
-
-        //findNavController().navigate(R.id.action_screenshotsFragment_to_homeFragment)
-    }
 
     private fun sendToSearch(){
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
 
         val frame: FrameLayout = findViewById(R.id.frame_total)
         // Pega o FragmentManager
@@ -135,9 +134,14 @@ class ScreenshotActivity : AppCompatActivity() {
 //        ft.replace(R.id.frame_total, FavoriteFragment())
         ft.commit()
         fab?.collapse()
-
-
     }
+
+
+    private fun sendToHome() {
+
+        //findNavController().navigate(R.id.action_screenshotsFragment_to_homeFragment)
+    }
+
 
     private fun sendToMaps() {
         val intent = Intent(this, MapsActivity::class.java)

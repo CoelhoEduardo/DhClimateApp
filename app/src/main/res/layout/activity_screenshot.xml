@@ -98,10 +98,10 @@
                 android:id="@+id/fab2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:fab_icon="@drawable/ic_screenshots_black"
+                app:fab_icon="@drawable/ic_switch_black"
                 app:fab_size="mini"
                 app:fab_colorNormal="@color/secondary_dark"
-                app:fab_title="Screenshots"/>
+                app:fab_title="Maps"/>
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
     </FrameLayout>
