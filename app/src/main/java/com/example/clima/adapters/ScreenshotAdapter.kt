@@ -9,6 +9,7 @@ import com.example.clima.mock.Maps.Maps
 import com.example.clima.mock.Maps.MapsImage
 import com.example.clima.R
 import com.example.clima.utils.extension.load
+import com.example.clima.utils.extension.loadRectangle
 
 class ScreenshotAdapter (private val items: List<Maps>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>(){
@@ -30,7 +31,7 @@ class ScreenshotAdapter (private val items: List<Maps>):
     class ScreenshotViewHolder(view: View): RecyclerView.ViewHolder(view){
         private val image: ImageView = view.findViewById(R.id.screenshot_image)
         fun bind(item: MapsImage) {
-            image.load(item.imageUrl)
+            image.loadRectangle(item.imageUrl)
         }
     }
 

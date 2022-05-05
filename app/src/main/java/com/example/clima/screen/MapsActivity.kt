@@ -1,14 +1,17 @@
 package com.example.clima.screen
 
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
 import android.media.MediaActionSound
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.text.format.DateFormat
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
@@ -56,8 +59,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     val radioButton : RadioGroup?
         get() = findViewById<RadioGroup>(R.id.radio_group)
-    private val home : ImageView
-        get() = findViewById<ImageView>(R.id.home_button)
+    private val switch : ImageView
+        get() = findViewById<ImageView>(R.id.switch_button)
     private val queimadaButton : ImageView?
         get() = findViewById<ImageView>(R.id.queimada_button)
     val vulconButton: ImageView?
@@ -74,27 +77,28 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         get() = findViewById<RadioButton>(R.id.open_btn)
     val radioClosed: RadioButton
         get() = findViewById<RadioButton>(R.id.close_button)
-
     val fab: FloatingActionsMenu?
     get() = findViewById<FloatingActionsMenu>(R.id.fab)
     val fab1: FloatingActionButton?
         get() = findViewById<FloatingActionButton>(R.id.fab1)
     val fab2: FloatingActionButton?
         get() = findViewById<FloatingActionButton>(R.id.fab2)
-   /* val fab3: FloatingActionButton?
-        get() = findViewById<FloatingActionButton>(R.id.fab3)*/
-   /* val fab1 = findViewById<View>(R.id.fab1) as FloatingActionButton
-    val fab2 = findViewById<View>(R.id.fab2) as FloatingActionButton
-    val fab3 = findViewById<View>(R.id.fab3) as FloatingActionButton*/
     val screenshot: ImageButton?
     get() = findViewById<ImageButton>(R.id.camera_button)
+
 
 
     private lateinit var map: GoogleMap
     private lateinit var binding: ActivityMapsBinding
 
+    private var switchposition = 0
+
 
     private lateinit var view: View
+
+
+    lateinit var photoPath : String
+    val REQUEST_TAKE_PHOTO = 1
 
 
 
@@ -141,24 +145,37 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
             novaRequisicao("volcanoes")
 
         }
-
-        home.setOnClickListener {
-            finish()
-        }
-
         screenshot?.setOnClickListener {
             //val callback = SnapshotReadyCallback()
             takeScreenShot()
-            screenshotButton(view)
-
-            map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
+            //screenshotButton(view)
+            //takePicture()
+            //map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
             //map.snapshot(callback)
-
+            //button_listener()
             //captureScreen()
             //takeScreenshot2()
+            /*val callback: SnapshotReadyCallback = object : SnapshotReadyCallback {
+                var bitmap: Bitmap? = null
+                override fun onSnapshotReady(snapshot: Bitmap?) {
+                    bitmap = snapshot
+                    try {
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).parentFile.mkdir()
+                        val out = FileOutputStream(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES))
 
-
+                        bitmap?.compress(Bitmap.CompressFormat.PNG, 100, out)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            map.snapshot(callback)*/
         }
+                switch.setOnClickListener {
+
+                    verifySwitchMap()
+
+                }
 
 
 
@@ -168,6 +185,16 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         observeData()
 
         initMap()
+    }
+
+    private fun verifySwitchMap() {
+        if(switchposition == 0){
+            map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
+            switchposition = 1
+        }else{
+            map.setMapType(GoogleMap.MAP_TYPE_NORMAL)
+            switchposition = 0
+        }
     }
 
     private fun screenshotButton(view: View) {
@@ -197,6 +224,52 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
             File fileScreenshot = new File(filePath);
             FileOutputStream fileOutputStream = null
 */
+
+
+    /*private fun takePicture(){
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+        if(intent.resolveActivity(packageManager) != null){
+
+            var photoFile: File? = null
+            try {
+                photoFile = createImageFile()
+            }catch (e : IOException){
+                if(photoFile != null){
+                    var photoUri = FileProvider.getUriForFile(
+                        this,
+                        "com.example.clima.screen.android.fileprovider",
+                        photoFile
+                    )
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT,photoUri)
+                    startActivityForResult(intent,REQUEST_TAKE_PHOTO)
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK){
+          *//*  picture.rotation = 90f
+            picture.setImageURI(Uri.parse(photoPath))*//*
+
+        }
+    }
+
+    private fun createImageFile(): File? {
+
+        val fileName = "MyPicture"
+        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val image = File.createTempFile(
+            fileName,
+            ".jpg",
+            storageDir
+        )
+            photoPath = image.absolutePath
+        return image
+
+    }*/
 
     private fun initMap(){
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -397,7 +470,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         //val callback = GoogleMap.SnapshotReadyCallback()
 
         val path = getExternalFilesDir(null)?.absolutePath+"/"+now+".jpg"
-        var bitmap = Bitmap.createBitmap(layout_map?.width,layout_map?.height,Bitmap.Config.ARGB_8888)
+        var bitmap = Bitmap.createBitmap(layout_map.measuredWidth, layout_map.measuredHeight,Bitmap.Config.ARGB_8888)
 
         val sound = MediaActionSound()
         sound.play(MediaActionSound.SHUTTER_CLICK)
@@ -417,7 +490,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         intent.action = Intent.ACTION_SEND
         intent.putExtra(Intent.EXTRA_TEXT,"This is yout title"+"\n"+ "")
         intent.putExtra(Intent.EXTRA_STREAM,URI)
-        intent.type = "text/plain"
+        //intent.type = "text/plain"
+        intent.type = "image/*"
         startActivity(intent)
 
     }
@@ -439,7 +513,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     }
 
 
-    private fun takeScreenshot2() {
+    /*private fun takeScreenshot2() {
         val now = Date()
         DateFormat.format("yyyy-MM-dd_hh:mm:ss", now)
         try {
@@ -464,7 +538,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
             e.printStackTrace()
             println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         }
-    }
+    }*/
 
     private fun openScreenshot(imageFile: File) {
         val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imageFile)
@@ -484,6 +558,74 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         return bitmap
     }
 
+
+    private fun saveImageToInternalStorage(bitmap : Bitmap):Uri{
+        // Get the image from drawable resource as drawable object
+
+        // Get the bitmap from drawable object
+        val bitmap2 = (bitmap as BitmapDrawable).bitmap
+
+        // Get the context wrapper instance
+        val wrapper = ContextWrapper(applicationContext)
+
+        // Initializing a new file
+        // The bellow line return a directory in internal storage
+        var file = wrapper.getDir("images", Context.MODE_PRIVATE)
+
+
+        // Create a file to save the image
+        file = File(file, "${UUID.randomUUID()}.jpg")
+
+        try {
+            // Get the file output stream
+            val stream: OutputStream = FileOutputStream(file)
+
+            // Compress bitmap
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+
+            // Flush the stream
+            stream.flush()
+
+            // Close stream
+            stream.close()
+        } catch (e: IOException){ // Catch the exception
+            e.printStackTrace()
+        }
+
+        // Return the saved image uri
+        return Uri.parse(file.absolutePath)
+    }
+
+
+    private fun saveMediaToStorage(bitmap: Bitmap){
+        val filename = "${System.currentTimeMillis()}.jpg"
+        var fos : OutputStream? = null
+        var uri : Uri? = null
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+
+
+        }
+
+    }
+    private fun button_listener() {
+        val button = findViewById<ImageButton>(R.id.camera_button)
+        button.setOnClickListener {
+            val callback: SnapshotReadyCallback = object : SnapshotReadyCallback {
+                var bitmap: Bitmap? = null
+                override fun onSnapshotReady(snapshot: Bitmap?) {
+                    bitmap = snapshot
+                    try {
+                        val out = FileOutputStream("/mnt/sdcard/Download/TeleSensors.png")
+                        bitmap!!.compress(Bitmap.CompressFormat.PNG, 90, out)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+            map.snapshot(callback)
+        }
+    }
 
 
 }
