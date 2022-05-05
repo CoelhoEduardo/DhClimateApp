@@ -83,18 +83,14 @@ class ForgotPasswordFragment : BottomSheetDialogFragment() {
 
     private fun recuperarSenha(text: String) {
         auth.sendPasswordResetEmail(text).addOnSuccessListener {
+        }
+        auth.sendPasswordResetEmail(text).addOnFailureListener {
             if (checkEmail(text)) {
-                Toast.makeText(requireContext(), "Email enviado", Toast.LENGTH_LONG)
-                    .show()
-                //analytics.logEvent(FirebaseAnalytics.Event.SIGN_UP) {
-                    //param(FirebaseAnalytics.Param.METHOD, "forgot_password")
-                //}
+                Toast.makeText(context, "Erro ao enviar email", Toast.LENGTH_SHORT).show()
             } else {
-            Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
+            }
         }
-        }
-        //enviar email de recuperacao
-        //Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 
 

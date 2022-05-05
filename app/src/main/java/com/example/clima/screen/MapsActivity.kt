@@ -111,10 +111,11 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
 
         fab1?.setOnClickListener {
-            sendToScreenshots()
+            sendToSearch()
         }
         fab2?.setOnClickListener {
-            sendToSearch()
+
+            sendToScreenshots()
         }
 
         queimadaButton?.setOnClickListener{
@@ -146,11 +147,10 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         }
 
         screenshot?.setOnClickListener {
-
-
-
             //val callback = SnapshotReadyCallback()
             takeScreenShot()
+            screenshotButton(view)
+
             map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
             //map.snapshot(callback)
 
@@ -170,7 +170,33 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         initMap()
     }
 
+    private fun screenshotButton(view: View) {
+        var view2 = view
+        view2 = window.decorView.rootView
 
+
+    }
+
+    /*public void ScreenshotButton(View view){
+        var view1 = getWindow().getDecorView().getRootView();
+        view1.setDrawingCacheEnabled(true);
+        var bitmap = Bitmap.createBitmap(view1.getDrawingCache());
+        view1.setDrawingCacheEnabled(false);
+
+        var filePath = Environment.getExternalStorageDirectory()+"/Download/"+ Calendar.getInstance().getTime().toString()+".jpg";
+        var fileScreenshot = File(filePath);
+        File(filePath)
+        var fileOutputStream = null
+        public void ScreenshotButton(View view){
+            View view1 = getWindow().getDecorView().getRootView();
+            view1.setDrawingCacheEnabled(true);
+            Bitmap bitmap = Bitmap.createBitmap(view1.getDrawingCache());
+            view1.setDrawingCacheEnabled(false);
+
+            String filePath = Environment.getExternalStorageDirectory()+"/Download/"+ Calendar.getInstance().getTime().toString()+".jpg";
+            File fileScreenshot = new File(filePath);
+            FileOutputStream fileOutputStream = null
+*/
 
     private fun initMap(){
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -320,7 +346,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     private fun sendToScreenshots(){
 
-        val frame: FrameLayout = findViewById(R.id.frame_total)
+        /*val frame: FrameLayout = findViewById(R.id.frame_total)
         // Pega o FragmentManager
         // Pega o FragmentManager
         val fm = supportFragmentManager
@@ -329,13 +355,16 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         frame.visibility = View.VISIBLE
         ft.replace(R.id.frame_total, ScreenshotsFragment())
         ft.commit()
-        fab?.collapse()
+        fab?.collapse()*/
+
+        val intent = Intent(this, ScreenshotActivity::class.java)
+        startActivity(intent)
 
 
     }
     private fun sendToSearch(){
 
-        val frame: FrameLayout = findViewById(R.id.frame_total)
+        /*val frame: FrameLayout = findViewById(R.id.frame_total)
         // Pega o FragmentManager
         // Pega o FragmentManager
         val fm = supportFragmentManager
@@ -344,7 +373,10 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         frame.visibility = View.VISIBLE
 //        ft.replace(R.id.frame_total, FavoriteFragment())
         ft.commit()
-        fab?.collapse()
+        fab?.collapse()*/
+
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
 
 
     }
@@ -365,7 +397,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         //val callback = GoogleMap.SnapshotReadyCallback()
 
         val path = getExternalFilesDir(null)?.absolutePath+"/"+now+".jpg"
-        var bitmap = Bitmap.createBitmap(layout_map?.width,layout_map?.height,Bitmap.Config.RGB_565)
+        var bitmap = Bitmap.createBitmap(layout_map?.width,layout_map?.height,Bitmap.Config.ARGB_8888)
+
         val sound = MediaActionSound()
         sound.play(MediaActionSound.SHUTTER_CLICK)
         //map.snapshot { bitmap -> bitmap }
