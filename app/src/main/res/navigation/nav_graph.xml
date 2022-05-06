@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_loginFragment_to_cadastroFragment"
             app:destination="@id/cadastroFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -96,6 +99,9 @@
         <action
             android:id="@+id/action_screenshotsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_screenshotsFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/cadastroFragment"
@@ -115,7 +121,7 @@
         android:label="MapsActivity" />
     <activity
         android:id="@+id/localBaseActivity"
-        android:name="com.example.clima.LocalBaseActivity"
+        android:name="com.example.clima.screen.LocalBaseActivity"
         android:label="LocalBaseActivity" />
 
 </navigation>

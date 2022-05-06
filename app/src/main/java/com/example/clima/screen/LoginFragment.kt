@@ -1,6 +1,7 @@
 package com.example.clima.screen
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -211,7 +212,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun sendToHome() {
-        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        findNavController().navigate(R.id.action_loginFragment_to_mapsActivity)
+        /*val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)*/
+
     }
 
     private fun loginManual(login: String, password: String) {

@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\LUCASS~1\AppData\Local\Temp\baseline_favorite_border_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\LUCASS~1\AppData\Local\Temp\baseline_change_circle_24.xml" />
                                                 <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
@@ -36,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="file:/$PROJECT_DIR$/../../../../Lucas%20Sales/AppData/Local/Android/Sdk/icons/material/materialicons/favorite_border/baseline_favorite_border_24.xml" />
+                                                <entry key="url" value="file:/$PROJECT_DIR$/../../../../Lucas%20Sales/AppData/Local/Android/Sdk/icons/material/materialicons/change_circle/baseline_change_circle_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -81,11 +81,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="assetType" value="IMAGE" />
                                       <entry key="imageAsset" value="C:\Users\Lucas Sales\Downloads\logo.png" />
-                                      <entry key="outputName" value="ic_logo_background" />
+                                      <entry key="outputName" value="ic_switch_circle_black" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="ffffff" />
+                                      <entry key="themeColor" value="000000" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -147,7 +146,6 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="5f76b9" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -348,6 +346,11 @@
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

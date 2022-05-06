@@ -1,5 +1,7 @@
 package com.example.clima.screen
 
+import android.accounts.AccountManager.get
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -11,8 +13,13 @@ import com.example.clima.R
 import com.example.clima.mock.Maps.Maps
 import com.example.clima.mock.Maps.MapsImage
 import com.example.clima.adapters.ScreenshotAdapter
+import com.getbase.floatingactionbutton.FloatingActionButton
+import com.getbase.floatingactionbutton.FloatingActionsMenu
+
+
 
 class ScreenshotsFragment : Fragment(R.layout.fragment_screenshots) {
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,10 +64,20 @@ class ScreenshotsFragment : Fragment(R.layout.fragment_screenshots) {
         val recycler = view.findViewById<RecyclerView>(R.id.screenshot_recycler)
         recycler.layoutManager = GridLayoutManager(context, 3)
         recycler.adapter = ScreenshotAdapter(listMap)
+        val fab = view.findViewById<FloatingActionsMenu>(R.id.fab)
+        val fab1 = view.findViewById<FloatingActionButton>(R.id.fab1)
+        val fab2 = view.findViewById<FloatingActionButton>(R.id.fab2)
 
 
         home.setOnClickListener{
             sendToHome()
+        }
+
+        fab1?.setOnClickListener {
+            sendToHome()
+        }
+        fab2?.setOnClickListener {
+            sendToMaps()
         }
 
     }
@@ -70,4 +87,9 @@ class ScreenshotsFragment : Fragment(R.layout.fragment_screenshots) {
         findNavController().navigate(R.id.action_screenshotsFragment_to_homeFragment)
     }
 
+    private fun sendToMaps() {
+    val intent = Intent(activity, MapsActivity::class.java)
+        startActivity(intent)
+        //findNavController().navigate(R.id.action_screenshotsFragment_to_mapsActivity)
+    }
 }

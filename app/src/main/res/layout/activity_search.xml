@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary_light"
     android:orientation="vertical"
-    tools:context=".screen.FavoriteFragment">
+    tools:context=".screen.SearchActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -17,69 +17,67 @@
         app:titleTextColor="@color/white">
 
 
-
-
         <ImageView
             android:id="@+id/home"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_gravity="start"
+            android:layout_gravity="left"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_arrow_back_white"
             tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/share"
+        <!--<ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_gravity="end"
+            android:layout_gravity="center_horizontal"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_share_white"
-            tools:ignore="ContentDescription" />
+            android:src="@drawable/logo"
+            tools:ignore="ContentDescription" />-->
 
         <ImageView
-            android:id="@+id/excluir"
+            android:id="@+id/profile"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_delete_white"
-            tools:ignore="ContentDescription" />
-        <ImageView
-            android:id="@+id/edit"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_edit_white"
+            android:src="@drawable/logo"
             tools:ignore="ContentDescription" />
 
     </androidx.appcompat.widget.Toolbar>
 
+    <TextView
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/favorite_title"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/screenshot_recycler"
+        android:id="@+id/favorite_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="20dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_screenshot">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="3" />
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/fab3"
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:fab_addButtonSize="mini"
         android:layout_gravity="bottom|end"
         app:fab_addButtonColorNormal="@color/black"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="16dp"
         app:fab_labelStyle="@style/custom_floating_buttons"
         app:fab_expandDirection="up"
         android:elevation="5dp">
@@ -88,19 +86,21 @@
             android:id="@+id/fab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_camera"
+            app:fab_size="mini"
+            app:fab_icon="@drawable/ic_switch_black"
             app:fab_colorNormal="@color/secondary_dark"
-            app:fab_title="Buscas"/>
+            app:fab_title="Maps"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_icon="@drawable/ic_ice_black"
+            app:fab_icon="@drawable/ic_screenshots_black"
+            app:fab_size="mini"
             app:fab_colorNormal="@color/secondary_dark"
-            app:fab_title="Maps"/>
+            app:fab_title="Screenshots"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-</FrameLayout>
+    </FrameLayout>
 
 </LinearLayout>
