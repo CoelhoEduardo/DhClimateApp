@@ -10,7 +10,6 @@ import android.media.MediaActionSound
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.text.format.DateFormat
 import android.view.View
 import android.widget.*
@@ -33,6 +32,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import saveImage
 import java.io.*
 import java.util.*
 
@@ -147,7 +147,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         }
         screenshot?.setOnClickListener {
             //val callback = SnapshotReadyCallback()
-            takeScreenShot()
+            //takeScreenShot()
             //screenshotButton(view)
             //takePicture()
             //map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
@@ -170,6 +170,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
                 }
             }
             map.snapshot(callback)*/
+            map.snapshot(::getScreen)
         }
                 switch.setOnClickListener {
 
@@ -624,6 +625,14 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
                 }
             }
             map.snapshot(callback)
+        }
+    }
+
+    private fun getScreen(bitmap: Bitmap?) {
+        if (bitmap.saveImage(this)) {
+            Toast.makeText(this, "Salvou!", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "Não Salvou!", Toast.LENGTH_LONG).show()
         }
     }
 
