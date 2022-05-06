@@ -9,9 +9,4 @@ class Search(
     val image: String,
     val local: String,
     val data: String
-) : Parcelable {
-
-
-
-}
-
+) : Parcelable

@@ -19,17 +19,17 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu
 class ScreenshotActivity : AppCompatActivity() {
 
 
-    val home: ImageView?
+    private val home
         get() = findViewById<ImageView>(R.id.home)
 
 
-    val recycler : RecyclerView
-    get() = findViewById<RecyclerView>(R.id.screenshot_recycler)
-    val fab: FloatingActionsMenu?
+    private val recycler
+        get() = findViewById<RecyclerView>(R.id.screenshot_recycler)
+    private val fab
         get() = findViewById<FloatingActionsMenu>(R.id.fab)
-    val fab1: FloatingActionButton?
+    private val fab1
         get() = findViewById<FloatingActionButton>(R.id.fab1)
-    val fab2: FloatingActionButton?
+    private val fab2
         get() = findViewById<FloatingActionButton>(R.id.fab2)
 
 
@@ -105,7 +105,7 @@ class ScreenshotActivity : AppCompatActivity() {
         recycler.layoutManager = GridLayoutManager(this, 3)
         recycler.adapter = ScreenshotAdapter(listMap)
 
-        home?.setOnClickListener{
+        home?.setOnClickListener {
             sendToHome()
         }
 
@@ -120,8 +120,8 @@ class ScreenshotActivity : AppCompatActivity() {
     }
 
 
-    private fun sendToSearch(){
-        val intent = Intent(this, SearchActivity::class.java)
+    private fun sendToSearch() {
+        val intent = Intent(this, LocalBaseActivity::class.java)
         startActivity(intent)
 
         val frame: FrameLayout = findViewById(R.id.frame_total)

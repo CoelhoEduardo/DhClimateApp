@@ -18,17 +18,17 @@ interface API {
         @Query("limit") limit: Int = 200,
         @Query("days") days: Int = 365,
         @Header("Content-Type") content: String = "application/json"
-    ) : EventsResponse
+    ): EventsResponse
 
     @GET("events")
     @Headers("Accept: application/json")
     suspend fun getEventsFiltered(
-        @Query("category") category:String,
-        @Query("status") status:String,
+        @Query("category") category: String,
+        @Query("status") status: String,
         @Query("limit") limit: Int = 200,
         @Query("days") days: Int = 365,
         @Header("Content-Type") content: String = "application/json"
-    ) : EventsResponse
+    ): EventsResponse
 
 
     companion object {

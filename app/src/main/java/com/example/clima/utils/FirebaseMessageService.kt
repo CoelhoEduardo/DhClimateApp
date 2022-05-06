@@ -1,5 +1,6 @@
 package com.example.clima.utils
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -34,6 +35,7 @@ class FirebaseMessageService : FirebaseMessagingService() {
         // repository.registerMeuServer(token)
     }
 
+    @SuppressLint("ObsoleteSdkInt", "UnspecifiedImmutableFlag")
     private fun sendNotification(messageBody: String) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

@@ -44,6 +44,7 @@ class NewAccountFragment : BottomSheetDialogFragment() {
         }
 
     }
+
     companion object {
 
         const val TAG = "CustomBottomSheetDialogFragment"

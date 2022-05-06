@@ -39,19 +39,19 @@ class HomeActivity : AppCompatActivity() {
         recycler.adapter = HomeAdapter(listMap)
 
 
-        openMap.setOnClickListener{
+        openMap.setOnClickListener {
             sendToMap()
         }
-        buscas.setOnClickListener{
+        buscas.setOnClickListener {
             sendToMySearch()
         }
-        screenshots.setOnClickListener{
+        screenshots.setOnClickListener {
             sendToScreenshots()
         }
-        favorites.setOnClickListener{
+        favorites.setOnClickListener {
             sendToFavorites()
         }
-        profile.setOnClickListener{
+        profile.setOnClickListener {
             sendToPreferences()
         }
 
@@ -63,27 +63,27 @@ class HomeActivity : AppCompatActivity() {
         //findNavController().navigate(R.id.action_homeFragment_to_preferencesFragment)
     }
 
-    private fun sendToMap(){
+    private fun sendToMap() {
         val intent = Intent(this, MapsActivity::class.java)
         startActivity(intent)
         //findNavController().navigate(R.id.action_homeFragment_to_mapsActivity)
         //findNavController().navigate(R.id.action_homeFragment_to_mapFragment)
     }
 
-    private fun sendToMySearch(){
+    private fun sendToMySearch() {
 
         //findNavController().navigate(R.id.action_homeFragment_to_mySearchFragment)
     }
 
-    private fun sendToScreenshots(){
+    private fun sendToScreenshots() {
 
         //findNavController().navigate(R.id.action_homeFragment_to_screenshotsFragment)
     }
 
-    private fun sendToFavorites(){
+    private fun sendToFavorites() {
 
         //findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
     }
 
 
-    }
+}

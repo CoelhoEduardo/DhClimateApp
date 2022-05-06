@@ -45,61 +45,7 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
                 sendToLogin()
                 dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
             }
-            /* if (checkEmail(email.text.toString())) {
-                 if (validarSenha(senha1.text.toString(), senha2.text.toString())) {
-                     try {
-                         auth.createUserWithEmailAndPassword(
-                             email.text.toString(),
-                             senha1.text.toString()
-                         ).addOnCompleteListener {
-                             if (it.isSuccessful) {
-                                 Toast.makeText(
-                                     requireContext(),
-                                     "Cadastrado com sucesso",
-                                     Toast.LENGTH_LONG
-                                 ).show()
-                                 dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
-                                 sendToLogin()
-                             } else {
-                                 Toast.makeText(
-                                     requireContext(),
-                                     "Erro no cadastro!",
-                                     Toast.LENGTH_LONG
-                                 ).show()
-                             }
-                         }
-                     } catch (e: Exception) {
-                         Toast.makeText(
-                             context,
-                             "Nao foi possivel criar sua conta",
-                             Toast.LENGTH_SHORT
-                         ).show()
-                     }
-                 } else {
-                     Toast.makeText(context, "Senha Invalida", Toast.LENGTH_SHORT).show()
-                 }
 
-             } else {
-                 Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
-             }*/
-
-            /*
-            if (checkEmail(email.text.toString())) {
-                if(validarSenha(senha1.text.toString(),senha2.text.toString())){
-                    try {
-                        criarConta(nome.text.toString(),pais.text.toString(),email.text.toString(), senha1.text.toString())
-                        dialog.show(parentFragmentManager, ForgotPasswordFragment.TAG)
-                        sendToLogin()
-                    } catch (e: Exception) {
-                        Toast.makeText(context, "Nao foi possivel criar sua conta", Toast.LENGTH_SHORT).show()
-                    }
-                }else{
-                    Toast.makeText(context, "Senha Invalida", Toast.LENGTH_SHORT).show()
-                }
-
-            } else {
-                Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
-            }*/
         }
         temConta.setOnClickListener {
             sendToLogin()
@@ -165,13 +111,10 @@ class CadastroFragment : Fragment(R.layout.fragment_cadastro) {
         }
         return true
 
-
-        // criar conta do usuario
     }
 
 
     private fun sendToHome() {
-
         findNavController().navigate(R.id.action_cadastroFragment_to_homeFragment)
     }
 

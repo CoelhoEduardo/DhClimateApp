@@ -34,7 +34,8 @@ data class EventsEntity(
     val geometryItem: String,
 
     )
-class Converters{
+
+class Converters {
 
     @TypeConverter
     fun listToStringCategories(value: List<CategoriesItem>): String {

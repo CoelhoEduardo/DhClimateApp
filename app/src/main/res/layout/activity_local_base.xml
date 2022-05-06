@@ -8,12 +8,10 @@
     android:orientation="vertical"
     tools:context=".screen.LocalBaseActivity">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_transaction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@color/primary_mid"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/white">
@@ -49,24 +47,63 @@
         android:text="@string/ultimos_eventos"
         android:textSize="25sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/local_recycler"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="10"
-        tools:listitem="@layout/item_favorite"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/local_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_favorite" />
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="5dp"
+            app:fab_addButtonColorNormal="@color/black"
+            app:fab_addButtonSize="mini"
+            app:fab_expandDirection="up"
+            app:fab_labelStyle="@style/custom_floating_buttons">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_icon="@drawable/ic_switch_black"
+                app:fab_size="mini"
+                app:fab_title="Maps" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_icon="@drawable/ic_screenshots_black"
+                app:fab_size="mini"
+                app:fab_title="Screenshots" />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </FrameLayout>
+
 
     <FrameLayout
         android:id="@+id/loadingLocal"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/logo"
-        android:visibility="gone"
-        android:padding="16dp"
         android:layout_gravity="center"
+        android:background="@drawable/logo"
+        android:padding="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,5 +114,6 @@
             android:layout_height="wrap_content" />
 
     </FrameLayout>
+
 
 </LinearLayout>

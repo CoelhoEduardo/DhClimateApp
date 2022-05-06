@@ -1,19 +1,17 @@
 package com.example.clima.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.arquitetura.response.EventsItem
-import com.example.clima.mock.Pins
 import com.example.clima.views.viewHolder.SearchViewHolder
 
 
-class SearchAdapter( private val clickListener: (EventsItem) -> Unit) : RecyclerView.Adapter<SearchViewHolder>() {
+class SearchAdapter(private val clickListener: (EventsItem) -> Unit) :
+    RecyclerView.Adapter<SearchViewHolder>() {
     private val diffUtil = AsyncListDiffer(this, DIFF_UTIL)
 
     private val dataList = mutableListOf<EventsItem>()
@@ -21,8 +19,8 @@ class SearchAdapter( private val clickListener: (EventsItem) -> Unit) : Recycler
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         dataList.addAll(diffUtil.currentList)
-        return SearchViewHolder(inflater.inflate(R.layout.item_search, parent, false)){
-        clickListener(dataList[it])
+        return SearchViewHolder(inflater.inflate(R.layout.item_search, parent, false)) {
+            clickListener(dataList[it])
 
         }
     }
@@ -48,6 +46,7 @@ class SearchAdapter( private val clickListener: (EventsItem) -> Unit) : Recycler
             override fun areItemsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem.categories.first().title == newItem.categories.first().title
             }
+
             override fun areContentsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem == newItem
             }
@@ -55,4 +54,3 @@ class SearchAdapter( private val clickListener: (EventsItem) -> Unit) : Recycler
     }
 
 }
-

@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 object OkHttpClientFactory {
-    fun build() : OkHttpClient = OkHttpClient.Builder().apply {
+    fun build(): OkHttpClient = OkHttpClient.Builder().apply {
         if (BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

@@ -7,7 +7,7 @@ class Usuario(
     val email: String,
     val pais: String,
     val senha: String,
-){
+) {
 
     val listaBuscas: MutableList<Search> = mutableListOf()
     val listaFavoritos: MutableList<Favorite> = mutableListOf()

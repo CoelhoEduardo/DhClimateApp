@@ -10,4 +10,3 @@
     android:id="@+id/fragment_container"
     app:defaultNavHost="true"
     tools:context=".MainActivity"/>
-

@@ -13,19 +13,20 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class MapViewModel(private val repository: EventsRepository = EventsRepository.instance) : ViewModel() {
+class MapViewModel(private val repository: EventsRepository = EventsRepository.instance) :
+    ViewModel() {
 
     private val _events = MutableLiveData<EventsResponse>()
-     val events: LiveData<EventsResponse>
+    val events: LiveData<EventsResponse>
         get() = _events
 
     private val _loading = MutableLiveData(false)
-     val loading: LiveData<Boolean>
+    val loading: LiveData<Boolean>
         get() = _loading
 
 
     private val _error = MutableLiveData(false)
-     val error: LiveData<Boolean>
+    val error: LiveData<Boolean>
         get() = _error
 
     fun loadEvents() {
@@ -40,26 +41,26 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
                 }
         }
     }
+
     private val _eventsData = MutableLiveData<EventsItem>()
     val eventsData: LiveData<EventsItem>
         get() = _eventsData
 
-    fun loadEventsFiltered(cat:String, status: String) {
+    fun loadEventsFiltered(cat: String, status: String) {
         viewModelScope.launch {
             repository.fetchEventsFiltered(cat, status)
                 .onStart { _loading.value = true }
                 .catch { _error.value = true }
                 .onCompletion { _loading.value = false }
                 .collect {
-                    _events.value= it
+                    _events.value = it
 
                 }
         }
     }
 
 
-
-    fun loadData(){
+    fun loadData() {
         viewModelScope.launch {
             repository.fetchLocalData()
                 .onStart { _loading.value = true }

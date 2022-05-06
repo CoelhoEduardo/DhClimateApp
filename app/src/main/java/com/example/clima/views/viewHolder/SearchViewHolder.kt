@@ -1,6 +1,5 @@
 package com.example.clima.views.viewHolder
 
-import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,12 +8,14 @@ import com.example.clima.R
 import com.example.clima.arquitetura.response.EventsItem
 
 
-class SearchViewHolder(view: View, clickAtPosition: (Int) -> (Unit)) : RecyclerView.ViewHolder(view) {
+class SearchViewHolder(view: View, clickAtPosition: (Int) -> (Unit)) :
+    RecyclerView.ViewHolder(view) {
     init {
         itemView.setOnClickListener {
             clickAtPosition(adapterPosition)
         }
     }
+
     private val dataList = mutableListOf<String>()
     private val title: TextView = view.findViewById(R.id.item_events_title)
     private val date: TextView = view.findViewById(R.id.date_events)
@@ -34,32 +35,30 @@ class SearchViewHolder(view: View, clickAtPosition: (Int) -> (Unit)) : RecyclerV
 
 }
 
-fun getImage(text: String) : Int {
-    if(text == "Volcanoes"){
+fun getImage(text: String): Int {
+    if (text == "Volcanoes") {
         return R.drawable.ic_volcano_black_fundo
     }
-    if(text == "Sea and Lake Ice"){
+    if (text == "Sea and Lake Ice") {
         return R.drawable.ic_ice_black_fundo
     }
-    if(text == "Wildfires"){
+    if (text == "Wildfires") {
         return R.drawable.ic_queimada_black_fundo
-}
-    if(text == "Landslides"){
+    }
+    if (text == "Landslides") {
         return R.drawable.ic_landslide_black_fundo
     }
-    if(text == "Snow"){
+    if (text == "Snow") {
         return R.drawable.ic_snow_black_fundo
     }
-    if(text == "Floods"){
+    if (text == "Floods") {
         return R.drawable.ic_flood_black_fundo
     }
-    if(text == "Earthquakes"){
+    if (text == "Earthquakes") {
         return R.drawable.ic_earthquake_black_fundo
     }
-    if(text == "Severe Storms"){
+    if (text == "Severe Storms") {
         return R.drawable.ic_storm_black_fundo
     }
     return 0
 }
-
-

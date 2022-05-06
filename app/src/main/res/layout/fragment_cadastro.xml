@@ -83,8 +83,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -95,11 +94,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:hint="@string/digiteSenha"
-        app:passwordToggleEnabled="true"
         app:layout_constraintBottom_toTopOf="@id/password_confirm_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_input">
+        app:layout_constraintTop_toBottomOf="@id/email_input"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/senha_edit_text"
@@ -115,11 +114,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:hint="@string/confirmarSenha"
-        app:passwordToggleEnabled="true"
         app:layout_constraintBottom_toTopOf="@id/criar_conta_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_confirm_input">
+        app:layout_constraintTop_toBottomOf="@id/password_confirm_input"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/senha2_edit_text"
@@ -154,6 +153,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/criar_conta_button" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

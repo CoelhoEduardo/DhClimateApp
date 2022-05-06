@@ -40,6 +40,13 @@
     <string name="digiteSenha">Digite sua Senha</string>
     <string name="title_activity_maps">NETracker</string>
     <string name="ultimos_eventos">Últimos Eventos</string>
+    <string name="message_forgot_password">Digite o email para qual sua senha deve ser enviada.</string>
+    <string name="email_enviado">Email enviado.</string>
+    <string name="messagem_de_cadastro">Usuario Cadastrado com sucesso</string>
+    <string name="minhas_buscas">Minhas Buscas</string>
+    <string name="capturas_de_tela">Capturas de Tela</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="abrir_mapa">Abrir Mapa</string>
 
 
 </resources>

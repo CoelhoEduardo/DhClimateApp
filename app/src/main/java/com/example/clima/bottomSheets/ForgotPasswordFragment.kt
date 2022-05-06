@@ -1,5 +1,6 @@
 package com.example.clima.bottomSheets
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +13,6 @@ import com.example.clima.R
 import com.example.clima.utils.checkEmail
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -21,8 +20,8 @@ class ForgotPasswordFragment : BottomSheetDialogFragment() {
 
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var analytics: FirebaseAnalytics
 
+    @SuppressLint("InflateParams")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         auth = FirebaseAuth.getInstance()
@@ -37,7 +36,6 @@ class ForgotPasswordFragment : BottomSheetDialogFragment() {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialog)
     }
-
 
 
     override fun onCreateView(
@@ -59,7 +57,7 @@ class ForgotPasswordFragment : BottomSheetDialogFragment() {
 
 
         forgotBtn.setOnClickListener {
-            if(checkEmail(email.text.toString())) {
+            if (checkEmail(email.text.toString())) {
                 try {
                     recuperarSenha(email.text.toString())
                     forgotBtn.visibility = View.INVISIBLE
@@ -67,10 +65,9 @@ class ForgotPasswordFragment : BottomSheetDialogFragment() {
                     textMessage.visibility = View.VISIBLE
                 } catch (e: Exception) {
                 }
-            }else{
+            } else {
                 Toast.makeText(context, "Email Invalido", Toast.LENGTH_SHORT).show()
             }
-
 
 
         }
@@ -92,9 +89,6 @@ class ForgotPasswordFragment : BottomSheetDialogFragment() {
             }
         }
     }
-
-
-
 
 
     companion object {

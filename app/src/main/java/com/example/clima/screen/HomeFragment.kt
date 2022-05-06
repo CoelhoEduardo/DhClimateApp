@@ -38,19 +38,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         recycler.adapter = HomeAdapter(listMap)
 
 
-        openMap.setOnClickListener{
-           sendToMap()
+        openMap.setOnClickListener {
+            sendToMap()
         }
-        buscas.setOnClickListener{
+        buscas.setOnClickListener {
             sendToMySearch()
         }
-        screenshots.setOnClickListener{
+        screenshots.setOnClickListener {
             sendToScreenshots()
         }
-        favorites.setOnClickListener{
+        favorites.setOnClickListener {
             sendToFavorites()
         }
-        profile.setOnClickListener{
+        profile.setOnClickListener {
             sendToPreferences()
         }
 
@@ -62,22 +62,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         findNavController().navigate(R.id.action_homeFragment_to_preferencesFragment)
     }
 
-    private fun sendToMap(){
+    private fun sendToMap() {
         findNavController().navigate(R.id.action_homeFragment_to_mapsActivity)
         //findNavController().navigate(R.id.action_homeFragment_to_mapFragment)
     }
 
-    private fun sendToMySearch(){
+    private fun sendToMySearch() {
 
         findNavController().navigate(R.id.action_homeFragment_to_mySearchFragment)
     }
 
-    private fun sendToScreenshots(){
+    private fun sendToScreenshots() {
 
         findNavController().navigate(R.id.action_homeFragment_to_screenshotsFragment)
     }
 
-    private fun sendToFavorites(){
+    private fun sendToFavorites() {
 
         findNavController().navigate(R.id.action_homeFragment_to_localBaseActivity)
         //findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)

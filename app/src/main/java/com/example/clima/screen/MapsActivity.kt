@@ -448,7 +448,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         ft.commit()
         fab?.collapse()*/
 
-        val intent = Intent(this, SearchActivity::class.java)
+        val intent = Intent(this, LocalBaseActivity::class.java)
         startActivity(intent)
 
 

@@ -1,7 +1,6 @@
 package com.example.clima.screen
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,7 +13,6 @@ import com.example.clima.R
 import com.example.clima.arquitetura.network.GoogleLogInActivityContract
 import com.example.clima.utils.checkEmail
 import com.example.clima.bottomSheets.ForgotPasswordFragment
-import com.example.clima.bottomSheets.ForgotPasswordFragment.Companion.TAG
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -27,7 +25,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 
@@ -55,18 +52,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val callbackManager = CallbackManager.Factory.create()
 
 
-    //lateinit var googleSignInClient : GoogleSignInClient
-
-
-    /*private val google: Button?
-        get() = view?.findViewById(R.id.google_button)
-*/
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Initialize Firebase Auth
-        //auth = Firebase.auth
 
         auth = FirebaseAuth.getInstance()
         analytics = Firebase.analytics
@@ -139,7 +126,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         if (it.isSuccessful) {
                             Toast.makeText(requireContext(), "Sucesso no login", Toast.LENGTH_LONG)
                                 .show()
-                            analytics.logEvent(FirebaseAnalytics.Event.LOGIN){
+                            analytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
                                 param(FirebaseAnalytics.Param.METHOD, "login_email")
                             }
                             sendToHome()
@@ -169,7 +156,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
             override fun onSuccess(result: LoginResult) {
                 val token = result.accessToken.token
-                analytics.logEvent(FirebaseAnalytics.Event.LOGIN){
+                analytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
                     param(FirebaseAnalytics.Param.METHOD, "login_facebook")
                 }
                 sendToHome()
@@ -195,7 +182,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun onGoogleSignInResult(result: GoogleLogInActivityContract.Result?) {
         if (result is GoogleLogInActivityContract.Result.Success) {
             val token = result.googleSignInAccount.idToken
-            analytics.logEvent(FirebaseAnalytics.Event.LOGIN){
+            analytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
                 param(FirebaseAnalytics.Param.METHOD, "login_google")
             }
             sendToHome()

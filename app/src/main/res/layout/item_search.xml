@@ -9,92 +9,77 @@
     android:padding="16dp">
 
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            app:srcCompat="@drawable/ic_queimada_fundo"
-            tools:ignore="ContentDescription"
-            app:layout_constraintTop_toBottomOf="@id/item_events_title"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/data_events"
-            />
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/data_events"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_events_title"
+        app:srcCompat="@drawable/ic_queimada_fundo"
+        tools:ignore="ContentDescription" />
 
 
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_events_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:textColor="@color/white"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:gravity="center"
-            tools:text="Acailandia, MA - Brasil"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/data_events"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/favorite"/>
-
-        <ImageView
-            android:id="@+id/favorite"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="16dp"
-            app:srcCompat="@drawable/ic_favorite_empty_white"
-            tools:ignore="ContentDescription"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/item_events_title"
-            app:layout_constraintStart_toEndOf="@id/item_events_title"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/data_events"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:textColor="@color/off_white"
-            style="@style/Subtitle"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            tools:text="16 MAI 2022"
-            app:layout_constraintTop_toBottomOf="@id/item_events_title"
-            app:layout_constraintBottom_toTopOf="@id/date_events"
-            app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/date_events"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:textColor="@color/off_white"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
-            tools:text="16 MAI 2022"
-            style="@style/Subtitle"
-            app:layout_constraintTop_toBottomOf="@id/data_events"
-            app:layout_constraintBottom_toTopOf="@id/link_events"
-            app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/link_events"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:textColor="@color/off_white"
-            android:layout_marginStart="16dp"
-            tools:text="16 MAI 2022"
-            style="@style/Subtitle"
-            app:layout_constraintTop_toBottomOf="@id/date_events"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/item_events_title"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/data_events"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Acailandia, MA - Brasil" />
 
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/data_events"
+        style="@style/Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/off_white"
+        app:layout_constraintBottom_toTopOf="@id/date_events"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/item_events_title"
+        tools:text="16 MAI 2022" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/date_events"
+        style="@style/Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/off_white"
+        app:layout_constraintBottom_toTopOf="@id/link_events"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/data_events"
+        tools:text="16 MAI 2022" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/link_events"
+        style="@style/Subtitle"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/off_white"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/date_events"
+        tools:text="16 MAI 2022" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

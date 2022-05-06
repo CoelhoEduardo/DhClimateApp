@@ -21,7 +21,8 @@ class EventsRepository(private val api: API = API.instance) {
 
     fun fetchLocalData(): Flow<List<EventsEntity>> = flow {
         val response = api.getEvents()
-        DatabaseFactory.getDatabase().EventsDao().insertAll(response.events.map { it.toEventsEntity() })
+        DatabaseFactory.getDatabase().EventsDao()
+            .insertAll(response.events.map { it.toEventsEntity() })
         val events = DatabaseFactory.getDatabase().EventsDao().listAll()
         emit(events)
     }.flowOn(Dispatchers.IO)

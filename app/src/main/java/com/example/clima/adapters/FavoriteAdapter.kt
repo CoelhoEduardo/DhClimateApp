@@ -1,6 +1,5 @@
 package com.example.clima.adapters
 
-import android.media.metrics.Event
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.R.layout.item_favorite
-import com.example.clima.arquitetura.local.entity.EventsEntity
 import com.example.clima.arquitetura.response.EventsItem
 import com.example.clima.views.viewHolder.getImage
 
-class FavoriteAdapter: RecyclerView.Adapter<FavoriteViewHolder>(){
+class FavoriteAdapter : RecyclerView.Adapter<FavoriteViewHolder>() {
     private val diffUtil = AsyncListDiffer(this, DIFF_UTIL)
 
 
@@ -33,7 +31,6 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteViewHolder>(){
     override fun getItemCount() = diffUtil.currentList.size
 
 
-
     fun updateList(eventList: List<EventsItem>) {
         diffUtil.submitList(eventList)
     }
@@ -44,6 +41,7 @@ class FavoriteAdapter: RecyclerView.Adapter<FavoriteViewHolder>(){
             override fun areItemsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem == newItem
             }
+
             override fun areContentsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
                 return oldItem.id == newItem.id
             }
@@ -70,4 +68,3 @@ class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
 }
-

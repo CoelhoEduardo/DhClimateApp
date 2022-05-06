@@ -14,26 +14,29 @@ class GoogleLogInActivityContract : ActivityResultContract<
         GoogleSignInOptions,
         GoogleLogInActivityContract.Result
         >() {
-    override fun createIntent (context: Context, input: GoogleSignInOptions): Intent {
+    override fun createIntent(context: Context, input: GoogleSignInOptions): Intent {
         val client =
-            GoogleSignIn.getClient(context , input ?: error("No GoogleSignInOptions" ))
-        return client. signInIntent
+            GoogleSignIn.getClient(context, input )
+        return client.signInIntent
     }
-    override fun parseResult (resultCode: Int , intent: Intent?): Result {
+
+    override fun parseResult(resultCode: Int, intent: Intent?): Result {
         return handleSignInResult(GoogleSignIn.getSignedInAccountFromIntent(intent))
     }
-    private fun handleSignInResult (completedTask: Task<GoogleSignInAccount>): Result {
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>): Result {
         return try {
             Result.Success(completedTask.result)
         } catch (exception: Exception) {
-            (exception as? ApiException)?. let {
-                Log.w( "GOOGLE" , "signInResult:failed code= ${it.statusCode}")
+            (exception as? ApiException)?.let {
+                Log.w("GOOGLE", "signInResult:failed code= ${it.statusCode}")
             }
             Result.Error(exception)
         }
     }
+
     sealed class Result {
-        data class Success( val googleSignInAccount : GoogleSignInAccount) : Result()
-        data class Error( val exception : Exception) : Result()
+        data class Success(val googleSignInAccount: GoogleSignInAccount) : Result()
+        data class Error(val exception: Exception) : Result()
     }
 }

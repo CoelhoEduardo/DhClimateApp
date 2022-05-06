@@ -7,11 +7,11 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.mock.Maps.Maps
 import com.example.clima.mock.Maps.MapsImage
-import com.example.clima.R
 import com.example.clima.utils.extension.load
+import com.example.clima.R
 
-class HomeAdapter (private val items: List<Maps>):
-    RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class HomeAdapter(private val items: List<Maps>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -19,20 +19,19 @@ class HomeAdapter (private val items: List<Maps>):
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-       when(holder){
-           is HomeViewHolder -> holder.bind(items[position] as MapsImage)
-       }
+        when (holder) {
+            is HomeViewHolder -> holder.bind(items[position] as MapsImage)
+        }
 
     }
 
     override fun getItemCount() = items.size
 
-    class HomeViewHolder(view:View): RecyclerView.ViewHolder(view){
+    class HomeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val image: ImageView = view.findViewById(R.id.image)
         fun bind(item: MapsImage) {
             image.load(item.imageUrl)
         }
     }
-
 
 }

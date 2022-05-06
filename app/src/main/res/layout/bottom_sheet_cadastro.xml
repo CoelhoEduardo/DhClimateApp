@@ -13,8 +13,7 @@
     app:behavior_peekHeight="85dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     tools:context=".bottomSheets.NewAccountFragment">
-
-
+    
     <TextView
         android:id="@+id/cadastro_usuario"
         android:layout_width="wrap_content"
@@ -22,13 +21,12 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="60dp"
-        android:text="Usuario Cadastrado com sucesso"
+        android:text="@string/messagem_de_cadastro"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/close_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -45,6 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cadastro_usuario" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

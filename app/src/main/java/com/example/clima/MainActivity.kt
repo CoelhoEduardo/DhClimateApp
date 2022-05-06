@@ -8,7 +8,6 @@ import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -30,11 +29,3 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
 
 }
-
-
-
-
-
-
-
-

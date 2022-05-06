@@ -34,4 +34,3 @@ data class GeometryFeatureItem(
 data class CategoriesFeatureItem(val id: String, val title: String)
 data class SourcesFeatureItem(val id: String, val url: String)
 
-
