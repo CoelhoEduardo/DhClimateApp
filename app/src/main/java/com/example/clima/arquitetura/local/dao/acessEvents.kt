@@ -4,10 +4,10 @@ import androidx.room.*
 import com.example.clima.arquitetura.local.entity.EventsEntity
 
 @Dao
-interface AcessEvents {
+interface EventsDao {
 
     @Query("SELECT * FROM events")
-    fun listAll(): MutableList<EventsEntity>
+    fun listAll(): List<EventsEntity>
 
     @Query("SELECT * FROM events where id = :id")
     fun showForId(id: Int): EventsEntity
@@ -15,8 +15,11 @@ interface AcessEvents {
     @Query("SELECT COUNT(*) from events")
     fun countAll(): Int
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg eventsEntity: EventsEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(eventsEntity: List<EventsEntity>)
 
     @Delete
     fun delete(eventsEntity: EventsEntity)

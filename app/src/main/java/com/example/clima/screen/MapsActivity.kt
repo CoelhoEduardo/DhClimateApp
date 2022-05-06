@@ -30,7 +30,7 @@ import com.google.android.material.textfield.TextInputEditText
 class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     private val adapter = SearchAdapter(){
-        var local = LatLng(it.geometry.last().coordinates.last(), it.geometry.last().coordinates.first())
+        val local = LatLng(it.geometry.last().coordinates.last(), it.geometry.last().coordinates.first())
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(local,10f))
     }
 
@@ -136,9 +136,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         var local: LatLng = LatLng(-34.0,148.0)
         var title: String = "new"
         viewModel.loading.observe(this) { loading?.isVisible = it }
-        viewModel.error.observe(this) {
-
-        }
+        viewModel.error.observe(this) {}
         viewModel.events.observe(this) {
             adapter.updateList(it.events)
             for(item in it.events){

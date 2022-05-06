@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_homeFragment_to_mapsActivity"
             app:destination="@id/mapsActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_localBaseActivity"
+            app:destination="@id/localBaseActivity" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -110,5 +113,9 @@
         android:id="@+id/mapsActivity"
         android:name="com.example.clima.screen.MapsActivity"
         android:label="MapsActivity" />
+    <activity
+        android:id="@+id/localBaseActivity"
+        android:name="com.example.clima.LocalBaseActivity"
+        android:label="LocalBaseActivity" />
 
 </navigation>

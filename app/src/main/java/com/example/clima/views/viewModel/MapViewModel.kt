@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clima.arquitetura.repository.EventsRepository
+import com.example.clima.arquitetura.response.EventsItem
 import com.example.clima.arquitetura.response.EventsResponse
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -39,6 +40,9 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
                 }
         }
     }
+    private val _eventsData = MutableLiveData<EventsItem>()
+    val eventsData: LiveData<EventsItem>
+        get() = _eventsData
 
     fun loadEventsFiltered(cat:String, status: String) {
         viewModelScope.launch {
@@ -49,6 +53,20 @@ class MapViewModel(private val repository: EventsRepository = EventsRepository.i
                 .collect {
                     _events.value= it
 
+                }
+        }
+    }
+
+
+
+    fun loadData(){
+        viewModelScope.launch {
+            repository.fetchLocalData()
+                .onStart { _loading.value = true }
+                .catch { _error.value = true }
+                .onCompletion { _loading.value = false }
+                .collect {
+                    _eventsData.value
                 }
         }
     }
