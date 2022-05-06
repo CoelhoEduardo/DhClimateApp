@@ -11,20 +11,15 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.adapters.SearchAdapter
-import com.example.clima.arquitetura.response.EventsResponse
-
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.clima.databinding.ActivityMapsBinding
-import com.example.clima.utils.extension.load
-import com.example.clima.views.viewHolder.getImage
 import com.example.clima.views.viewModel.MapViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
+
 
 
 class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{

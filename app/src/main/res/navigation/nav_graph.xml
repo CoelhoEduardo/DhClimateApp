@@ -115,7 +115,7 @@
         android:label="MapsActivity" />
     <activity
         android:id="@+id/localBaseActivity"
-        android:name="com.example.clima.LocalBaseActivity"
+        android:name="com.example.clima.screen.LocalBaseActivity"
         android:label="LocalBaseActivity" />
 
 </navigation>

@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clima">
         <activity
-            android:name=".LocalBaseActivity"
+            android:name=".screen.LocalBaseActivity"
             android:exported="false" />
         <activity
             android:name=".screen.HomeActivity"

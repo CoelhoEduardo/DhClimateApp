@@ -1,12 +1,14 @@
-package com.example.clima
+package com.example.clima.screen
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clima.R
 import com.example.clima.adapters.FavoriteAdapter
 import com.example.clima.arquitetura.factory.DatabaseFactory
 import com.example.clima.views.viewModel.MapViewModel
@@ -31,9 +33,8 @@ class LocalBaseActivity : AppCompatActivity() {
         viewModelLocal.loadData()
         savedData()
 
-//        listData()
         home?.setOnClickListener{
-           finish()
+           sendToHome()
         }
 
     }
@@ -43,11 +44,6 @@ class LocalBaseActivity : AppCompatActivity() {
         viewModelLocal.events.observe(this){
             adapter.updateList(it.events) }
     }
-
-//    private fun listData(){
-//        val events = DatabaseFactory.getDatabase().EventsDao().listAll()
-//        println(events)
-//    }
 
     private fun sendToHome() {
         finish()
