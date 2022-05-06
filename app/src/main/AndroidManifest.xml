@@ -11,12 +11,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcherpadrao"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_roundparao"
         android:supportsRtl="true"
         android:theme="@style/Theme.Clima">
+        <activity
+            android:name=".LocalBaseActivity"
+            android:exported="false" />
         <activity
             android:name=".screen.HomeActivity"
             android:exported="false" />
@@ -38,7 +42,8 @@
         <activity
             android:name=".screen.MapsActivity"
             android:exported="false"
-            android:label="@string/title_activity_maps" /> <!-- <activity -->
+            android:label="@string/title_activity_maps"
+            android:screenOrientation="portrait" /> <!-- <activity -->
         <!-- android:name=".screen.MapActivity" -->
         <!-- android:exported="false" /> -->
         <meta-data

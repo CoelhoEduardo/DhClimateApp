@@ -1,40 +1,73 @@
 package com.example.clima.adapters
 
+import android.media.metrics.Event
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clima.mock.Maps.Favorite
-import com.example.clima.mock.Maps.FavoriteImage
 import com.example.clima.R
-import com.example.clima.utils.extension.load
+import com.example.clima.R.layout.item_favorite
+import com.example.clima.arquitetura.local.entity.EventsEntity
+import com.example.clima.arquitetura.response.EventsItem
+import com.example.clima.views.viewHolder.getImage
 
-class FavoriteAdapter (private val item: List<Favorite>):
-    RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class FavoriteAdapter: RecyclerView.Adapter<FavoriteViewHolder>(){
+    private val diffUtil = AsyncListDiffer(this, DIFF_UTIL)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return FavoriteViewHolder(inflater.inflate(R.layout.item_favorite, parent, false))
+        return FavoriteViewHolder(inflater.inflate(item_favorite, parent, false))
+
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder){
-            is FavoriteViewHolder -> holder.bind(item[position] as FavoriteImage)
-        }
+    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
+        holder.bind(diffUtil.currentList[position])
+
     }
 
-    override fun getItemCount() = item.size
+    override fun getItemCount() = diffUtil.currentList.size
 
-    class FavoriteViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private val image_favorite: ImageView = view.findViewById(R.id.image_favorite)
-        private val text_favorite: TextView = view.findViewById(R.id.text_fav)
 
-        fun bind(item: FavoriteImage){
-            image_favorite.load(item.favoriteImage)
-            text_favorite.text = item.favoriteText
+
+    fun updateList(eventList: List<EventsItem>) {
+        diffUtil.submitList(eventList)
+    }
+
+
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<EventsItem>() {
+            override fun areItemsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
+                return oldItem == newItem
+            }
+            override fun areContentsTheSame(oldItem: EventsItem, newItem: EventsItem): Boolean {
+                return oldItem.id == newItem.id
+            }
         }
     }
 
 }
+
+
+class FavoriteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private val textId: TextView = view.findViewById(R.id.idTextLocal)
+    private val dateLocal: TextView = view.findViewById(R.id.dateLocal)
+    private val textLocal: TextView = view.findViewById(R.id.textLocal)
+    private val linkLocal: TextView = view.findViewById(R.id.link_events)
+    private var eventPic: ImageView = view.findViewById(R.id.image)
+
+    fun bind(local: EventsItem) {
+        textId.text = local.title
+        dateLocal.text = local.geometry.first().date
+        linkLocal.text = local.sources.first().url
+        textLocal.text = local.categories.first().title
+        eventPic.setImageResource(getImage(local.categories.first().title))
+
+    }
+
+}
+

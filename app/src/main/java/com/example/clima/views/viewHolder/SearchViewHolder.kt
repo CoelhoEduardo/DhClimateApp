@@ -9,8 +9,13 @@ import com.example.clima.R
 import com.example.clima.arquitetura.response.EventsItem
 
 
-class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
+class SearchViewHolder(view: View, clickAtPosition: (Int) -> (Unit)) : RecyclerView.ViewHolder(view) {
+    init {
+        itemView.setOnClickListener {
+            clickAtPosition(adapterPosition)
+        }
+    }
+    private val dataList = mutableListOf<String>()
     private val title: TextView = view.findViewById(R.id.item_events_title)
     private val date: TextView = view.findViewById(R.id.date_events)
     private val link: TextView = view.findViewById(R.id.link_events)
@@ -23,6 +28,8 @@ class SearchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         link.text = search.sources.first().url
         eventsData.text = search.categories.first().title
         eventPic.setImageResource(getImage(search.categories.first().title))
+        dataList.add(search.title)
+
     }
 
 }

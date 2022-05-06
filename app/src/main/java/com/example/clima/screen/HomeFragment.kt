@@ -79,7 +79,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun sendToFavorites(){
 
-        findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
+        findNavController().navigate(R.id.action_homeFragment_to_localBaseActivity)
+        //findNavController().navigate(R.id.action_homeFragment_to_favoriteFragment)
     }
 
 

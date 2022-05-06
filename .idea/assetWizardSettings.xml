@@ -113,6 +113,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\Lucas Sales\Downloads\logo.png" />
+                                                <entry key="scalingPercent" value="47" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -140,6 +142,12 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="5f76b9" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -179,8 +187,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\Lucas Sales\Downloads\snowflake.png" />
-                                                <entry key="paddingPercent" value="20" />
+                                                <entry key="imagePath" value="C:\Users\Lucas Sales\Downloads\thunderstorm.png" />
+                                                <entry key="paddingPercent" value="10" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -212,10 +220,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="backgroundColor" value="00245b" />
                                       <entry key="iconShape" value="CIRCLE" />
-                                      <entry key="imageAsset" value="C:\Users\Lucas Sales\Downloads\snowflake.png" />
-                                      <entry key="outputName" value="ic_snow_black_fundo" />
+                                      <entry key="imageAsset" value="C:\Users\Lucas Sales\Downloads\thunderstorm.png" />
+                                      <entry key="outputName" value="ic_queimada_no_back" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -340,11 +348,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

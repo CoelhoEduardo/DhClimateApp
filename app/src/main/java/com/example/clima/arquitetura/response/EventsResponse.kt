@@ -1,6 +1,6 @@
 package com.example.clima.arquitetura.response
 
-import java.security.Key
+import com.example.clima.arquitetura.local.entity.EventsEntity
 
 
 data class EventsResponse(
@@ -17,6 +17,15 @@ data class EventsItem(
     val categories: List<CategoriesItem>,
     val sources: List<SourcesItem>,
     val geometry: List<GeometryItem>
+)
+
+fun EventsItem.toEventsEntity() = EventsEntity(
+    idApi = id,
+    title = title,
+    link = link,
+    categories = categories.first().title,
+    sources = sources.first().url,
+    geometryItem = geometry.first().date,
 )
 
 data class GeometryItem(

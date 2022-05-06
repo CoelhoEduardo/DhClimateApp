@@ -39,6 +39,7 @@ class MapFragment() : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         get() = view?.findViewById(R.id.loading)
 
     private lateinit var map: GoogleMap
+
     private lateinit var binding: ActivityMapsBinding
 
 
