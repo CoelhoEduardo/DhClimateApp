@@ -12,7 +12,8 @@ android {
     signingConfigs {
         debug {
 
-            storeFile file('C:\\Users\\Lucas Sales\\Documents\\PROJETO-CLIMA\\DhClimateApp\\debug-key.keystore')
+            //storeFile file('C:\\Users\\Lucas Sales\\Documents\\PROJETO-CLIMA\\DhClimateApp\\debug-key.keystore')
+            storeFile rootProject.file('debug-key.keystore')
             storePassword '123456'
             keyAlias 'debug'
             keyPassword '123456'

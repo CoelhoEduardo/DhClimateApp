@@ -23,9 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clima">
         <activity
+            android:name=".screen.ScreenshotFullActivity"
+            android:exported="false" />
+        <activity
             android:name=".screen.LocalBaseActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".screen.SearchActivity"
             android:exported="false" />

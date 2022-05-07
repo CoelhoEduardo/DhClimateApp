@@ -1,20 +1,24 @@
 package com.example.clima.screen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.navigation.fragment.findNavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
-import com.example.clima.adapters.ScreenshotAdapter
-import com.example.clima.mock.Maps.Maps
-import com.example.clima.mock.Maps.MapsImage
+import com.example.clima.adapters.ScreenshotAdapterNew
+import com.example.clima.mock.ImagesBitmap
 import com.getbase.floatingactionbutton.FloatingActionButton
 import com.getbase.floatingactionbutton.FloatingActionsMenu
+import retrofit2.http.Url
+import java.io.File
+
 
 class ScreenshotActivity : AppCompatActivity() {
 
@@ -37,73 +41,14 @@ class ScreenshotActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_screenshot)
 
-        val listMap = mutableListOf<Maps>(
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = "https://www.sacbee.com/latest-news/7qnhhk/picture253870323/alternates/FREE_1140/California%20Wildfire%20Map%208%2030.jpg"
-            ),
-            MapsImage(
-                imageUrl = ""
-            ),
-
-            )
-
+        var gpath: String = Environment.getExternalStorageDirectory().absolutePath
+        var spath = "Pictures/APP"
+        var fullpath = File(gpath + File.separator + spath)
+        var fullpath2 = File(gpath + File.separator + spath + "/map-1651879319586.jpg")
+        Log.w("fullpath", "" + fullpath)
 
         recycler.layoutManager = GridLayoutManager(this, 3)
-        recycler.adapter = ScreenshotAdapter(listMap)
+        recycler.adapter = ScreenshotAdapterNew(imageReaderNew(fullpath))
 
         home?.setOnClickListener {
             sendToHome()
@@ -115,6 +60,11 @@ class ScreenshotActivity : AppCompatActivity() {
         fab2?.setOnClickListener {
 
             sendToMaps()
+        }
+        home.setOnClickListener {
+            val intent = Intent(this, ScreenshotFullActivity::class.java)
+            intent.putExtra("URL",fullpath2.toString())
+            startActivity(intent)
         }
 
     }
@@ -147,5 +97,24 @@ class ScreenshotActivity : AppCompatActivity() {
         val intent = Intent(this, MapsActivity::class.java)
         startActivity(intent)
         //findNavController().navigate(R.id.action_screenshotsFragment_to_mapsActivity)
+    }
+
+    fun imageReaderNew(root: File): ArrayList<File> {
+        val fileList: ArrayList<File> = ArrayList()
+        val listAllFiles = root.listFiles()
+
+        if (listAllFiles != null && listAllFiles.size > 0) {
+            for (currentFile in listAllFiles) {
+                if (currentFile.name.endsWith(".jpg")) {
+                    // File absolute path
+                    Log.e("downloadFilePath", currentFile.getAbsolutePath())
+                    // File Name
+                    Log.e("downloadFileName", currentFile.getName())
+                    fileList.add(currentFile.absoluteFile)
+                }
+            }
+            Log.w("fileList", "" + fileList.size)
+        }
+        return fileList
     }
 }
