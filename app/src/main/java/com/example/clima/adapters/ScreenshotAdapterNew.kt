@@ -1,43 +1,57 @@
 package com.example.clima.adapters
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clima.mock.Maps.Maps
-import com.example.clima.mock.Maps.MapsImage
 import com.example.clima.R
-import com.example.clima.mock.Images
 import com.example.clima.mock.ImagesBitmap
-import com.example.clima.utils.extension.loadRectangle
+import com.example.clima.views.viewHolder.ScreenshotViewHolder
+import com.example.clima.views.viewHolder.SearchViewHolder
 import java.io.File
 
-class ScreenshotAdapterNew(private val items: List<File>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ScreenshotAdapterNew(private val clickListener: (ImagesBitmap) -> Unit) : RecyclerView.Adapter<ScreenshotViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    private val diffUtil = AsyncListDiffer(this, DIFF_UTIL)
+
+    private val dataList = mutableListOf<ImagesBitmap>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScreenshotViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ScreenshotViewHolder(inflater.inflate(R.layout.item_screenshot, parent, false))
-    }
-
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (holder) {
-            is ScreenshotViewHolder -> holder.bind(items[position])
-        }
-
-    }
-
-    override fun getItemCount() = items.size
-
-    class ScreenshotViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val image: ImageView = view.findViewById(R.id.screenshot_image)
-        fun bind(item: File) {
-            val myBitmap = BitmapFactory.decodeFile(item.getAbsolutePath())
-            image.setImageBitmap(myBitmap)
+        dataList.addAll(diffUtil.currentList)
+        return ScreenshotViewHolder(inflater.inflate(R.layout.item_screenshot, parent, false)) {
+            clickListener(dataList[it])
         }
     }
 
+    override fun onBindViewHolder(holder: ScreenshotViewHolder, position: Int) {
+
+        holder.bind(diffUtil.currentList[position])
+
+    }
+
+    fun updateList(items: List<ImagesBitmap>) {
+        diffUtil.submitList(items)
+        dataList.clear()
+        dataList.addAll(items)
+
+
+    }
+
+    override fun getItemCount() = diffUtil.currentList.size
+
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<ImagesBitmap>() {
+            override fun areItemsTheSame(oldItem: ImagesBitmap, newItem: ImagesBitmap): Boolean {
+                return oldItem.imageUrl == newItem.imageUrl
+            }
+
+            override fun areContentsTheSame(oldItem: ImagesBitmap, newItem: ImagesBitmap): Boolean {
+                return oldItem.imageUrl == newItem.imageUrl
+            }
+        }
+    }
 }
+
+

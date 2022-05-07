@@ -13,14 +13,28 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clima.R
 import com.example.clima.adapters.ScreenshotAdapterNew
+import com.example.clima.adapters.SearchAdapter
 import com.example.clima.mock.ImagesBitmap
 import com.getbase.floatingactionbutton.FloatingActionButton
 import com.getbase.floatingactionbutton.FloatingActionsMenu
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.LatLng
 import retrofit2.http.Url
 import java.io.File
 
 
 class ScreenshotActivity : AppCompatActivity() {
+
+    private val adapter = ScreenshotAdapterNew(){
+        var image = it.imageUrl
+        openImage(image)
+    }
+
+    private fun openImage(url: String) {
+        val intent = Intent(this, ScreenshotFullActivity::class.java)
+        intent.putExtra("URL",url)
+        startActivity(intent)
+    }
 
 
     private val home
@@ -36,6 +50,8 @@ class ScreenshotActivity : AppCompatActivity() {
     private val fab2
         get() = findViewById<FloatingActionButton>(R.id.fab2)
 
+    private val list = mutableListOf<ImagesBitmap>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +64,7 @@ class ScreenshotActivity : AppCompatActivity() {
         Log.w("fullpath", "" + fullpath)
 
         recycler.layoutManager = GridLayoutManager(this, 3)
-        recycler.adapter = ScreenshotAdapterNew(imageReaderNew(fullpath))
+        recycler.adapter = adapter
 
         home?.setOnClickListener {
             sendToHome()
@@ -67,6 +83,16 @@ class ScreenshotActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        observe()
+
+    }
+
+    private fun observe() {
+        var gpath: String = Environment.getExternalStorageDirectory().absolutePath
+        var spath = "Pictures/APP"
+        var fullpath = File(gpath + File.separator + spath)
+        imageReaderNew(fullpath)
+        adapter.updateList(list)
     }
 
 
@@ -74,7 +100,7 @@ class ScreenshotActivity : AppCompatActivity() {
         val intent = Intent(this, LocalBaseActivity::class.java)
         startActivity(intent)
 
-        val frame: FrameLayout = findViewById(R.id.frame_total)
+        /*val frame: FrameLayout = findViewById(R.id.frame_total)
         // Pega o FragmentManager
         // Pega o FragmentManager
         val fm = supportFragmentManager
@@ -83,7 +109,7 @@ class ScreenshotActivity : AppCompatActivity() {
         frame.visibility = View.VISIBLE
 //        ft.replace(R.id.frame_total, FavoriteFragment())
         ft.commit()
-        fab?.collapse()
+        fab?.collapse()*/
     }
 
 
@@ -111,6 +137,11 @@ class ScreenshotActivity : AppCompatActivity() {
                     // File Name
                     Log.e("downloadFileName", currentFile.getName())
                     fileList.add(currentFile.absoluteFile)
+                    var image = ImagesBitmap(currentFile.absolutePath.toString())
+println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+
+                    println(image)
+                    list.add(image)
                 }
             }
             Log.w("fileList", "" + fileList.size)

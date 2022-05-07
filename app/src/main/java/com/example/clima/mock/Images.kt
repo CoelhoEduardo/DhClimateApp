@@ -8,14 +8,6 @@ sealed class Images {
 }
 
 class ImagesBitmap(
-    val imageUrl: File
+    val imageUrl: String
 ) : Images()
 
-sealed class Favorite(
-)
-
-
-class FavoriteImages(
-    val favoriteImage: String,
-    val favoriteText: String
-) : Favorite()
