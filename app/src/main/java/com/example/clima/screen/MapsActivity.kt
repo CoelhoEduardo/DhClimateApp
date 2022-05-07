@@ -513,34 +513,6 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     }
 
-
-    /*private fun takeScreenshot2() {
-        val now = Date()
-        DateFormat.format("yyyy-MM-dd_hh:mm:ss", now)
-        try {
-            // image naming and path  to include sd card  appending name you choose for file
-            val mPath = Environment.getExternalStorageDirectory().toString() + "/" + now + ".jpg"
-
-            // create bitmap screen capture
-
-            val v1 = window.decorView.rootView
-            v1.isDrawingCacheEnabled = true
-            val bitmap = Bitmap.createBitmap(v1.getDrawingCache())
-            v1.isDrawingCacheEnabled = false
-            val imageFile = File(mPath)
-            val outputStream = FileOutputStream(imageFile)
-            val quality = 100
-            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
-            outputStream.flush()
-            outputStream.close()
-            openScreenshot(imageFile)
-        } catch (e: Throwable) {
-            // Several error may come out with file handling or DOM
-            e.printStackTrace()
-            println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-        }
-    }*/
-
     private fun openScreenshot(imageFile: File) {
         val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imageFile)
         val intent = Intent()
@@ -551,88 +523,12 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         startActivity(intent)
     }
 
-    fun getBitmapFromView(view: View): Bitmap? {
-        var bitmap =
-            Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        view.draw(canvas)
-        return bitmap
-    }
-
-
-    private fun saveImageToInternalStorage(bitmap : Bitmap):Uri{
-        // Get the image from drawable resource as drawable object
-
-        // Get the bitmap from drawable object
-        val bitmap2 = (bitmap as BitmapDrawable).bitmap
-
-        // Get the context wrapper instance
-        val wrapper = ContextWrapper(applicationContext)
-
-        // Initializing a new file
-        // The bellow line return a directory in internal storage
-        var file = wrapper.getDir("images", Context.MODE_PRIVATE)
-
-
-        // Create a file to save the image
-        file = File(file, "${UUID.randomUUID()}.jpg")
-
-        try {
-            // Get the file output stream
-            val stream: OutputStream = FileOutputStream(file)
-
-            // Compress bitmap
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-
-            // Flush the stream
-            stream.flush()
-
-            // Close stream
-            stream.close()
-        } catch (e: IOException){ // Catch the exception
-            e.printStackTrace()
-        }
-
-        // Return the saved image uri
-        return Uri.parse(file.absolutePath)
-    }
-
-
-    private fun saveMediaToStorage(bitmap: Bitmap){
-        val filename = "${System.currentTimeMillis()}.jpg"
-        var fos : OutputStream? = null
-        var uri : Uri? = null
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
-
-
-        }
-
-    }
-    private fun button_listener() {
-        val button = findViewById<ImageButton>(R.id.camera_button)
-        button.setOnClickListener {
-            val callback: SnapshotReadyCallback = object : SnapshotReadyCallback {
-                var bitmap: Bitmap? = null
-                override fun onSnapshotReady(snapshot: Bitmap?) {
-                    bitmap = snapshot
-                    try {
-                        val out = FileOutputStream("/mnt/sdcard/Download/TeleSensors.png")
-                        bitmap!!.compress(Bitmap.CompressFormat.PNG, 90, out)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-            }
-            map.snapshot(callback)
-        }
-    }
 
     private fun getScreen(bitmap: Bitmap?) {
         if (bitmap.saveImage(this)) {
-            Toast.makeText(this, "Salvou!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Salvou!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Não Salvou!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Não Salvou!", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -47,6 +47,10 @@
     <string name="capturas_de_tela">Capturas de Tela</string>
     <string name="favoritos">Favoritos</string>
     <string name="abrir_mapa">Abrir Mapa</string>
+    <string name="more_info_dialog_title">Deletar Screenshot</string>
+    <string name="yes_please">Sim</string>
+    <string name="more_info_dialog_message">Deseja realmente excluir o screenshot?</string>
+    <string name="no_thanks">Nao</string>
 
 
 </resources>

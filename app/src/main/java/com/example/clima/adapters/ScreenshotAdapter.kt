@@ -1,3 +1,4 @@
+/*
 package com.example.clima.adapters
 
 import android.view.LayoutInflater
@@ -35,3 +36,4 @@ class ScreenshotAdapter(private val items: List<Maps>) :
     }
 
 }
+*/

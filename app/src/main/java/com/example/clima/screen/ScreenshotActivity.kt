@@ -30,12 +30,6 @@ class ScreenshotActivity : AppCompatActivity() {
         openImage(image)
     }
 
-    private fun openImage(url: String) {
-        val intent = Intent(this, ScreenshotFullActivity::class.java)
-        intent.putExtra("URL",url)
-        startActivity(intent)
-    }
-
 
     private val home
         get() = findViewById<ImageView>(R.id.home)
@@ -66,9 +60,6 @@ class ScreenshotActivity : AppCompatActivity() {
         recycler.layoutManager = GridLayoutManager(this, 3)
         recycler.adapter = adapter
 
-        home?.setOnClickListener {
-            sendToHome()
-        }
 
         fab1?.setOnClickListener {
             sendToSearch()
@@ -77,15 +68,18 @@ class ScreenshotActivity : AppCompatActivity() {
 
             sendToMaps()
         }
-        home.setOnClickListener {
-            val intent = Intent(this, ScreenshotFullActivity::class.java)
-            intent.putExtra("URL",fullpath2.toString())
-            startActivity(intent)
-        }
 
         observe()
 
     }
+
+    private fun openImage(url: String) {
+        val intent = Intent(this, ScreenshotFullActivity::class.java)
+        intent.putExtra("URL",url)
+        startActivity(intent)
+    }
+
+
 
     private fun observe() {
         var gpath: String = Environment.getExternalStorageDirectory().absolutePath
@@ -99,25 +93,7 @@ class ScreenshotActivity : AppCompatActivity() {
     private fun sendToSearch() {
         val intent = Intent(this, LocalBaseActivity::class.java)
         startActivity(intent)
-
-        /*val frame: FrameLayout = findViewById(R.id.frame_total)
-        // Pega o FragmentManager
-        // Pega o FragmentManager
-        val fm = supportFragmentManager
-// Substitui um Fragment
-        val ft = fm.beginTransaction()
-        frame.visibility = View.VISIBLE
-//        ft.replace(R.id.frame_total, FavoriteFragment())
-        ft.commit()
-        fab?.collapse()*/
     }
-
-
-    private fun sendToHome() {
-
-        //findNavController().navigate(R.id.action_screenshotsFragment_to_homeFragment)
-    }
-
 
     private fun sendToMaps() {
         val intent = Intent(this, MapsActivity::class.java)
@@ -138,8 +114,6 @@ class ScreenshotActivity : AppCompatActivity() {
                     Log.e("downloadFileName", currentFile.getName())
                     fileList.add(currentFile.absoluteFile)
                     var image = ImagesBitmap(currentFile.absolutePath.toString())
-println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-
                     println(image)
                     list.add(image)
                 }
