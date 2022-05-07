@@ -29,14 +29,12 @@ class ScreenshotFullActivity : AppCompatActivity() {
         get() = findViewById<FloatingActionButton>(R.id.fab1)
     val excluir: FloatingActionButton?
         get() = findViewById<FloatingActionButton>(R.id.fab2)
-    val voltar: FloatingActionButton?
-        get() = findViewById<FloatingActionButton>(R.id.fab3)
 
     val back: ImageView?
-    get() = findViewById<ImageView>(R.id.back)
+        get() = findViewById<ImageView>(R.id.back)
 
-    val image : ImageView
-    get() = findViewById<ImageView>(R.id.image)
+    val image: ImageView
+        get() = findViewById<ImageView>(R.id.image)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,11 +44,10 @@ class ScreenshotFullActivity : AppCompatActivity() {
         //checkPermissionMedia(this)
 
 
-
         val bundle = intent.extras
         val url = bundle?.getString("URL")
         var fullpath = File(gpath + File.separator + spath + url)
-        if(url != null) {
+        if (url != null) {
             var folder = File(url)
             val myBitmap = BitmapFactory.decodeFile(folder.getAbsolutePath())
             image.setImageBitmap(myBitmap)
@@ -80,34 +77,38 @@ class ScreenshotFullActivity : AppCompatActivity() {
 
 
     private fun shareScreenshot(url: String?) {
-        val path = url?.subSequence(19,url.length )
+        val path = url?.subSequence(19, url.length)
         var file = File("/sdcard" + path)
-        val URI= FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",file)
+        val URI = FileProvider.getUriForFile(
+            applicationContext,
+            "com.example.clima.screen.android.fileprovider",
+            file
+        )
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         //intent.putExtra(Intent.EXTRA_TEXT,"Veja esses eventos climaticos"+"\n"+ "")
-        intent.putExtra(Intent.EXTRA_STREAM,URI)
+        intent.putExtra(Intent.EXTRA_STREAM, URI)
         intent.type = "image/*"
         startActivity(intent)
     }
 
-    private fun deleteScreenshot(url : String?){
+    private fun deleteScreenshot(url: String?) {
         AlertDialog.Builder(this).apply {
             setIcon(R.drawable.ic_delete_black)
             //setMessage(R.string.more_info_dialog_message)
             setTitle(R.string.more_info_dialog_message)
             setPositiveButton(R.string.yes_please) { d, i ->
-                val path = url?.subSequence(19,url.length )
+                val path = url?.subSequence(19, url.length)
                 var file = File("/sdcard" + path)
-                if ( file.exists()) {
-                    if ( file.delete()) {
+                if (file.exists()) {
+                    if (file.delete()) {
                         println("file Deleted :$file")
                         Toast.makeText(context, "Screenshot Excluido!", Toast.LENGTH_SHORT).show()
                         sendScreenshot()
                     } else {
                         println("file not Deleted :$file")
                     }
-                }else{
+                } else {
                     println("file not exist :$file")
                 }
             }

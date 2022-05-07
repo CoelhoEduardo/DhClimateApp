@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentContainerView
@@ -37,11 +38,12 @@ import java.io.*
 import java.util.*
 
 
-class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
+class MapsActivity() : AppCompatActivity(), OnMapReadyCallback {
 
-    private val adapter = SearchAdapter(){
-        val local = LatLng(it.geometry.last().coordinates.last(), it.geometry.last().coordinates.first())
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(local,10f))
+    private val adapter = SearchAdapter() {
+        val local =
+            LatLng(it.geometry.last().coordinates.last(), it.geometry.last().coordinates.first())
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(local, 10f))
     }
 
     private val viewModel: MapViewModel by viewModels()
@@ -57,11 +59,11 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     val layout_map: FragmentContainerView
         get() = findViewById(R.id.map)
 
-    val radioButton : RadioGroup?
+    val radioButton: RadioGroup?
         get() = findViewById<RadioGroup>(R.id.radio_group)
-    private val switch : ImageView
+    private val switch: ImageView
         get() = findViewById<ImageView>(R.id.switch_button)
-    private val queimadaButton : ImageView?
+    private val queimadaButton: ImageView?
         get() = findViewById<ImageView>(R.id.queimada_button)
     val vulconButton: ImageView?
         get() = findViewById<ImageView>(R.id.vulcon_button)
@@ -78,14 +80,13 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     val radioClosed: RadioButton
         get() = findViewById<RadioButton>(R.id.close_button)
     val fab: FloatingActionsMenu?
-    get() = findViewById<FloatingActionsMenu>(R.id.fab)
+        get() = findViewById<FloatingActionsMenu>(R.id.fab)
     val fab1: FloatingActionButton?
         get() = findViewById<FloatingActionButton>(R.id.fab1)
     val fab2: FloatingActionButton?
         get() = findViewById<FloatingActionButton>(R.id.fab2)
     val screenshot: ImageButton?
-    get() = findViewById<ImageButton>(R.id.camera_button)
-
+        get() = findViewById<ImageButton>(R.id.camera_button)
 
 
     private lateinit var map: GoogleMap
@@ -97,21 +98,19 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     private lateinit var view: View
 
 
-    lateinit var photoPath : String
+    lateinit var photoPath: String
     val REQUEST_TAKE_PHOTO = 1
 
 
-
-
-
-
-            override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_map)
 
         //Iniciando Maps
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
 
         fab1?.setOnClickListener {
@@ -122,26 +121,26 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
             sendToScreenshots()
         }
 
-        queimadaButton?.setOnClickListener{
+        queimadaButton?.setOnClickListener {
             novaRequisicao("wildfires")
         }
-        landslideButton?.setOnClickListener{
+        landslideButton?.setOnClickListener {
             novaRequisicao("landslides")
 
         }
-        iceButton?.setOnClickListener{
+        iceButton?.setOnClickListener {
             novaRequisicao("SeaLakeIce")
 
         }
-        earthquakeButton?.setOnClickListener{
+        earthquakeButton?.setOnClickListener {
             novaRequisicao("earthquakes")
 
         }
-        stormButton?.setOnClickListener{
+        stormButton?.setOnClickListener {
             novaRequisicao("severeStorms")
 
         }
-        vulconButton?.setOnClickListener{
+        vulconButton?.setOnClickListener {
             novaRequisicao("volcanoes")
 
         }
@@ -172,11 +171,11 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
             map.snapshot(callback)*/
             map.snapshot(::getScreen)
         }
-                switch.setOnClickListener {
+        switch.setOnClickListener {
 
-                    verifySwitchMap()
+            verifySwitchMap()
 
-                }
+        }
 
 
 
@@ -189,10 +188,10 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     }
 
     private fun verifySwitchMap() {
-        if(switchposition == 0){
+        if (switchposition == 0) {
             map.setMapType(GoogleMap.MAP_TYPE_HYBRID)
             switchposition = 1
-        }else{
+        } else {
             map.setMapType(GoogleMap.MAP_TYPE_NORMAL)
             switchposition = 0
         }
@@ -272,7 +271,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     }*/
 
-    private fun initMap(){
+    private fun initMap() {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -280,6 +279,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         //view = mapFragment.requireView()
 
     }
+
     override fun onMapReady(googleMap: GoogleMap) {
 
         map = googleMap
@@ -296,34 +296,37 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
 
     private fun observeData() {
-        var local: LatLng = LatLng(-34.0,148.0)
+        var local: LatLng = LatLng(-34.0, 148.0)
         var title: String = "new"
         viewModel.loading.observe(this) { loading?.isVisible = it }
         viewModel.error.observe(this) {}
         viewModel.events.observe(this) {
             adapter.updateList(it.events)
-            for(item in it.events){
-                local = LatLng(item.geometry.last().coordinates.last(), item.geometry.last().coordinates.first())
+            for (item in it.events) {
+                local = LatLng(
+                    item.geometry.last().coordinates.last(),
+                    item.geometry.last().coordinates.first()
+                )
                 title = item.title
                 map.addMarker(MarkerOptions().position(local).title(title))
             }
         }
     }
 
-    private fun sendToHome(){
+    private fun sendToHome() {
         /*val navController = findNavController(R.id.mapsActivity)
         navController.navigate()*/
         finish()
     }
 
-    private fun novaRequisicao(string: String){
-        viewModel.loadEventsFiltered(string,radioCheck())
+    private fun novaRequisicao(string: String) {
+        viewModel.loadEventsFiltered(string, radioCheck())
         map.clear()
         gerenciarBotao(string)
 
     }
 
-    fun queimadaOnClick(){
+    fun queimadaOnClick() {
         queimadaButton?.setImageResource(R.drawable.ic_queimada_black_fundo)
         earthquakeButton?.setImageResource(R.drawable.ic_earthquake_no_back)
         iceButton?.setImageResource(R.drawable.ic_ice_no_back)
@@ -331,7 +334,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         landslideButton?.setImageResource(R.drawable.ic_landslide_no_back)
         vulconButton?.setImageResource(R.drawable.ic_volcano_no_back)
     }
-    fun earthquakeOnClick(){
+
+    fun earthquakeOnClick() {
         earthquakeButton?.setImageResource(R.drawable.ic_earthquake_black_fundo)
         queimadaButton?.setImageResource(R.drawable.ic_queimada_no_back)
         iceButton?.setImageResource(R.drawable.ic_ice_no_back)
@@ -339,7 +343,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         landslideButton?.setImageResource(R.drawable.ic_landslide_no_back)
         vulconButton?.setImageResource(R.drawable.ic_volcano_no_back)
     }
-    fun iceOnClick(){
+
+    fun iceOnClick() {
         iceButton?.setImageResource(R.drawable.ic_ice_black_fundo)
         earthquakeButton?.setImageResource(R.drawable.ic_earthquake_no_back)
         queimadaButton?.setImageResource(R.drawable.ic_queimada_no_back)
@@ -347,7 +352,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         landslideButton?.setImageResource(R.drawable.ic_landslide_no_back)
         vulconButton?.setImageResource(R.drawable.ic_volcano_no_back)
     }
-    fun stormOnClick(){
+
+    fun stormOnClick() {
         stormButton?.setImageResource(R.drawable.ic_storm_black_fundo)
         earthquakeButton?.setImageResource(R.drawable.ic_earthquake_no_back)
         iceButton?.setImageResource(R.drawable.ic_ice_no_back)
@@ -355,7 +361,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         landslideButton?.setImageResource(R.drawable.ic_landslide_no_back)
         vulconButton?.setImageResource(R.drawable.ic_volcano_no_back)
     }
-    fun landslideOnClick(){
+
+    fun landslideOnClick() {
         landslideButton?.setImageResource(R.drawable.ic_landslide_black_fundo)
         earthquakeButton?.setImageResource(R.drawable.ic_earthquake_no_back)
         iceButton?.setImageResource(R.drawable.ic_ice_no_back)
@@ -363,7 +370,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         queimadaButton?.setImageResource(R.drawable.ic_queimada_no_back)
         vulconButton?.setImageResource(R.drawable.ic_volcano_no_back)
     }
-    fun vulconOnClick(){
+
+    fun vulconOnClick() {
         vulconButton?.setImageResource(R.drawable.ic_volcano_black_fundo)
         earthquakeButton?.setImageResource(R.drawable.ic_earthquake_no_back)
         iceButton?.setImageResource(R.drawable.ic_ice_no_back)
@@ -388,8 +396,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     }
 
 
-    private fun radioCheck(): String{
-        if(radioOpen.isChecked)
+    private fun radioCheck(): String {
+        if (radioOpen.isChecked)
             return "open"
         else
             return "closed"
@@ -418,7 +426,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         }
     }
 
-    private fun sendToScreenshots(){
+    private fun sendToScreenshots() {
 
         /*val frame: FrameLayout = findViewById(R.id.frame_total)
         // Pega o FragmentManager
@@ -436,7 +444,8 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
 
     }
-    private fun sendToSearch(){
+
+    private fun sendToSearch() {
 
         /*val frame: FrameLayout = findViewById(R.id.frame_total)
         // Pega o FragmentManager
@@ -456,7 +465,7 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     }
 
 
-    private fun sendToMaps(){
+    private fun sendToMaps() {
         val intent = Intent(this, MapsActivity::class.java)
         startActivity(intent)
 
@@ -466,12 +475,16 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
 
     private fun takeScreenShot() {
         val now = Date()
-        DateFormat.format("yyyy-mm-dd_hh:mm::ss",now)
+        DateFormat.format("yyyy-mm-dd_hh:mm::ss", now)
 
         //val callback = GoogleMap.SnapshotReadyCallback()
 
-        val path = getExternalFilesDir(null)?.absolutePath+"/"+now+".jpg"
-        var bitmap = Bitmap.createBitmap(layout_map.measuredWidth, layout_map.measuredHeight,Bitmap.Config.ARGB_8888)
+        val path = getExternalFilesDir(null)?.absolutePath + "/" + now + ".jpg"
+        var bitmap = Bitmap.createBitmap(
+            layout_map.measuredWidth,
+            layout_map.measuredHeight,
+            Bitmap.Config.ARGB_8888
+        )
 
         val sound = MediaActionSound()
         sound.play(MediaActionSound.SHUTTER_CLICK)
@@ -480,17 +493,21 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
         //var canvas = Canvas(map.snapshot(callback))
         layout_map.draw(canvas)
         val imagefile = File(path)
-        val outputStream= FileOutputStream(imagefile)
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream)
+        val outputStream = FileOutputStream(imagefile)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
         outputStream.flush()
         outputStream.close()
         openScreenshot(imagefile)
 
-        val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imagefile)
+        val URI = FileProvider.getUriForFile(
+            applicationContext,
+            "com.example.clima.screen.android.fileprovider",
+            imagefile
+        )
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
-        intent.putExtra(Intent.EXTRA_TEXT,"This is yout title"+"\n"+ "")
-        intent.putExtra(Intent.EXTRA_STREAM,URI)
+        intent.putExtra(Intent.EXTRA_TEXT, "This is yout title" + "\n" + "")
+        intent.putExtra(Intent.EXTRA_STREAM, URI)
         //intent.type = "text/plain"
         intent.type = "image/*"
         startActivity(intent)
@@ -498,27 +515,33 @@ class MapsActivity() : AppCompatActivity(), OnMapReadyCallback{
     }
 
 
-
-
     fun openShareImageDialog(filePath: String) {
-            val imagefile = File(filePath)
-            val outputStream= FileOutputStream(imagefile)
-            val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imagefile)
-            val intent = Intent()
-            intent.action = Intent.ACTION_VIEW
-            intent.putExtra(Intent.EXTRA_TEXT,"This is yout title"+"\n"+ "")
-            intent.putExtra(Intent.EXTRA_STREAM,URI)
-            intent.type = "text/plain"
-            startActivity(intent)
+        val imagefile = File(filePath)
+        val outputStream = FileOutputStream(imagefile)
+        val URI = FileProvider.getUriForFile(
+            applicationContext,
+            "com.example.clima.screen.android.fileprovider",
+            imagefile
+        )
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        intent.putExtra(Intent.EXTRA_TEXT, "This is yout title" + "\n" + "")
+        intent.putExtra(Intent.EXTRA_STREAM, URI)
+        intent.type = "text/plain"
+        startActivity(intent)
 
     }
 
     private fun openScreenshot(imageFile: File) {
-        val URI=FileProvider.getUriForFile(applicationContext,"com.example.clima.screen.android.fileprovider",imageFile)
+        val URI = FileProvider.getUriForFile(
+            applicationContext,
+            "com.example.clima.screen.android.fileprovider",
+            imageFile
+        )
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
-        intent.putExtra(Intent.EXTRA_TEXT,"This is yout title"+"\n"+ "")
-        intent.putExtra(Intent.EXTRA_STREAM,URI)
+        intent.putExtra(Intent.EXTRA_TEXT, "This is yout title" + "\n" + "")
+        intent.putExtra(Intent.EXTRA_STREAM, URI)
         intent.type = "text/plain"
         startActivity(intent)
     }

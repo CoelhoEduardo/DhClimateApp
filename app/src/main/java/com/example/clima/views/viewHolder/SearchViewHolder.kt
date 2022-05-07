@@ -1,5 +1,7 @@
 package com.example.clima.views.viewHolder
 
+import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,6 +16,7 @@ class SearchViewHolder(view: View, clickAtPosition: (Int) -> (Unit)) :
         itemView.setOnClickListener {
             clickAtPosition(adapterPosition)
         }
+
     }
 
     private val dataList = mutableListOf<String>()

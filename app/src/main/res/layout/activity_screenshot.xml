@@ -8,10 +8,21 @@
     android:orientation="vertical"
     tools:context=".screen.ScreenshotActivity">
 
+    <TextView
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/off_white"
+        android:layout_marginTop="10dp"
+        android:text="@string/capturas_de_tela"
+        android:textSize="25sp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -45,7 +56,7 @@
                 app:fab_colorNormal="@color/secondary_dark"
                 app:fab_icon="@drawable/ic_search_black"
                 app:fab_size="mini"
-                app:fab_title="Buscas" />
+                app:fab_title="@string/ultimos_eventos" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab2"

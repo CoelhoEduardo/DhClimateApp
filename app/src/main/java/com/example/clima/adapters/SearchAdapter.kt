@@ -21,6 +21,7 @@ class SearchAdapter(private val clickListener: (EventsItem) -> Unit) :
         dataList.addAll(diffUtil.currentList)
         return SearchViewHolder(inflater.inflate(R.layout.item_search, parent, false)) {
             clickListener(dataList[it])
+            //clickListenerLink(dataList[it])
 
         }
     }

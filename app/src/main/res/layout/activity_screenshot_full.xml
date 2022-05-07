@@ -63,14 +63,6 @@
                 app:fab_size="mini"
                 app:fab_title="Excluir" />
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:fab_colorNormal="@color/secondary_dark"
-                app:fab_icon="@drawable/ic_arrow_back_black"
-                app:fab_size="mini"
-                app:fab_title="Voltar" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
     </FrameLayout>

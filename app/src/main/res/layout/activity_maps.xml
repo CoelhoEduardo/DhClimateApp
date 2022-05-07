@@ -76,7 +76,7 @@
                 app:fab_colorNormal="@color/secondary_dark"
                 app:fab_icon="@drawable/ic_search_black"
                 app:fab_size="mini"
-                app:fab_title="Buscas" />
+                app:fab_title="@string/ultimos_eventos" />
 
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab2"
@@ -85,7 +85,7 @@
                 app:fab_colorNormal="@color/secondary_dark"
                 app:fab_icon="@drawable/ic_screenshots_black"
                 app:fab_size="mini"
-                app:fab_title="Screenshots" />
+                app:fab_title="Capturas de Tela" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

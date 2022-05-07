@@ -61,7 +61,7 @@
                 app:fab_colorNormal="@color/secondary_dark"
                 app:fab_icon="@drawable/ic_screenshots_black"
                 app:fab_size="mini"
-                app:fab_title="Screenshots" />
+                app:fab_title="Capturas de Tela" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
     </FrameLayout>
