@@ -4,45 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@color/primary_dark"
     android:orientation="vertical"
     tools:context=".screen.LocalBaseActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_transaction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_mid"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleTextColor="@color/white">
-
-
-        <ImageView
-            android:id="@+id/home"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="left"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_arrow_back_white"
-            tools:ignore="ContentDescription" />
-
-        <ImageView
-            android:id="@+id/profile"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo"
-            tools:ignore="ContentDescription" />
-
-    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textColor="@color/off_white"
         android:layout_marginTop="10dp"
         android:text="@string/ultimos_eventos"
         android:textSize="25sp" />
