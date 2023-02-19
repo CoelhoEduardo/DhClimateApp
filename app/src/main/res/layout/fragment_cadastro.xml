@@ -4,71 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/primary_light"
-    tools:context=".CadastroFragment">
+    android:orientation="vertical"
+    tools:context=".screen.CadastroFragment">
 
     <ImageView
         android:id="@+id/logotipo"
         android:layout_width="wrap_content"
         android:layout_height="210dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@id/nome_input"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nome_input"
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/nome"
-        app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_check"
-        app:layout_constraintStart_toStartOf="parent"
+        app:endIconMode="custom"
+        app:layout_constraintBottom_toTopOf="@id/pais_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logotipo">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nome_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pais_input"
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/pais"
-        app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_check"
-        app:layout_constraintStart_toStartOf="parent"
+        app:endIconMode="custom"
+        app:layout_constraintBottom_toTopOf="@id/email_input"
         app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nome_input">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pais_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_input"
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:hint="@string/email"
-        app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_check"
-
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:endIconMode="custom"
+        app:layout_constraintBottom_toTopOf="@id/password_input"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pais_input">
 
-        app:layout_constraintTop_toBottomOf="@id/pais_input" >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
@@ -77,56 +88,58 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_input"
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/confirmarSenha"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_eye_pass"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="@string/digiteSenha"
+        app:layout_constraintBottom_toTopOf="@id/password_confirm_input"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/email_input"
+        app:passwordToggleEnabled="true">
 
-        app:layout_constraintTop_toBottomOf="@id/email_input" >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/senha_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password_confirm_input"
-        android:layout_width="335dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:hint="@string/confirmarSenha"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/ic_eye_pass"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/criar_conta_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password_confirm_input"
+        app:passwordToggleEnabled="true">
 
-        app:layout_constraintTop_toBottomOf="@id/password_input" >
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/senha2_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/criar_conta_button"
-        android:layout_width="295dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
         android:backgroundTint="@color/secondary_dark"
         android:text="@string/criar_conta"
-        android:layout_marginTop="5dp"
-        app:layout_constraintTop_toTopOf="@id/password_confirm_input"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/temConta_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password_confirm_input" />
 
 
     <Button
@@ -135,15 +148,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tem_conta"
-        android:layout_marginTop="5dp"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/criar_conta_button" />
-
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="TextView" parent="Theme.Clima">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Subtitle" parent="TextView">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Subtitle2" parent="TextView">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Body1" parent="TextView">
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="Headline6" parent="TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Received" parent="Headline6">
+        <item name="android:shadowColor">@color/white</item>
+    </style>
+    <style name="Paid" parent="Headline6">
+        <item name="android:shadowColor">@color/white</item>
+    </style>
+    <style name="TextView.Inverted" parent="Theme.Clima">
+        <item name="android:shadowColor">@color/black</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Title.Inverted" parent="TextView.Inverted">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Subtitle.Inverted" parent="TextView.Inverted">
+        <item name="android:textSize">13sp</item>
+    </style>
+    <style name="Subtitle.Inverted.Small">
+        <item name="android:textSize">7sp</item>
+    </style>
+    <style name="Body1.Inverted" parent="TextView.Inverted">
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="Body2.Inverted" parent="TextView.Inverted">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="custom_floating_buttons">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/custom_floating_button</item>
+    </style>
+
+
     <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
     </style>

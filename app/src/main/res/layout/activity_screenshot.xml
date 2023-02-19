@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_dark"
+    android:orientation="vertical"
+    tools:context=".screen.ScreenshotActivity">
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/off_white"
+        android:layout_marginTop="10dp"
+        android:text="@string/capturas_de_tela"
+        android:textSize="25sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/screenshot_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:itemCount="50"
+            tools:listitem="@layout/item_screenshot"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="5dp"
+            app:fab_addButtonColorNormal="@color/black"
+            app:fab_addButtonSize="mini"
+            app:fab_expandDirection="up"
+            app:fab_labelStyle="@style/custom_floating_buttons">
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_icon="@drawable/ic_search_black"
+                app:fab_size="mini"
+                app:fab_title="@string/ultimos_eventos" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/secondary_dark"
+                app:fab_icon="@drawable/ic_switch_black"
+                app:fab_size="mini"
+                app:fab_title="Maps" />
+
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Clima</string>
+    <string name="app_name">NETracker</string>
     <string name="login">Login</string>
     <string name="recuperar_senha">Recuperar Senha</string>
     <string name="nova_conta">Nova Conta</string>
@@ -14,10 +14,43 @@
     <string name="criar_conta">CRIAR CONTA</string>
     <string name="tem_conta">TEM UMA CONTA? FACA SEU LOGIN</string>
     <string name="favorite_title">FAVORITOS</string>
-    <string name="localizacao">Busque por Localizacao</string>
+    <string name="localizacao">Digite a Localizacao</string>
     <string name="data_inicial">Data Inicial</string>
     <string name="data_final">Data Final</string>
     <string name="email">Digite seu email</string>
     <string name="enviar">Enviar</string>
     <string name="fechar">Fechar</string>
+    <!--region  Google Id -->
+    <string name="google_client_id">213353444762-82m81li1gu6sfepccu8accmj9beqrb4b.apps.googleusercontent.com</string>
+    <!--endregion-->
+    <!--region  Facebook Id -->
+    <string name="facebook_app_id">4964352723680057</string>
+    <!--<string name="fb_login_protocol_scheme">fb1234</string>-->
+
+
+    <string name="facebook_client_token">6497ceaf7307e1161f4252c975e3a5cb</string>
+    <string name="Buscar">Buscar</string>
+    <string name="data">Data</string>
+    <!--<string name="facebook_client_token">gpWU9KFWQsNGxbv69VBMQD2sRsM=</string>-->
+
+
+    <!--endregion-->
+
+    <string name="api_id">2Xtwkhkp8GGB5O4Vnf2ayCGnRbb3w3cRDZwTo6cU</string>
+    <string name="digiteSenha">Digite sua Senha</string>
+    <string name="title_activity_maps">NETracker</string>
+    <string name="ultimos_eventos">Últimos Eventos</string>
+    <string name="message_forgot_password">Digite o email para qual sua senha deve ser enviada.</string>
+    <string name="email_enviado">Email enviado.</string>
+    <string name="messagem_de_cadastro">Usuario Cadastrado com sucesso</string>
+    <string name="minhas_buscas">Minhas Buscas</string>
+    <string name="capturas_de_tela">Capturas de Tela</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="abrir_mapa">Abrir Mapa</string>
+    <string name="more_info_dialog_title">Deletar Screenshot</string>
+    <string name="yes_please">Sim</string>
+    <string name="more_info_dialog_message">Deseja realmente excluir o screenshot?</string>
+    <string name="no_thanks">Nao</string>
+
+
 </resources>

@@ -5,21 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_light"
-    tools:context=".HomeFragment">
+    tools:context=".screen.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <!--<View
-            android:id="@+id/background_header_transaction"
-            android:layout_width="350dp"
-            android:layout_height="0dp"
-            android:background="@drawable/background_card_top"
-            app:layout_constraintBottom_toBottomOf="@+id/guide_header_transaction"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_transaction"
-            app:layout_constraintStart_toStartOf="@id/guide_start_transaction"
-            app:layout_constraintEnd_toEndOf="@id/guide_end_transaction"/>-->
-
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_transaction"
